@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Future of HCL</title>
+
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<body>
+  <!-- Shared Header -->
+  <div id="header"></div>
+
+  <main class="docs docs-page no-sidebar">
+    <section class="docs-content centered-docs">
+
+      <h2>The Future of Our Project</h2>
+      <p>
+        We are building a new way of programming—one that removes unnecessary
+        barriers between human intent and machine execution. Today, our system
+        already allows users to write instructions in natural language, which are
+        interpreted through predefined semantic rules and executed via carefully
+        constructed Abstract Syntax Trees (ASTs). While this approach is currently
+        rule-based, it is only the foundation of a much larger vision.
+      </p>
+
+      <p>
+        Our long-term goal is to fundamentally change how people write code.
+      </p>
+
+      <h2>Toward Rule-Free Coding</h2>
+      <p>
+        Traditional programming languages require developers to memorize strict
+        syntax rules, formatting conventions, and language-specific constructs.
+        This creates a steep learning curve and slows down creativity.
+      </p>
+
+      <p>
+        Our future direction is <strong>rule-free coding</strong>, where users
+        focus entirely on <em>what they want to achieve</em>, not <em>how the
+        language demands it be written</em>. Instead of enforcing rigid syntax
+        like Python, C++, or Java, our system will progressively learn to
+        interpret intent directly from natural language—freeing users from
+        syntactic constraints altogether.
+      </p>
+
+      <p>
+        Programming should feel like problem-solving, not syntax management.
+      </p>
+
+      <h2>A New Breakthrough in Coding with AI</h2>
+      <p>
+        We aim to create a breakthrough where AI is not just a helper, but a
+        <strong>core execution partner</strong> in the coding process.
+      </p>
+
+      <p>
+        Rather than simply translating prompts into code, the system will:
+      </p>
+
+      <ul>
+        <li>Understand intent at a semantic level</li>
+        <li>Infer missing details intelligently</li>
+        <li>Resolve ambiguity through contextual reasoning</li>
+        <li>Choose optimal execution paths automatically</li>
+      </ul>
+
+      <p>
+        This represents a shift from <em>language-centric programming</em> to
+        <em>intent-centric programming</em>, powered by AI.
+      </p>
+
+      <h2>A More Versatile and Seamless Coding Experience</h2>
+      <p>
+        User experience is central to our future roadmap. Writing code should
+        feel fluid, intuitive, and interruption-free.
+      </p>
+
+      <ul>
+        <li>Smooth multi-step instructions written naturally</li>
+        <li>Seamless nesting of logic without rigid structure</li>
+        <li>Adaptive understanding of user style and phrasing</li>
+        <li>Minimal friction between thought and execution</li>
+      </ul>
+
+      <p>
+        The system should adapt to the user—not the other way around.
+      </p>
+
+      <h2>No Need to Learn Strict Syntax Rules</h2>
+      <p>
+        One of our most important commitments is accessibility.
+      </p>
+
+      <ul>
+        <li>Beginners can build logic without learning syntax first</li>
+        <li>Experienced developers move faster without boilerplate</li>
+        <li>Non-technical users can express logic naturally</li>
+      </ul>
+
+      <p>
+        By eliminating strict syntax requirements, we make programming more
+        inclusive, expressive, and human-friendly.
+      </p>
+
+      <h2>Integrated AI Coding Assistant</h2>
+      <p>
+        We plan to integrate a <strong>dedicated AI chatbot</strong> directly into
+        the platform to guide users throughout their coding journey.
+      </p>
+
+      <ul>
+        <li>Explain what the system understood from input</li>
+        <li>Suggest improvements or optimizations</li>
+        <li>Ask clarifying questions when intent is ambiguous</li>
+        <li>Teach concepts progressively</li>
+        <li>Help users evolve naturally</li>
+      </ul>
+
+      <p>
+        The goal is not just execution—but understanding and growth.
+      </p>
+
+      <h2>Advanced Error Handling and Auto-Correction</h2>
+      <p>
+        Errors are inevitable, but frustration should not be.
+      </p>
+
+      <ul>
+        <li>Semantic-level error detection</li>
+        <li>Human-readable explanations</li>
+        <li>Natural-language corrections</li>
+        <li>Automatic fixes when possible</li>
+        <li>Learning from recurring mistakes</li>
+      </ul>
+
+      <h2>Our Commitment</h2>
+      <ul>
+        <li>Coding feels natural and expressive</li>
+        <li>AI bridges thought and execution</li>
+        <li>Learning barriers are removed</li>
+        <li>Creativity comes before syntax</li>
+        <li>Programming becomes a universal skill</li>
+      </ul>
+
+      <p>
+        This project is not just about writing code differently.<br />
+        <strong>It is about redefining what coding is.</strong>
+      </p>
+
+    </section>
+  </main>
+
+  <!-- Shared Footer -->
+  <div id="footer"></div>
+
+  <script>
+    fetch("./partials/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("./partials/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+  <script src="./script.js"></script>
+</body>
+</html>

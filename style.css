@@ -291,6 +291,21 @@ button:hover .btn-icon-img {
   cursor: pointer;
 }
 
+/* Dropdown icon */
+.dropdown-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+
+  /* match sidebar text color */
+  filter: invert(80%);
+  transition: transform 0.25s ease;
+}
+
+/* Rotate icon when submenu is open */
+.has-children.open .dropdown-icon {
+  transform: rotate(90deg);
+}
 
 .docs-content {
   background: rgba(2, 6, 23, 0.75);
@@ -464,6 +479,20 @@ button:hover .btn-icon-img {
   margin-left: 0;
 }
 
+/* FUTURE PAGE */
+
+.docs-content h2 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.docs-content h2:first-of-type {
+  margin-top: 0;
+}
+
+.docs-content p {
+  margin-bottom: 24px;
+}
 
 /* FOOTER */
 
