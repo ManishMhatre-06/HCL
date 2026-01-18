@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HCL – Human Centric Language</title>
-
+  <title>HCL – Human Centric Language</title> 
   <link rel="stylesheet" href="./style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,24 +41,31 @@
       </p>
 
       <div class="hero-actions">
-        <a href="./executables/human_centric_programming_language_version_V.0.0.1.exe" download class="btn-link" title="Download HCL Compiler (.exe)">
-          <button class="btn-primary large">
+        <a href="./executables/human_centric_programming_language_version_V.0.0.1.exe" download class="btn-link" title="Download HCL Language (.exe)">
+          <button class="btn-primary large btn-icon">
+            <img src="./assets/icons/download.svg" alt="" class="btn-icon-img" />
             Download HCL Language
           </button>
         </a>
         <a href="./executables/human_centric_programming_language_version_V.0.0.1.exe" download class="btn-link" title="Download HCL Compiler (.exe)">
-          <button class="btn-secondary large">
+          <button class="btn-secondary large btn-icon">
+            <img src="./assets/icons/code.svg" alt="" class="btn-icon-img" />
             Download HCL Compiler
           </button>
         </a>
-        <a href="./guide.html" class="btn-outline large">Documentation</a>
+        <a href="./guide.html" class="btn-outline large btn-icon">
+          <img src="./assets/icons/book-open.svg" alt="" class="btn-icon-img" />
+          Documentation</a>
       </div>
 
-      <pre class="code-block">
+      <pre class="code-block" id="hero-code-block">
 <span>// example.hcl</span>
-create web server on port 8080
-handle GET requests to "/api/users"
-return user list as JSON
+assign "Hello World" to greeting
+print greeting
+
+assign "Human Centric Language is Beginner friendly language" to language
+print language
+
       </pre>
     </div>
   </section>

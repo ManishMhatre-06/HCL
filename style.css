@@ -14,8 +14,16 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: radial-gradient(circle at top, #020617, #020617);
-  color: white;
+  /* background: radial-gradient(circle at top, #020617, #020617);
+  color: white; */
+  background:
+    linear-gradient(
+      rgba(2, 6, 23, 0.88),
+      rgba(2, 6, 23, 0.88)
+    ),
+    url("./assets/bg.png") center / cover no-repeat fixed;
+
+  color: #e5e7eb;
 }
 
 /* HEADER */
@@ -115,11 +123,44 @@ button {
   text-decoration: none;
 }
 
+/* Buttons with icons */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Button icons */
+.btn-icon-img {
+  width: 18px;
+  height: 18px;
+
+  /* Match icon color to text */
+  filter: invert(100%);
+  opacity: 0.9;
+}
+
+button:hover .btn-icon-img {
+  opacity: 1;
+}
+
+
 /* HERO PAGE / INDEX PAGE */
 .hero {
   padding: 140px 20px 80px;
   text-align: center;
+
+  /* lighter glass layer instead of heavy block */
+  /* background: rgba(2, 6, 23, 0.55); */
+  background: transparent;
+  backdrop-filter: blur(2px);
+  border-radius: 24px;
+
+  /* NEW: constrain width like guide page */
+  max-width: 1200px;
+  margin: 120px auto 0;
 }
+
 
 .hero h1 {
   font-size: 3rem;
@@ -144,6 +185,13 @@ button {
   flex-wrap: wrap;
 }
 
+.hero-content .code-block {
+  margin-top: 40px;
+  max-width: 800px;
+  font-size: 1rem;
+  text-align: left;
+}
+
 /* GUIDE PAGE */
 
 /* CODE BLOCK */
@@ -152,7 +200,7 @@ button {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px;
-  margin: 40px auto 0;
+  margin: 0px auto 0;
   max-width: 700px;
   color: #38bdf8;
   text-align: left;
@@ -170,10 +218,11 @@ button {
 }
 
 .sidebar {
-  background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 20px;
+  background: rgba(2, 6, 23, 0.85);
+  backdrop-filter: blur(8px);
 }
 
 .sidebar h3 {
@@ -229,10 +278,11 @@ button {
 
 
 .docs-content {
-  background: var(--card);
+  background: rgba(2, 6, 23, 0.75);
   border: 1px solid var(--border);
-  border-radius: 16px;
   padding: 28px;
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
 }
 
 .docs-content > * {
@@ -249,6 +299,20 @@ button {
 
 .hidden {
   display: none;
+}
+
+/* Installation Guide h2 spacing */
+#install h2 {
+  margin-top: 56px;
+  /* margin-bottom: 32px; */
+}
+
+#install h2:first-of-type {
+  margin-top: 0;
+}
+
+#install p {
+  margin-bottom: 24px;
 }
 
 /* Syntax & Code spacing normalization */
@@ -275,6 +339,10 @@ button {
   display: block;
 }
 
+/* FAQ question spacing */
+#faq h3 {
+  margin-top: 48px;
+}
 
 .comparison-table {
   width: 100%;
@@ -293,6 +361,10 @@ button {
 .comparison-table th {
   font-weight: 600;
   color: #e5e7eb;
+}
+
+#faq .faq-code-block-para {
+  margin-bottom: 24px;
 }
 
 .release-block {
@@ -344,6 +416,24 @@ button {
 .roadmap-card li {
   padding-left: 4px;
 }
+
+/* HELP PAGE */
+
+/* Docs layout without sidebar (Help page) */
+.docs.no-sidebar {
+  display: flex;
+  justify-content: center;
+}
+
+.docs.no-sidebar .docs-content {
+  max-width: 900px;
+  width: 100%;
+}
+
+.centered-docs {
+  margin-left: 0;
+}
+
 
 /* FOOTER */
 
@@ -397,4 +487,22 @@ button {
   margin-top: 32px;
   font-size: 0.85rem;
   color: #64748b;
+}
+
+/* Footer social icon styling */
+.footer-socials img {
+  width: 22px;
+  height: 22px;
+  filter: invert(72%) sepia(8%) saturate(600%) hue-rotate(180deg)
+          brightness(95%) contrast(90%);
+  opacity: 0.85;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover effect */
+.footer-socials img:hover {
+  filter: invert(90%) sepia(20%) saturate(1400%) hue-rotate(170deg)
+          brightness(105%) contrast(100%);
+  opacity: 1;
+  transform: translateY(-2px);
 }

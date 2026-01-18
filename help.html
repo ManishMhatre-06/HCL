@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HCL – Human Centric Language</title>
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="header"></div>
+    <main class="docs docs-page no-sidebar">
+
+        <section class="docs-content centered-docs" id="install">
+          <h2>Installation Guide</h2>
+
+          <h4>System Requirements</h4>
+          <ul>
+            <li><strong>Operating System:</strong> Windows 10+, macOS 10.15+, or Linux (Ubuntu 20.04+)</li>
+            <li><strong>Memory:</strong> 2GB RAM minimum (4GB recommended)</li>
+            <li><strong>Disk Space:</strong> 500MB free space</li>
+            <li><strong>Dependencies:</strong> Python 3.8+ (for runtime execution)</li>
+          </ul>
+      
+          <h4>Download and Installation Steps</h4>
+      
+          <h2>Windows</h2>
+          <p></p>
+          <pre class="code-block">
+        # Download the installer
+        curl -O https://hcl-lang.org/downloads/hcl-windows-x64.exe
+        
+        # Run the installer
+        ./hcl-windows-x64.exe
+        
+        # Add to PATH (automatically done by installer)
+        # Or manually add: C:\Program Files\HCL\bin
+          </pre>
+      
+          <h2>macOS</h2>
+          <p></p>
+          <pre class="code-block">
+        # Using Homebrew
+        brew tap hcl-lang/hcl
+        brew install hcl
+        
+        # Or download directly
+        curl -O https://hcl-lang.org/downloads/hcl-macos.pkg
+        sudo installer -pkg hcl-macos.pkg -target /
+          </pre>
+      
+          <h2>Linux</h2>
+          <p></p>
+          <pre class="code-block">
+        # Ubuntu/Debian
+        wget https://hcl-lang.org/downloads/hcl-linux-amd64.deb
+        sudo dpkg -i hcl-linux-amd64.deb
+        
+        # Fedora/RHEL
+        wget https://hcl-lang.org/downloads/hcl-linux.rpm
+        sudo rpm -i hcl-linux.rpm
+        
+        # From source
+        git clone https://github.com/hcl-lang/hcl.git
+        cd hcl && make install
+          </pre>
+      
+          <h2>Testing Installation</h2>
+          <p>Verify HCL is installed correctly:</p>
+          <pre class="code-block">
+        hcl --version
+        # Expected output: HCL version 1.0.0
+          </pre>
+      
+          <h2>Setting up PATH</h2>
+          <p>If the <code>hcl</code> command is not recognized, add it to your PATH:</p>
+      
+          <pre class="code-block">
+        # Linux/macOS (add to ~/.bashrc or ~/.zshrc)
+        export PATH="$PATH:/usr/local/bin/hcl"
+        
+        # Windows (PowerShell as Administrator)
+        [Environment]::SetEnvironmentVariable(
+          "Path",
+          $env:Path + ";C:\Program Files\HCL\bin",
+          "Machine"
+        )
+          </pre>
+        </section>
+
+    </main>
+
+      <div id="footer"></div>
+
+      <script>
+        fetch("./partials/header.html")
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("header").innerHTML = data;
+          });
+
+        fetch("./partials/footer.html")
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById("footer").innerHTML = data;
+          });
+      </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

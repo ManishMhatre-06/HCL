@@ -62,7 +62,6 @@
       </ul>
     </aside>
 
-
     <section class="docs-content" id="install">
       <h2>Installation Guide</h2>
 
@@ -76,7 +75,8 @@
     
       <h4>Download and Installation Steps</h4>
     
-      <h5>Windows</h5>
+      <h2>Windows</h2>
+      <p></p>
       <pre class="code-block">
     # Download the installer
     curl -O https://hcl-lang.org/downloads/hcl-windows-x64.exe
@@ -88,7 +88,8 @@
     # Or manually add: C:\Program Files\HCL\bin
       </pre>
     
-      <h5>macOS</h5>
+      <h2>macOS</h2>
+      <p></p>
       <pre class="code-block">
     # Using Homebrew
     brew tap hcl-lang/hcl
@@ -99,7 +100,8 @@
     sudo installer -pkg hcl-macos.pkg -target /
       </pre>
     
-      <h5>Linux</h5>
+      <h2>Linux</h2>
+      <p></p>
       <pre class="code-block">
     # Ubuntu/Debian
     wget https://hcl-lang.org/downloads/hcl-linux-amd64.deb
@@ -114,14 +116,14 @@
     cd hcl && make install
       </pre>
     
-      <h4>Testing Installation</h4>
+      <h2>Testing Installation</h2>
       <p>Verify HCL is installed correctly:</p>
       <pre class="code-block">
     hcl --version
     # Expected output: HCL version 1.0.0
       </pre>
     
-      <h4>Setting up PATH</h4>
+      <h2>Setting up PATH</h2>
       <p>If the <code>hcl</code> command is not recognized, add it to your PATH:</p>
     
       <pre class="code-block">
@@ -1776,15 +1778,15 @@
     <section class="docs-content hidden" id="faq">
       <h2>Frequently Asked Questions</h2>
 
-      <h4>What is HCL?</h4>
+      <h3>What is HCL?</h3>
       <p>
         Human Centric Language (HCL) is a high-level instruction language that bridges
         the gap between human natural language and programming languages. It allows
         developers to write code using intuitive, human-readable syntax that compiles
         to various target languages including Python, C, C++, and JavaScript.
       </p>
-    
-      <h4>How is NLP used in HCL?</h4>
+
+      <h3>How is NLP used in HCL?</h3>
       <p>
         HCL uses Natural Language Processing (NLP) techniques to parse and understand
         human-like instructions. The compiler employs:
@@ -1799,8 +1801,8 @@
         However, HCL maintains deterministic behavior — the same instruction always
         produces the same code, unlike AI-based code generators.
       </p>
-    
-      <h4>Is HCL faster or slower than Python?</h4>
+
+      <h3>Is HCL faster or slower than Python?</h3>
       <p>It depends on the target compilation:</p>
       <ul>
         <li><strong>HCL → Python:</strong> Similar speed to native Python (adds minimal compilation overhead)</li>
@@ -1811,8 +1813,8 @@
         The key advantage is flexibility — write once in HCL, compile to the best
         language for your use case.
       </p>
-    
-      <h4>Is HCL open-source?</h4>
+
+      <h3>Is HCL open-source?</h3>
       <p>Yes! HCL is fully open-source under the MIT License. You can:</p>
       <ul>
         <li>View the source code on GitHub</li>
@@ -1828,7 +1830,7 @@
         </a>
       </p>
     
-      <h4>Can I use HCL in production?</h4>
+      <h3>Can I use HCL in production?</h3>
       <p>Yes! HCL is production-ready. Many companies use it for:</p>
       <ul>
         <li>Rapid prototyping</li>
@@ -1837,8 +1839,8 @@
         <li>Cross-platform applications (compile once, deploy to multiple languages)</li>
         <li>Domain-specific languages (DSLs)</li>
       </ul>
-    
-      <h4>How does HCL compare to other languages?</h4>
+
+      <h3>How does HCL compare to other languages?</h3>
     
       <table class="comparison-table">
         <thead>
@@ -1877,7 +1879,7 @@
         </tbody>
       </table>
     
-      <h4>What are the limitations of HCL?</h4>
+      <h3>What are the limitations of HCL?</h3>
       <ul>
         <li>Not suitable for extremely low-level system programming</li>
         <li>Limited third-party library support (depends on target language)</li>
@@ -1885,7 +1887,7 @@
         <li>Some advanced features may not translate perfectly across all target languages</li>
       </ul>
     
-      <h4>How do I contribute to HCL?</h4>
+      <h3>How do I contribute to HCL?</h3>
       <p>We welcome contributions! Here’s how to get started:</p>
       <ol>
         <li>Fork the repository on GitHub</li>
@@ -1896,8 +1898,8 @@
         <li>Open a Pull Request</li>
       </ol>
     
-      <h4>Does HCL support web development?</h4>
-      <p>
+      <h3>Does HCL support web development?</h3>
+      <p class="faq-code-block-para">
         Yes! You can compile HCL to JavaScript for frontend development or to Python
         for backend frameworks like Flask or Django. Example:
       </p>
@@ -1909,7 +1911,7 @@
     return user list as JSON
       </pre>
     
-      <h4>Where can I get help?</h4>
+      <h3>Where can I get help?</h3>
       <ul>
         <li><strong>Documentation:</strong> This guide covers most use cases</li>
         <li><strong>GitHub Issues:</strong> Report bugs or request features</li>
