@@ -1,0 +1,2049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HCL – Documentation</title>
+
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">HCL</div>
+      <span class="brand">Human Centric Language</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="guide.html" class="active">Guide</a>
+    </nav>
+
+    <button class="btn-primary">Download</button>
+  </header>
+
+  <!-- DOCS -->
+  <main class="docs docs-page">
+    <aside class="sidebar">
+      <h3>Documentation</h3>
+      <ul>
+        <li class="active" data-target="install">Installation Guide</li>
+        <li class="has-children" data-target="syntax">
+          <span class="parent">Syntax & Code</span>
+          <ul class="sub-list">
+            <li data-syntax="print">Print</li>
+            <li data-syntax="assignment">Assignment</li>
+            <li data-syntax="datatype">Data Type</li>
+            <li data-syntax="random-number">Random Number</li>
+            <li data-syntax="casting">Casting</li>
+            <li data-syntax="string">String Methods</li>
+            <li data-syntax="boolean">Boolean Methods</li>
+            <li data-syntax="arithmetic">Basic Arithmetic</li>
+            <li data-syntax="full-arithmetic">Full Arithmetic</li>
+            <li data-syntax="list">List Methods</li>
+            <li data-syntax="tuple">Tuple Methods</li>
+            <li data-syntax="set">Set & Frozenset</li>
+            <li data-syntax="dict">Dict Methods</li>
+            <li data-syntax="execution">Code Execution</li>
+          </ul>
+        </li>
+        <li data-target="examples">Examples</li>
+        <li data-target="conversion">Code Conversion</li>
+        <li data-target="faq">FAQ</li>
+        <li data-target="release">Release Notes</li>
+      </ul>
+    </aside>
+
+
+    <section class="docs-content" id="install">
+      <h2>Installation Guide</h2>
+
+      <h4>System Requirements</h4>
+      <ul>
+        <li><strong>Operating System:</strong> Windows 10+, macOS 10.15+, or Linux (Ubuntu 20.04+)</li>
+        <li><strong>Memory:</strong> 2GB RAM minimum (4GB recommended)</li>
+        <li><strong>Disk Space:</strong> 500MB free space</li>
+        <li><strong>Dependencies:</strong> Python 3.8+ (for runtime execution)</li>
+      </ul>
+    
+      <h4>Download and Installation Steps</h4>
+    
+      <h5>Windows</h5>
+      <pre class="code-block">
+    # Download the installer
+    curl -O https://hcl-lang.org/downloads/hcl-windows-x64.exe
+      
+    # Run the installer
+    ./hcl-windows-x64.exe
+      
+    # Add to PATH (automatically done by installer)
+    # Or manually add: C:\Program Files\HCL\bin
+      </pre>
+    
+      <h5>macOS</h5>
+      <pre class="code-block">
+    # Using Homebrew
+    brew tap hcl-lang/hcl
+    brew install hcl
+      
+    # Or download directly
+    curl -O https://hcl-lang.org/downloads/hcl-macos.pkg
+    sudo installer -pkg hcl-macos.pkg -target /
+      </pre>
+    
+      <h5>Linux</h5>
+      <pre class="code-block">
+    # Ubuntu/Debian
+    wget https://hcl-lang.org/downloads/hcl-linux-amd64.deb
+    sudo dpkg -i hcl-linux-amd64.deb
+      
+    # Fedora/RHEL
+    wget https://hcl-lang.org/downloads/hcl-linux.rpm
+    sudo rpm -i hcl-linux.rpm
+      
+    # From source
+    git clone https://github.com/hcl-lang/hcl.git
+    cd hcl && make install
+      </pre>
+    
+      <h4>Testing Installation</h4>
+      <p>Verify HCL is installed correctly:</p>
+      <pre class="code-block">
+    hcl --version
+    # Expected output: HCL version 1.0.0
+      </pre>
+    
+      <h4>Setting up PATH</h4>
+      <p>If the <code>hcl</code> command is not recognized, add it to your PATH:</p>
+    
+      <pre class="code-block">
+    # Linux/macOS (add to ~/.bashrc or ~/.zshrc)
+    export PATH="$PATH:/usr/local/bin/hcl"
+      
+    # Windows (PowerShell as Administrator)
+    [Environment]::SetEnvironmentVariable(
+      "Path",
+      $env:Path + ";C:\Program Files\HCL\bin",
+      "Machine"
+    )
+      </pre>
+    </section>
+
+    <section class="docs-content hidden" id="syntax">
+      <h2>Syntax & Code</h2>
+
+      <h4>How HCL Interprets Human Prompts</h4>
+      <p>
+        HCL uses natural language processing to convert human-readable instructions
+        into executable code. The language is designed to be intuitive while
+        maintaining precision.
+      </p>
+
+      <div class="syntax-block active" data-syntax="print">
+        <h3>Print</h3>
+        <pre class="code-block">
+    # Basic printing
+    print "Hello World!"
+    display "Hello World!"
+    show "Hello World!"
+    output "Hello World!"
+
+    # Printing using variables
+    assign "Hello " to x
+    assign "World!" to y
+
+    print x plus y
+    print x concatenated with y
+    print x and y together
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="assignment">
+        <h3>Assignment</h3>
+        <pre class="code-block">
+    # Single variable assignment
+    assign "A" to x
+    make variable x equal to "A"
+    set x to "A"
+
+    # Multiple variable assignment (explicit values)
+    set variables x, y, z to values "A", "B", "C"
+    store "A", "B", "C" in x, y, z
+    create variables x, y, z and set them to "A", "B", "C"
+
+    # Multiple variable assignment (same value)
+    assign "A" to x, y, z
+    set x, y, z to "A"
+    make variables x, y, z equal to "A"
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="datatype">
+        <h3>Data Types</h3>
+        <pre class="code-block">
+    # Checking data types
+
+    assign 34 to x
+    type of x
+
+    assign "Johnny" to y
+    check type of y
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="random-number">
+        <h3>Random Number</h3>
+        <pre class="code-block">
+    generate a random number between 1 and 10
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="casting">
+        <h3>Casting</h3>
+        <pre class="code-block">
+    # Casting numbers to string
+    assign 10 to a
+    convert a to string
+
+    assign 20 to b
+    cast b to string
+
+    assign 30 to c
+    change c into a string
+
+    assign 40 to d
+    make d a string
+
+
+    # Casting string to integer
+    assign "123" to e
+    convert e to integer
+
+    assign "456" to f
+    cast f to int
+
+    assign "789" to g
+    change g into an integer
+
+    assign "900" to h
+    make h an integer
+
+
+    # Casting string to float
+    assign "3.14" to i
+    convert i to float
+
+    assign "2.71" to j
+    cast j to float
+
+    assign "6.28" to k
+    change k into a float
+
+    assign "1.23" to l
+    make l a float
+
+
+    # Casting string to complex number
+    assign "5+2j" to m
+    convert m to complex number
+
+    assign "4+3j" to n
+    convert n to complex
+
+    assign "1+1j" to o
+    cast o to complex number
+
+    assign "2+0j" to p
+    cast p to complex
+
+    assign "9+4j" to q
+    change q into a complex number
+
+    assign "7+8j" to r
+    make r complex
+
+
+    # Casting string to list
+    assign "a,b,c" to s
+    convert s to list
+
+    assign "1,2,3" to t
+    cast t to list
+
+    assign "x,y,z" to u
+    change u into a list
+
+    assign "p,q,r" to v
+    make v a list
+
+
+    # Casting string to tuple
+    assign "1,2" to w
+    convert w to tuple
+
+    assign "3,4" to x
+    cast x to tuple
+
+    assign "5,6" to y
+    change y into a tuple
+
+    assign "7,8" to z
+    make z a tuple
+
+
+    # Casting string to range
+    assign "10" to p1
+    convert p1 to range
+
+    assign "20" to p2
+    create a range from p2
+
+    assign "30" to p3
+    cast p3 to range
+
+    assign "40" to p4
+    make a range using p4
+
+
+    # Casting string to dictionary
+    assign "key:value" to d1
+    convert d1 to dictionary
+
+    assign "x:10" to d2
+    cast d2 to dict
+
+    assign "name:john" to d3
+    change d3 into a dictionary
+
+    assign "flag:true" to d4
+    make d4 a dictionary
+
+
+    # Casting string to set
+    assign "1,2,3" to s1
+    convert s1 to set
+
+    assign "a,b,c" to s2
+    cast s2 to set
+
+    assign "7,8,9" to s3
+    change s3 into a set
+
+    assign "p,q,r" to s4
+    make s4 a set
+
+
+    # Casting string to frozenset
+    assign "1,2,3" to f1
+    convert f1 to frozenset
+
+    assign "a,b,c" to f2
+    cast f2 to frozenset
+
+    assign "10,20,30" to f3
+    change f3 into a frozenset
+
+    assign "x,y,z" to f4
+    make f4 a frozenset
+
+
+    # Casting string to boolean
+    assign "true" to b1
+    convert b1 to boolean
+
+    assign "false" to b2
+    cast b2 to bool
+
+    assign "yes" to b3
+    change b3 into boolean
+
+    assign "no" to b4
+    make b4 boolean
+
+
+    # Casting and storing result in another variable
+    assign 123 to x1
+    assign x1 as string in out1
+
+    assign 456 to x2
+    convert x2 to string and store in out2
+
+    assign "789" to x3
+    assign x3 as int in out3
+
+    assign "3.14" to x4
+    assign x4 as float in out4
+
+    assign "5+6j" to x5
+    assign x5 as complex in out5
+
+    assign "a,b,c" to x6
+    assign x6 as list in out6
+
+    assign "1,2,3" to x7
+    assign x7 as tuple in out7
+
+    assign "15" to x8
+    assign x8 as range in out8
+
+    assign "true" to x9
+    assign x9 as bool in out9
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="string">
+        <h3>String Methods</h3>
+        <pre class="code-block">
+    # Creating multiline strings
+    create multiline string """hello world"""
+    set multiline string """line1\nline2"""
+
+
+    # Length of string
+    assign "abcdefgh" to a
+    get length of a
+
+    assign "longstringexample" to b
+    find length of b
+
+    assign "anotherexampletext" to c
+    how long is c
+
+
+    # Slicing and substring
+    assign "HelloWorld" to d
+    slice d from 1 to 4
+
+    assign "Programming" to e
+    get substring of e from 0 to 5
+
+    assign "DataScience" to f
+    substring of f between 2 and 6
+
+
+    # Whitespace handling
+    assign " spaced text " to g
+    strip whitespace from g
+
+    assign " trim me " to h
+    trim h
+
+
+    # Joining and concatenation
+    assign "hello" to i
+    assign "world" to j
+    join string i with j
+
+    assign "foo" to k
+    assign "bar" to l
+    concatenate strings k and l
+
+    assign "alpha" to m
+    assign "beta" to n
+    combine strings m and n
+
+
+    # Escaped characters
+    use escaped characters "line\nnew\ttext"
+    escape characters "path\to\file"
+
+
+    # Capitalization
+    assign "hello" to o
+    capitalize o
+
+    assign "python" to p
+    make p capitalized
+
+    assign "sample text" to q
+    convert q to capitalized
+
+
+    # Encoding
+    assign "encode_this" to r
+    encode r
+
+    assign "raw_data" to s
+    convert s to encoded form
+
+
+    # Ends with
+    assign "filename.txt" to t
+    check if t ends with ".txt"
+
+    assign "report.pdf" to u
+    does u end with ".pdf"
+
+
+    # Expand tabs
+    expand tabs of "a\tb\tc"
+    expand tab characters "col1\tcol2"
+    expand tabs with spaces "x\ty\tz"
+
+
+    # Alphanumeric check
+    check if "abc123" alphanumeric
+    is "xyz789" alphanumeric
+
+
+    # Alphabetic check
+    assign "HelloWorld" to v
+    check if v contains only letters
+
+    assign "Python" to w
+    is w alphabetic
+
+
+    # ASCII check
+    assign "A" to x
+    check if x ascii
+
+
+    # Decimal / digit checks
+    assign "12345" to y
+    check if y decimal
+
+    assign "98" to z
+    is z decimal
+
+    assign "4567" to aa
+    check if aa contains only digits
+
+
+    # Identifier validation
+    assign "valid_var" to ab
+    check if ab valid identifier
+
+    assign "myVar" to ac
+    is ac a valid identifier
+
+
+    # Lowercase checks
+    assign "lowercase" to ad
+    check if ad lowercase
+
+    assign "smalltext" to ae
+    is ae lowercase
+
+
+    # Numeric checks
+    assign "123" to af
+    check if af numeric
+
+    assign "99" to ag
+    is ag numeric
+
+
+    # Printable characters
+    assign "Hello" to ah
+    check if ah printable
+
+    assign "World" to ai
+    is ai printable
+
+
+    # Whitespace detection
+    assign "has space" to aj
+    check if aj has whitespace
+
+
+    # Title case checks
+    assign "Hello World" to ak
+    check if ak title case
+
+    assign "Python Is Fun" to al
+    is al title case
+
+
+    # Uppercase checks
+    assign "UPPER" to am
+    check if am uppercase
+
+    assign "LOUD" to an
+    is an uppercase
+
+
+    # Join using delimiter
+    assign "a,b,c" to ao
+    assign "-" to ap
+    join ao using ap
+
+    assign "hello world" to aq
+    assign "_" to ar
+    join items aq with ar
+
+
+    # Case conversion
+    assign "SAMPLE" to as
+    convert as to lowercase
+
+    assign "BIGTEXT" to at
+    make at lowercase
+
+
+    # Replace text
+    assign "hello world" to au
+    replace "hello" with "hi" in au
+
+    assign "yellow apple" to av
+    change "yellow" to "green" in av
+
+
+    # Swap case
+    assign "PyThOn" to aw
+    swap case of aw
+
+    assign "WeIrDTeXt" to ax
+    toggle letter case of ax
+
+
+    # Title case conversion
+    assign "hello world" to ay
+    convert ay to title case
+
+    assign "this is text" to az
+    make az title case
+
+
+    # Uppercase conversion
+    assign "final text" to ba
+    convert ba to uppercase
+
+    assign "amazing" to bb
+    make bb uppercase
+
+
+    # String indexing
+    assign "HELLO" to s
+    character at index 1 from s
+
+
+    # Negative indexing
+    assign "PYTHON" to w
+    character at negative index 2 from w
+
+
+    # Contains check
+    assign "apple banana mango" to x
+    check if "banana" is in x
+
+
+    # Count occurrences
+    assign "aaaaab" to s
+    count "a" in s
+
+
+    # Index lookup
+    assign "abracadabra" to y
+    find index of "c" in y
+
+
+    # Find substring
+    assign "hello world" to p
+    find "world" in p
+
+
+    # String formatting
+    assign "Hello {}, I m {}" to f
+    format f using "Swagat", "HCL"
+
+    create f string using "Mike", "HCL"
+    create formatted string using "John", "HCL"
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="boolean">
+        <h3>Boolean Methods</h3>
+        <pre class="code-block">
+    assign 5 to x
+    evaluate boolean of x
+
+    assign true to a
+    evaluate boolean of variable a
+
+    assign false to b
+    check truth value of b
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="arithmetic">
+        <h3>Basic Arithmetic</h3>
+        <pre class="code-block">
+    # Addition
+    assign 5 to a
+    add a and 10
+          
+    assign 7 to b
+    sum of b and 3
+          
+    assign 4 to c
+    c plus 9
+          
+    assign 8 to d
+    d + 2
+          
+    assign 12 to e
+    e+6
+          
+          
+    # Subtraction
+    assign 3 to f
+    subtract f from 10
+          
+    assign 20 to g
+    g minus 4
+          
+    assign 9 to h
+    difference between h and 2
+          
+    assign 15 to i
+    i - 5
+          
+    assign 14 to j
+    j-7
+          
+          
+    # Multiplication
+    assign 6 to k
+    multiply k by 3
+          
+    assign 4 to l
+    product of l and 5
+          
+    assign 9 to m
+    m times 2
+          
+    assign 3 to n
+    n * 8
+          
+    assign 7 to o
+    o*4
+          
+          
+    # Division
+    assign 20 to p
+    divide p by 4
+          
+    assign 18 to q
+    q divided by 3
+          
+    assign 16 to r
+    r / 2
+          
+    assign 30 to s
+    s/5
+          
+          
+    # Modulus
+    assign 17 to t
+    modulus of t and 3
+          
+    assign 22 to u
+    u mod 5
+          
+    assign 14 to v
+    v % 4
+          
+    assign 9 to w
+    w%2
+          
+          
+    # Power
+    assign 2 to x
+    x to the power of 5
+          
+    assign 3 to y
+    power of y raised to 4
+          
+    assign 4 to z
+    z raised to 3
+          
+    assign 2 to a1
+    a1 ** 8
+          
+    assign 7 to b1
+    b1**2
+          
+          
+    # Floor Division
+    assign 17 to c1
+    floor divide c1 by 3
+          
+    assign 19 to d1
+    integer division of d1 by 4
+          
+    assign 20 to e1
+    e1 // 6
+          
+    assign 25 to f1
+    f1//5
+          
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="full-arithmetic">
+        <h3>Full Arithmetic Operations</h3>
+        <pre class="code-block">
+    # Addition with assignment
+    assign 10 to g1
+    add g1 to 5
+
+    assign 8 to h1
+    increase h1 by 3
+
+    assign 6 to i1
+    i1 += 4
+
+    assign 9 to j1
+    j1+=1
+
+
+    # Subtraction with assignment
+    assign 20 to k1
+    subtract k1 from 5
+
+    assign 12 to l1
+    decrease l1 by 2
+
+    assign 18 to m1
+    m1 -= 7
+
+    assign 25 to n1
+    n1-=10
+
+
+    # Multiplication with assignment
+    assign 3 to o1
+    multiplication with assign o1 by 4
+
+    assign 5 to p1
+    p1 *= 6
+
+    assign 9 to q1
+    q1*=3
+
+
+    # Division with assignment
+    assign 30 to r1
+    division with assign r1 by 5
+
+    assign 40 to s1
+    s1 /= 8
+
+    assign 24 to t1
+    t1/=3
+
+
+    # Modulus with assignment
+    assign 14 to u1
+    set remainder of u1 by 5
+
+    assign 33 to v1
+    v1 %= 4
+
+    assign 27 to w1
+    w1%=6
+
+
+    # Floor division with assignment
+    assign 20 to x1
+    floor division x1 by 3
+
+    assign 44 to y1
+    y1 //= 5
+
+    assign 36 to z1
+    z1//=4
+
+
+    # Power with assignment
+    assign 2 to a2
+    raise a2 to power 8
+
+    assign 3 to b2
+    b2 **= 4
+
+    assign 5 to c2
+    c2**=3
+
+
+    # Bitwise AND
+    assign 12 to d2
+    and operator bitwise d2 with 6
+
+    assign 7 to e2
+    e2 &= 3
+
+    assign 9 to f2
+    f2&=5
+
+    assign 11 to g2
+    g2 & = 2
+
+
+    # Bitwise OR
+    assign 6 to h2
+    or operator bitwise h2 with 3
+
+    assign 12 to i2
+    i2 |= 4
+
+    assign 8 to j2
+    j2|=2
+
+    assign 10 to k2
+    k2 | = 1
+
+
+    # Bitwise XOR
+    assign 7 to l2
+    xor operator bitwise l2 with 2
+
+    assign 9 to m2
+    m2 ^= 3
+
+    assign 11 to n2
+    n2^=5
+
+    assign 13 to o2
+    o2 ^ = 4
+
+
+    # Shift right
+    assign 16 to p2
+    shift p2 right by 2
+
+    assign 24 to q2
+    q2 >>= 1
+
+    assign 40 to r2
+    r2>>=3
+
+    assign 32 to s2
+    s2 >> = 2
+
+
+    # Shift left
+    assign 5 to t2
+    shift t2 left by 3
+
+    assign 6 to u2
+    u2 &lt;&lt;= 2
+
+    assign 7 to v2
+    v2&lt;&lt;=4
+
+    assign 8 to w2
+    w2 &lt;&lt; = 1
+
+
+    # Equality
+    assign 5 to x2
+    check if x2 equals 5
+
+    assign 7 to y2
+    is y2 equal to 9
+
+    assign 10 to z2
+    z2 == 10
+
+    assign 12 to a3
+    a3==14
+
+
+    # Not equal
+    assign 10 to b3
+    check if b3 is not equal to 3
+
+    assign 15 to c3
+    c3 != 5
+
+    assign 19 to d3
+    d3!=20
+
+
+    # Greater than
+    assign 8 to e3
+    check if e3 is greater than 4
+
+    assign 12 to f3
+    is f3 greater than 10
+
+    assign 20 to g3
+    g3 > 18
+
+
+    # Less than
+    assign 4 to h3
+    check if h3 is less than 9
+
+    assign 7 to i3
+    is i3 less than 10
+
+    assign 3 to j3
+    j3 &lt; 5
+
+
+    # Greater or equal
+    assign 10 to k3
+    check if k3 is greater than or equal to 9
+
+    assign 6 to l3
+    is l3 at least 5
+
+    assign 8 to m3
+    m3>=7
+
+
+    # Less or equal
+    assign 5 to n3
+    check if n3 is less than or equal to 9
+
+    assign 4 to o3
+    is o3 at most 4
+
+    assign 6 to p3
+    p3 &lt;= 7
+
+    assign 3 to q3
+    q3&lt;=5
+
+    # Logical AND
+    assign true to r3
+    assign false to s3
+    r3 and s3 only
+
+    assign true to t3
+    assign true to u3
+    logical and between t3 and u3
+
+    assign false to v3
+    assign true to w3
+    both v3 and w3
+
+    assign 1 to x3
+    assign 0 to y3
+    x3 && y3
+
+    assign 1 to z3
+    assign 1 to a4
+    z3&&a4
+
+
+    # Logical OR
+    assign 1 to b4
+    assign 0 to c4
+    b4 or c4
+
+    assign true to d4
+    assign false to e4
+    d4 || e4
+
+    assign 0 to f4
+    assign 0 to g4
+    f4||g4
+
+
+    # Not / identity / membership
+    assign 5 to h4
+    assign 7 to i4
+    h4 is not i4
+
+    assign 4 to j4
+    assign 3 to k4
+    check if j4 is not k4
+
+    assign 8 to l4
+    assign 9 to m4
+    l4 !== m4
+
+    assign 2 to n4
+    assign 5 to o4
+    n4 is different from o4
+
+    assign 3 to p4
+    assign [1,2,3,4,5] to q4
+    p4 not in q4
+
+    assign 7 to r4
+    assign [1,2,3] to s4
+    r4 ∉ s4
+
+    assign 9 to t4
+    assign [2,4,6] to u4
+    t4 outside u4
+
+
+    # Identity and membership (positive)
+    assign 5 to v4
+    assign 5 to w4
+    v4 is equal to w4
+
+    assign 3 to x4
+    assign 3 to y4
+    check if x4 is y4
+
+    assign 4 to z4
+    assign 4 to a5
+    z4 is identical to a5
+
+    assign 2 to b5
+    assign [1,2,3,4] to c5
+    b5 in c5
+
+    assign 3 to d5
+    assign [3,5,7] to e5
+    is d5 inside e5
+
+    assign 1 to f5
+    assign [1,2] to g5
+    1 ∈ g5
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="list">
+        <h3>List Methods</h3>
+        <pre class="code-block">
+    # Setting list items
+    assign [10,20,30] to i
+    i[0] = 5
+
+
+    # List slicing (negative)
+    assign [1,2,3,4,5,6] to p
+    take slice of p starting 2 from end until 5 from end
+
+
+    # List slicing
+    assign [1,2,3,4,5] to t
+    slice list t from 1 to 4
+
+
+    # List contains
+    assign ["apple","banana"] to x
+    "banana" in x
+
+
+    # Set list range
+    assign [1,2,3,4,5] to z
+    set slice of z from 1 to 3 to [99,100]
+
+
+    # Extend list
+    assign [10,20] to e1
+    e1.extend([30,40])
+
+
+    # Sort list
+    assign [3,1,2] to k1
+    sort k1
+
+
+    # Pop last item
+    assign [1,2,3] to p1
+    pop from p1
+
+
+    # Join lists using plus
+    assign [1,2] to a2
+    assign [3,4] to b2
+    join a2 to b2 lists
+
+
+    # Append item
+    assign [1,2] to e2
+    append 3 to e2
+
+
+    # Extend list with another list
+    assign ["a"] to i2
+    join ["b","c"] into i2
+
+
+    # Create list using constructor
+    assign "abc" to k2
+    convert k2 to list
+
+
+    # Delete entire list
+    assign ["a","b"] to p2
+    remove list p2
+
+
+    # Sort list in descending order
+    assign [3,1,2] to r2
+    sortreverse r2 descending order
+
+
+    # Reverse list
+    assign [1,2,3] to v2
+    reverse v2
+
+
+    # Get item using negative index
+    assign [10, 20, 30, 40] to a
+    get item at negative index 1 from a
+
+
+    # Get item by index
+    assign [5, 6, 7, 8] to nums
+    get item at index 2 from nums
+
+
+    # Append element
+    assign [1, 2, 3] to l
+    append 4 to l
+
+
+    # Insert element
+    assign ["a", "b", "c"] to w
+    insert "x" at index 1 in w
+
+
+    # Pop item at index
+    assign [100, 200, 300] to data
+    pop item at index 1 from data
+
+
+    # Delete index
+    assign [9, 8, 7, 6] to arr
+    delete index 2 from arr
+
+
+    # Get index of item
+    assign ["apple", "banana", "mango"] to fruits
+    get index of "banana" from fruits
+
+
+    # Count occurrences
+    assign [1, 2, 2, 2, 3] to nums
+    count 2 in nums
+
+
+    # Remove item from list
+    assign ["red", "green", "blue"] to colors
+    remove "green" from colors
+
+
+    # Find index (alternate phrasing)
+    assign ["apple", "cherry", "banana"] to grocery
+    find index of "cherry" in grocery
+
+
+    # List length
+    assign ["apple", "chocobar"] to items
+    get length of items
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="tuple">
+        <h3>Tuple Methods</h3>
+        <pre class="code-block">
+    # Tuple slicing
+    assign (1,2,3,4,5) to g
+    tuple slice g from 1 to 4
+
+
+    # Tuple slice from start
+    assign ("a","b","c","d") to j
+    slice j till 2
+
+
+    # Tuple slice to end
+    assign (1,2,3,4,5) to m
+    slice m from 2
+
+
+    # Tuple contains
+    assign (11,22,33) to r
+    22 in r
+
+
+    # Remove item from tuple via list
+    assign (10,20,30) to u
+    removing list 20 from tuple u
+
+
+    # Add tuple to tuple
+    assign ("a","b") to y
+    assign ("c","d") to z
+    join tuple y with z
+
+
+    # Multiply tuple
+    assign (1,2) to g1
+    repeat tuple g1 3 times
+
+
+    # Tuple type check
+    assign (1,2,3) to j1
+    check if j1 is tuple
+
+
+    # Convert tuple to list
+    assign (1,2,3) to m1
+    conversion of tuple m1 to list
+
+
+    # Convert list to tuple
+    assign ["a","b"] to q1
+    change q1 to tuple
+
+
+    # Join tuples
+    assign (1,2) to s1
+    assign (3,4) to t1
+    join tuple s1 and t1
+
+
+    # Get tuple item by index
+    assign (10, 20, 30, 40) to t
+    get item at index 2 from t
+
+
+    # Get tuple item using negative index
+    assign (5, 6, 7, 8) to a
+    get item at negative index 1 from a
+
+
+    # Add item to tuple via list
+    assign (10, 20, 30) to t
+    adding list [40] to tuple t
+
+
+    # Add single item to tuple
+    assign (1, 2, 3) to t
+    let tuple item 3 to t
+
+
+    # Tuple unpacking (exact)
+    assign (10, 20, 30) to t
+    tuple t to variables x, y, z
+
+
+    # Get index of item
+    assign ("apple", "cherry", "banana") to grocery
+    find index of "banana" in grocery
+
+
+    # Count occurrences
+    assign ("apple", "chocolate", "apple", "banana", "apple") to grocery
+    count "apple" in grocery
+
+
+    # Tuple length
+    assign ("apple", "chocobar") to items
+    get length of items
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="set">
+        <h3>Set and Frozenset Methods</h3>
+        <pre class="code-block">
+    # Set contains
+    assign {1,2,3} to a
+    check if 2 in set a
+
+
+    # Update set with another set
+    assign {1,2} to g
+    assign {2,3} to h
+    update set g with set h
+
+
+    # Set intersection
+    assign {1,2,3} to w
+    assign {2,3,4} to x
+    intersection of w and x
+
+
+    # Set symmetric difference
+    assign {1,2,3} to c1
+    assign {3,4,5} to d1
+    symmetric difference of c1 and d1
+
+
+    # Clear set
+    assign {5,6,7} to l1
+    clear set l1
+
+
+    # Set difference
+    assign {1,2,3,4} to o1
+    assign {2,4} to p1
+    difference of o1 and p1
+
+
+    # Set difference update
+    assign {"a","b","c"} to w1
+    assign {"b"} to x1
+    difference update set w1 using x1
+
+
+    # Set intersection (method phrasing)
+    assign {"hi","bye"} to f2
+    assign {"bye","ok"} to g2
+    common elements of set f2 and g2
+
+
+    # Set intersection update
+    assign {"a","b","c"} to l2
+    assign {"b"} to m2
+    intersection update set l2 using m2
+
+
+    # Set is disjoint
+    assign {1,2,3} to p2
+    assign {4,5,6} to q2
+    check if set p2 disjoint with q2
+
+
+    # Set subset check
+    assign {1,2} to v2
+    assign {1,2,3} to w2
+    check if set v2 subset of w2
+
+
+    # Set superset check
+    assign {1,2,3} to b3
+    assign {2} to c3
+    check if set b3 superset of c3
+
+
+    # Pop item from set
+    assign {5,6,7} to h3
+    pop random item from set h3
+
+
+    # Set symmetric difference (method phrasing)
+    assign {1,2,3} to n3
+    assign {2,4} to o3
+    symmetric difference of n3 and o3
+
+
+    # Set symmetric difference update
+    assign {1,2} to t3
+    assign {2,3} to u3
+    update set t3 with symmetric difference of u3
+
+
+    # Union with assignment
+    assign {1,2} to z3
+    assign {2,3} to a4
+    combine all elements of set z3 and a4 to result
+
+
+    # Set update
+    assign {1} to d4
+    assign {1,2,3} to e4
+    update set d4 with e4
+
+
+    # Add item to set
+    assign {1,2,3} to s
+    insert 4 into set s
+
+
+    # Remove item from set
+    assign {"red","green","blue"} to colors
+    remove "green" from colors
+
+
+    # Discard item from set
+    assign {10,20,30} to nums
+    discard 40 from set nums
+
+
+    # Set union
+    assign {1,2,3} to a
+    assign {3,4,5} to b
+    a union of b
+
+
+    # Create frozenset
+    assign [1,2,3] to j4
+    make frozenset from j4
+
+
+    # Frozenset union
+    assign frozenset({1,2}) to n4
+    assign frozenset({2,3}) to o4
+    union of frozenset n4 and o4
+
+
+    # Frozenset intersection
+    assign frozenset({"x","y"}) to v4
+    assign frozenset({"y","z"}) to w4
+    common elements of frozensets v4 and w4
+
+
+    # Frozenset difference
+    assign frozenset({1,2,3}) to z4
+    assign frozenset({2}) to a5
+    difference of z4 and a5
+
+
+    # Frozenset symmetric difference
+    assign frozenset({1,2,3}) to f5
+    assign frozenset({3,4}) to g5
+    symmetric difference of f5 and g5
+
+
+    # Frozenset is disjoint
+    assign frozenset({"x"}) to n5
+    assign frozenset({"y"}) to o5
+    do frozensets n5 and o5 share no elements
+
+
+    # Frozenset subset check
+    assign frozenset({1}) to p5
+    assign frozenset({1,2}) to q5
+    check if frozenset p5 subset of q5
+
+
+    # Frozenset superset check
+    assign frozenset({1,2}) to t5
+    assign frozenset({1}) to u5
+    check if frozenset t5 superset of u5
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="dict">
+        <h3>Dictionaries</h3>
+        <pre class="code-block">
+    # Create dictionary using keys and values
+    assign ["name","age","city"] to a
+    assign ["Alice",30,"Paris"] to b
+    create dictionary with keys a and values b
+
+
+    # Dictionary length
+    assign {"a":1,"b":2,"c":3} to g
+    length of g
+
+
+    # Dictionary type check
+    assign {"id":101,"name":"Sam"} to j
+    type of j
+
+
+    # Get item by key
+    assign {"name":"John","age":30} to m
+    get value for key "name" from dict m
+
+
+    # Get item safely
+    assign {"name":"Alice","country":"UK"} to p
+    get value for key "country" from dict p safely
+
+
+    # Check if key exists
+    assign {"user":"Tom","role":"admin"} to s
+    check if key "role" exists dict s
+
+
+    # Get dictionary keys
+    assign {"name":"Mia","age":22} to u
+    get keys of dict u
+
+
+    # Get dictionary values
+    assign {"name":"Mia","age":22} to x1
+    get values of dict x1
+
+
+    # Get dictionary items
+    assign {"name":"Mia","age":22} to a2
+    get items of dict a2
+
+
+    # Set item in dictionary
+    assign {"name":"John","age":25} to d2
+    set key "age" to 30 in dict d2
+
+
+    # Update dictionary
+    assign {"a":1,"b":2} to g2
+    assign {"c":3} to h2
+    update dict g2 with h2
+
+
+    # Update dictionary using iterable
+    assign {"a":1} to m2
+    assign [("b",2),("c",3)] to n2
+    update dict m2 using iterable n2
+
+
+    # Set default value
+    assign {"a":1} to q2
+    set default value for key "b" in dict q2
+
+
+    # Pop key from dictionary
+    assign {"name":"John","age":30} to t2
+    pop key "age" from dict t2
+
+
+    # Pop last item
+    assign {"a":1,"b":2,"c":3} to w2
+    pop last item from dict w2
+
+
+    # Delete key
+    assign {"name":"Tom","age":40} to z3
+    delete key "age" from dict z3
+
+
+    # Delete dictionary
+    assign {"x":10} to d4
+    remove dict d4
+
+
+    # Clear dictionary
+    assign {"a":1,"b":2,"c":3} to f4
+    clear f4
+
+
+    # Copy dictionary
+    assign {"name":"Sam","age":21} to i4
+    make a copy of dict i4 to j4
+
+
+    # Create nested dictionary
+    assign ["a","b"] to n4
+    assign [1,2] to o4
+    create nested dictionary p4 with keys n4 and values o4
+
+
+    # Get nested dictionary value
+    assign {"user":{"info":{"name":"Bob"}}} to t4
+    get nested value from dict t4 using keys ["user","info","name"]
+
+
+    # Get nested value and assign
+    assign {"user":{"data":{"id":101}}} to v4
+    get nested value from dict v4 using keys ["user","data","id"] into id_value
+
+        </pre>
+      </div>
+
+      <!-- <div class="syntax-block" data-syntax="random_number">
+        <h3>Random Number</h3>
+        <pre class="code-block">
+    generate a random number between 1 and 10
+        </pre>
+      </div> -->
+
+      <div class="syntax-block" data-syntax="conditionals">
+        <h3>Conditionals</h3>
+        <pre class="code-block">
+    if x > 5 then print "Large"
+    if age > 18 then print "Adult" else print "Minor"
+      
+    when temperature > 30
+      print "Hot weather"
+    otherwise
+      print "Cool weather"
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="loops">
+        <h3>Loops</h3>
+        <pre class="code-block">
+    repeat 5 times
+      print "Hello"
+      
+    for each item in list
+      print item
+      
+    while counter &lt; 10
+      increment counter
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="code_execution">
+        <h3>Code Execution</h3>
+        <p>
+          HCL code is compiled and executed through the HCL compiler:
+        </p>
+    
+        <pre class="code-block">
+    # Save your code in a .hcl file
+    # example.hcl
+      
+    assign 10 to x
+    if x > 5 then print "Large"
+      
+    # Run it
+    hcl run example.hcl
+        </pre>
+      </div>
+      
+    </section>
+
+    <section class="docs-content hidden" id="examples">
+      <h2>Examples</h2>
+
+      <h3>Arithmetic Operations</h3>
+      <pre class="code-block">
+    assign 10 to a
+    assign 5 to b
+      
+    add a and b, store in sum
+    subtract b from a, store in difference
+    multiply a by b, store in product
+    divide a by b, store in quotient
+      
+    print sum        # Output: 15
+    print difference # Output: 5
+    print product    # Output: 50
+    print quotient   # Output: 2
+      </pre>
+    
+      <h3>Working with Variables</h3>
+      <pre class="code-block">
+    set name to "John Doe"
+    set age to 25
+    set is_student to true
+      
+    print "Name: " + name
+    print "Age: " + age
+    print "Student: " + is_student
+      </pre>
+    
+      <h3>Control Flow</h3>
+      <pre class="code-block">
+    assign 85 to score
+      
+    if score >= 90 then
+      print "Grade: A"
+    else if score >= 80 then
+      print "Grade: B"
+    else if score >= 70 then
+      print "Grade: C"
+    else
+      print "Grade: F"
+      </pre>
+    
+      <h3>Lists and Collections</h3>
+      <pre class="code-block">
+    create list with 1, 2, 3, 4, 5 and store as numbers
+    add 6 to numbers
+    print numbers  # Output: [1, 2, 3, 4, 5, 6]
+      
+    for each num in numbers
+      print num
+      </pre>
+    
+      <h3>Dictionaries</h3>
+      <pre class="code-block">
+    create dictionary as person
+    set person["name"] to "Alice"
+    set person["age"] to 30
+    set person["city"] to "New York"
+      
+    print person["name"]  # Output: Alice
+      </pre>
+    
+      <h3>Simple Project: Temperature Converter</h3>
+      <pre class="code-block">
+    # Temperature Converter
+    print "Enter temperature in Celsius:"
+    get input and store as celsius
+      
+    # Convert to Fahrenheit
+    multiply celsius by 9/5
+    add 32 to result
+    store result as fahrenheit
+      
+    print "Temperature in Fahrenheit: " + fahrenheit
+      </pre>
+    </section>
+
+    <section class="docs-content hidden" id="faq">
+      <h2>Frequently Asked Questions</h2>
+
+      <h4>What is HCL?</h4>
+      <p>
+        Human Centric Language (HCL) is a high-level instruction language that bridges
+        the gap between human natural language and programming languages. It allows
+        developers to write code using intuitive, human-readable syntax that compiles
+        to various target languages including Python, C, C++, and JavaScript.
+      </p>
+    
+      <h4>How is NLP used in HCL?</h4>
+      <p>
+        HCL uses Natural Language Processing (NLP) techniques to parse and understand
+        human-like instructions. The compiler employs:
+      </p>
+      <ul>
+        <li><strong>Tokenization:</strong> Breaking down instructions into meaningful tokens</li>
+        <li><strong>Pattern Matching:</strong> Identifying common programming patterns from natural language</li>
+        <li><strong>Semantic Analysis:</strong> Understanding the intent behind instructions</li>
+        <li><strong>Context-Aware Parsing:</strong> Maintaining state and context across statements</li>
+      </ul>
+      <p>
+        However, HCL maintains deterministic behavior — the same instruction always
+        produces the same code, unlike AI-based code generators.
+      </p>
+    
+      <h4>Is HCL faster or slower than Python?</h4>
+      <p>It depends on the target compilation:</p>
+      <ul>
+        <li><strong>HCL → Python:</strong> Similar speed to native Python (adds minimal compilation overhead)</li>
+        <li><strong>HCL → C/C++:</strong> Significantly faster than Python (10–100× depending on workload)</li>
+        <li><strong>HCL → JavaScript:</strong> Similar to hand-written JavaScript</li>
+      </ul>
+      <p>
+        The key advantage is flexibility — write once in HCL, compile to the best
+        language for your use case.
+      </p>
+    
+      <h4>Is HCL open-source?</h4>
+      <p>Yes! HCL is fully open-source under the MIT License. You can:</p>
+      <ul>
+        <li>View the source code on GitHub</li>
+        <li>Contribute to the project</li>
+        <li>Fork and modify for your needs</li>
+        <li>Use it in commercial projects</li>
+        <li>Submit issues and feature requests</li>
+      </ul>
+      <p>
+        Repository:
+        <a href="https://github.com/hcl-lang/hcl" target="_blank" rel="noopener">
+          github.com/hcl-lang/hcl
+        </a>
+      </p>
+    
+      <h4>Can I use HCL in production?</h4>
+      <p>Yes! HCL is production-ready. Many companies use it for:</p>
+      <ul>
+        <li>Rapid prototyping</li>
+        <li>Teaching programming concepts</li>
+        <li>Internal tooling</li>
+        <li>Cross-platform applications (compile once, deploy to multiple languages)</li>
+        <li>Domain-specific languages (DSLs)</li>
+      </ul>
+    
+      <h4>How does HCL compare to other languages?</h4>
+    
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>HCL</th>
+            <th>Python</th>
+            <th>C++</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Readability</td>
+            <td>★★★★★</td>
+            <td>★★★★☆</td>
+            <td>★★★☆☆</td>
+          </tr>
+          <tr>
+            <td>Performance</td>
+            <td>★★★★★ (depends on target)</td>
+            <td>★★★☆☆</td>
+            <td>★★★★★</td>
+          </tr>
+          <tr>
+            <td>Learning Curve</td>
+            <td>★★★★★</td>
+            <td>★★★★☆</td>
+            <td>★★☆☆☆</td>
+          </tr>
+          <tr>
+            <td>Cross-platform</td>
+            <td>★★★★★</td>
+            <td>★★★★☆</td>
+            <td>★★★☆☆</td>
+          </tr>
+        </tbody>
+      </table>
+    
+      <h4>What are the limitations of HCL?</h4>
+      <ul>
+        <li>Not suitable for extremely low-level system programming</li>
+        <li>Limited third-party library support (depends on target language)</li>
+        <li>Compilation adds an extra step to the development process</li>
+        <li>Some advanced features may not translate perfectly across all target languages</li>
+      </ul>
+    
+      <h4>How do I contribute to HCL?</h4>
+      <p>We welcome contributions! Here’s how to get started:</p>
+      <ol>
+        <li>Fork the repository on GitHub</li>
+        <li>Create a feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
+        <li>Make your changes and write tests</li>
+        <li>Commit your changes (<code>git commit -m "Add amazing feature"</code>)</li>
+        <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
+        <li>Open a Pull Request</li>
+      </ol>
+    
+      <h4>Does HCL support web development?</h4>
+      <p>
+        Yes! You can compile HCL to JavaScript for frontend development or to Python
+        for backend frameworks like Flask or Django. Example:
+      </p>
+    
+      <pre class="code-block">
+    # Compiles to Express.js, Flask, or similar
+    create web server on port 3000
+    handle GET requests to "/api/users"
+    return user list as JSON
+      </pre>
+    
+      <h4>Where can I get help?</h4>
+      <ul>
+        <li><strong>Documentation:</strong> This guide covers most use cases</li>
+        <li><strong>GitHub Issues:</strong> Report bugs or request features</li>
+        <li><strong>Community Forum:</strong> Ask questions and share projects</li>
+        <li><strong>Discord Server:</strong> Real-time chat with other developers</li>
+        <li><strong>Stack Overflow:</strong> Tag your questions with <code>[hcl-lang]</code></li>
+      </ul>
+    </section>
+    
+    <section class="docs-content hidden" id="release">
+      <h2>Release Notes</h2>
+
+      <!-- Version 1.0.0 -->
+      <div class="release-block highlight">
+        <h4>Version 1.0.0 <span class="release-date">– January 15, 2026</span></h4>
+        <span class="badge">Latest Stable Release</span>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>🎉 Official 1.0 release – production ready!</li>
+          <li>✨ Complete Python, C, and C++ code generation</li>
+          <li>🚀 Performance improvements (30% faster compilation)</li>
+          <li>📦 Package manager integration (npm, pip, cargo)</li>
+          <li>🧠 Advanced AST transformations</li>
+          <li>🎨 Syntax highlighting for VS Code, Vim, and Sublime</li>
+        </ul>
+      
+        <h5>Improvements</h5>
+        <ul>
+          <li>Better error messages with suggestions</li>
+          <li>Improved type inference system</li>
+          <li>Enhanced IDE support and autocomplete</li>
+          <li>Optimized memory usage</li>
+        </ul>
+      
+        <h5>Bug Fixes</h5>
+        <ul>
+          <li>Fixed loop variable scoping issues</li>
+          <li>Resolved Windows path handling bugs</li>
+          <li>Corrected C++ template generation edge cases</li>
+        </ul>
+      </div>
+    
+      <!-- Version 0.9.0 -->
+      <div class="release-block">
+        <h4>Version 0.9.0 <span class="release-date">– December 1, 2025</span></h4>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>JavaScript/TypeScript compilation target</li>
+          <li>Interactive REPL mode</li>
+          <li>Watch mode for auto-recompilation</li>
+          <li>Custom grammar extensions API</li>
+        </ul>
+      
+        <h5>Breaking Changes</h5>
+        <ul>
+          <li>Changed <code>store</code> keyword to <code>assign</code> for consistency</li>
+          <li>Updated CLI flags (see migration guide)</li>
+        </ul>
+      </div>
+    
+      <!-- Version 0.8.0 -->
+      <div class="release-block">
+        <h4>Version 0.8.0 <span class="release-date">– October 15, 2025</span></h4>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>C++ modern features (C++17/20 support)</li>
+          <li>Async/await syntax</li>
+          <li>Built-in testing framework</li>
+          <li>Documentation generator</li>
+        </ul>
+      </div>
+    
+      <!-- Version 0.7.0 -->
+      <div class="release-block">
+        <h4>Version 0.7.0 <span class="release-date">– September 1, 2025</span></h4>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>Module system and imports</li>
+          <li>Standard library (file I/O, networking, etc.)</li>
+          <li>Debug mode and profiling tools</li>
+        </ul>
+      </div>
+    
+      <!-- Version 0.6.0 -->
+      <div class="release-block">
+        <h4>Version 0.6.0 <span class="release-date">– July 20, 2025</span></h4>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>Initial C language support</li>
+          <li>Function definitions and calls</li>
+          <li>Basic type system</li>
+        </ul>
+      </div>
+    
+      <!-- Version 0.5.0 -->
+      <div class="release-block">
+        <h4>Version 0.5.0 <span class="release-date">– June 1, 2025</span></h4>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>Beta release</li>
+          <li>Python code generation (stable)</li>
+          <li>CLI tooling</li>
+          <li>Basic syntax and grammar</li>
+        </ul>
+      </div>
+    
+      <h3>Upcoming Features (Roadmap)</h3>
+    
+      <div class="roadmap-card">
+        <h4>Version 1.1.0 <span>(Q2 2026)</span></h4>
+        <ul>
+          <li>Rust compilation target</li>
+          <li>AI-assisted code suggestions</li>
+          <li>Web-based playground</li>
+          <li>Mobile app support (React Native / Flutter output)</li>
+        </ul>
+      </div>
+    
+      <div class="roadmap-card">
+        <h4>Version 1.2.0 <span>(Q3 2026)</span></h4>
+        <ul>
+          <li>GPU/CUDA support</li>
+          <li>Machine learning primitives</li>
+          <li>Cloud deployment integration</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+<script src="script.js"></script>
+</body>
+</html>

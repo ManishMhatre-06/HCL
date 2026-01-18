@@ -1,15 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HCL – Human Centric Language</title>
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Website with Main and Help Pages</title>
-    </head>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="nav-left">
+      <div class="logo">HCL</div>
+      <span class="brand">Human Centric Language</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="guide.html">Guide</a>
+    </nav>
+
+    <button class="btn-primary">Download</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Human Centric Language <span>(HCL)</span></h1>
+
+      <p class="subtitle">
+        A high-level instruction language designed to bridge human prompts
+        and real programming languages, enabling beginners and advanced
+        developers to work faster.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary large">Download HCL Language</button>
+        <button class="btn-secondary large">Download HCL Compiler</button>
+        <a href="guide.html" class="btn-outline large">Documentation</a>
+      </div>
+
+      <pre class="code-block">
+<span>// example.hcl</span>
+create web server on port 8080
+handle GET requests to "/api/users"
+return user list as JSON
+      </pre>
+    </div>
+  </section>
+
+<script src="script.js"></script>
+</body>
+</html>
