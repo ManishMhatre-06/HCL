@@ -1,6 +1,6 @@
 // It loads the side bar contents and toggles the content sections based on user interaction.
 document.addEventListener("DOMContentLoaded", () => {
-  const sidebarItems = document.querySelectorAll(".sidebar li");
+  const sidebarItems = document.querySelectorAll(".sidebar li[data-target]");
   const sections = document.querySelectorAll(".docs-content");
 
   sidebarItems.forEach(item => {
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
 
 // Sidebar nested items open on click, but do not close again.
 document.querySelectorAll(".sidebar .has-children").forEach(item => {

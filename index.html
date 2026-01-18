@@ -14,7 +14,7 @@
 <body>
 
   <!-- NAVBAR -->
-  <header class="navbar">
+  <!-- <header class="navbar">
     <div class="nav-left">
       <div class="logo">HCL</div>
       <span class="brand">Human Centric Language</span>
@@ -26,7 +26,9 @@
     </nav>
 
     <button class="btn-primary">Download</button>
-  </header>
+  </header> -->
+
+  <div id="header"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -40,9 +42,17 @@
       </p>
 
       <div class="hero-actions">
-        <button class="btn-primary large">Download HCL Language</button>
-        <button class="btn-secondary large">Download HCL Compiler</button>
-        <a href="guide.html" class="btn-outline large">Documentation</a>
+        <a href="./executables/human_centric_programming_language_version_V.0.0.1.exe" download class="btn-link" title="Download HCL Compiler (.exe)">
+          <button class="btn-primary large">
+            Download HCL Language
+          </button>
+        </a>
+        <a href="./executables/mysetup.exe" download class="btn-link" title="Download HCL Compiler (.exe)">
+          <button class="btn-secondary large">
+            Download HCL Compiler
+          </button>
+        </a>
+        <a href="./guide.html" class="btn-outline large">Documentation</a>
       </div>
 
       <pre class="code-block">
@@ -54,6 +64,22 @@ return user list as JSON
     </div>
   </section>
 
-<script src="script.js"></script>
+  <div id="footer"></div>
+
+  <script>
+    fetch("./partials/header.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header").innerHTML = data;
+      });
+
+    fetch("./partials/footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer").innerHTML = data;
+      });
+  </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
