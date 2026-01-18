@@ -52,7 +52,9 @@
             <li data-syntax="tuple">Tuple Methods</li>
             <li data-syntax="set">Set & Frozenset</li>
             <li data-syntax="dict">Dict Methods</li>
-            <li data-syntax="execution">Code Execution</li>
+            <li data-syntax="conditionals">Conditionals statements</li>
+            <li data-syntax="loops">Loops</li>
+            <li data-syntax="code_execution">Code Execution</li>
           </ul>
         </li>
         <li data-target="examples">Examples</li>
@@ -1652,29 +1654,117 @@
       <div class="syntax-block" data-syntax="conditionals">
         <h3>Conditionals</h3>
         <pre class="code-block">
-    if x > 5 then print "Large"
-    if age > 18 then print "Adult" else print "Minor"
-      
-    when temperature > 30
-      print "Hot weather"
-    otherwise
-      print "Cool weather"
+      # Basic if-else
+      assign 10 to x
+      if x > 10 then print "big" else print "small"
+        
+        
+      # Nested if inside if
+      assign 11 to x
+      assign 4 to y
+      if x > 10 then if y > 5 then print "x big and y big" else print "x big but y small"
+        
+        
+      # Else-if chain
+      assign 11 to x
+      assign 4 to y
+      if x > 10 then print "x big" else if y &lt; 3 then print "x small and y tiny" else print "x small but y not tiny"
+        
+        
+      # Conditional with loop
+      assign 11 to x
+      if x == 11 then for i in range(0,5) then print i end for
+        
+        
+      # Conditional with nested while
+      assign 4 to y
+      if y &lt; 5 then nested while y &lt; 5 then print y y += 1 end while
+        
+        
+      # Conditional with function definition
+      assign 4 to y 
+      if y == 5 then define function show with msg then print msg end function
+        
+        
+      # Conditional with class definition
+      assign True to enabled 
+      if enabled == True then define class Logger then define method log with msg then print msg end method end class
         </pre>
       </div>
+
 
       <div class="syntax-block" data-syntax="loops">
         <h3>Loops</h3>
         <pre class="code-block">
-    repeat 5 times
-      print "Hello"
-      
-    for each item in list
-      print item
-      
-    while counter &lt; 10
-      increment counter
+      # Basic for loop 
+      for i in range(0,10) then print i end for
+        
+        
+      # Nested for loop
+      for i in range(0,3) then for j in range(0,2) then print i print j end for end for
+        
+        
+      # Nested for with mixed execution
+      for i in range(0,3) then for j in range(0,2) then print j end for print i end for
+        
+        
+      # For loop with conditional
+      for i in range(0,5) then if i % 2 == 0 then print "even" else print "odd" end for
+        
+        
+      # For loop with nested while
+      for i in range(0,3) then nested while i &lt; 3 then print i break end while print "awesome" end for
+        
+        
+      # For loop defining function
+      for i in range(0,3) then define function show with msg then print msg end function end for
+        
+        
+      # For loop defining class
+      for i in [1,2,3,4,5] then define class Item then define method show with value then print value end method end class end for
+        
+        
+      # For loop with class and function call
+      for i in [1,2,3,4,5] then define class Item then define function show with value then print value end function call show with 2 end class end for
+        
+        
+      # Basic while loop
+      assign 1 to x
+      while x &lt; 5 then print x x += 1 end while
+        
+        
+      # Nested while loop
+      assign 1 to x
+      assign 1 to y
+      while x &lt; 3 then while y &lt; 10 then print y y += 1 end while x += 1 end while
+        
+        
+      # While loop with conditional and break
+      assign 3 to x
+      while x &lt; 5 then if x == 3 then print "three" break else print "not three" x += 1 end while
+        
+        
+      # While loop with for loop inside
+      assign True to flag
+      while flag == True then for i in range(0,3) then print i end for break end while
+        
+        
+      # While loop defining function
+      assign True to flag
+      while flag == True then define function tick with none then print "tick" end function call tick with None break end while
+        
+        
+      # While loop defining class
+      assign True to flag
+      while flag == True then define class Person then define function speak with msg then print msg end function end class break end while
+        
+        
+      # While loop with object creation and method call
+      assign True to flag
+      while flag == True then define class Person then define function speak with self, msg then print msg end function end class create object p1 from class Person call speak on p1 with parameters "Hello" break end while
         </pre>
       </div>
+
 
       <div class="syntax-block" data-syntax="code_execution">
         <h3>Code Execution</h3>

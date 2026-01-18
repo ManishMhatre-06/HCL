@@ -185,6 +185,16 @@ button:hover .btn-icon-img {
   flex-wrap: wrap;
 }
 
+/* Hero action button hover effect */
+.hero-actions button {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-actions button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(56, 189, 248, 0.25);
+}
+
 .hero-content .code-block {
   margin-top: 40px;
   max-width: 800px;
@@ -201,10 +211,15 @@ button:hover .btn-icon-img {
   border-radius: 14px;
   padding: 20px;
   margin: 0px auto 0;
-  max-width: 700px;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;     /* allow wrapping */
+  word-wrap: break-word;     /* legacy support */
+  overflow-wrap: break-word; /* modern support */
   color: #38bdf8;
   text-align: left;
   font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 /* DOCS */
@@ -339,9 +354,24 @@ button:hover .btn-icon-img {
   display: block;
 }
 
+/* Example block */
+
+#examples h3 {
+  margin-top: 48px;
+  margin-bottom: 16px;
+}
+
+#examples h3:first-of-type {
+  margin-top: 0;
+}
+
 /* FAQ question spacing */
 #faq h3 {
   margin-top: 48px;
+}
+
+#faq h3:first-of-type {
+  margin-top: 0;
 }
 
 .comparison-table {

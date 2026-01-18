@@ -23,38 +23,86 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Sidebar nested items open on click, but do not close again.
-document.querySelectorAll(".sidebar .has-children").forEach(item => {
-  item.addEventListener("click", () => {
-    // Open once, never close until reload
-    if (!item.classList.contains("open")) {
-      item.classList.add("open");
-    }
-  });
-});
+document.addEventListener("DOMContentLoaded", () => {
+  const syntaxParent = document.querySelector(
+    '.sidebar li[data-target="syntax"]'
+  );
+  const syntaxSubList = syntaxParent?.querySelector(".sub-list");
+  const syntaxItems = document.querySelectorAll(
+    ".sidebar .sub-list li[data-syntax]"
+  );
+  const syntaxBlocks = document.querySelectorAll(".syntax-block");
 
-// Syntax & Code sub-section switching
-const syntaxItems = document.querySelectorAll(".sidebar .sub-list li[data-syntax]");
-const syntaxBlocks = document.querySelectorAll(".syntax-block");
+  let lastActiveSyntax = null;
 
-syntaxItems.forEach(item => {
-  item.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevent parent menu interference
+  /* ---------- Syntax & Code parent toggle ---------- */
+  if (syntaxParent) {
+    syntaxParent.addEventListener("click", () => {
+      syntaxParent.classList.toggle("open");
 
-    const target = item.dataset.syntax;
-
-    // Hide all syntax blocks
-    syntaxBlocks.forEach(block => {
-      block.classList.remove("active");
+      // If collapsing, keep last visited syntax block visible
+      if (!syntaxParent.classList.contains("open") && lastActiveSyntax) {
+        syntaxBlocks.forEach(block =>
+          block.classList.toggle(
+            "active",
+            block.dataset.syntax === lastActiveSyntax
+          )
+        );
+      }
     });
+  }
 
-    // Show selected syntax block
-    const activeBlock = document.querySelector(
-      `.syntax-block[data-syntax="${target}"]`
-    );
+  /* ---------- Syntax sub-item clicks ---------- */
+  syntaxItems.forEach(item => {
+    item.addEventListener("click", e => {
+      e.stopPropagation();
+    
+      const target = item.dataset.syntax;
+      lastActiveSyntax = target;
+    
+      /* ---- FORCE SWITCH TO SYNTAX SECTION ---- */
+      sections.forEach(section =>
+        section.classList.toggle("hidden", section.id !== "syntax")
+      );
+    
+      sidebarItems.forEach(i => i.classList.remove("active"));
+      syntaxParent.classList.add("active");
+    
+      /* ---- KEEP SUB-LIST OPEN ---- */
+      syntaxParent.classList.add("open");
+    
+      /* ---- ACTIVATE SELECTED SYNTAX BLOCK ---- */
+      syntaxBlocks.forEach(block =>
+        block.classList.toggle(
+          "active",
+          block.dataset.syntax === target
+        )
+      );
+    });
+  });
 
-    if (activeBlock) {
-      activeBlock.classList.add("active");
-    }
+
+  /* ---------- When navigating BACK to Syntax section ---------- */
+  const sidebarItems = document.querySelectorAll(".sidebar li[data-target]");
+  const sections = document.querySelectorAll(".docs-content");
+
+  sidebarItems.forEach(item => {
+    item.addEventListener("click", () => {
+      const targetId = item.dataset.target;
+
+      sections.forEach(section =>
+        section.classList.toggle("hidden", section.id !== targetId)
+      );
+
+      // Restore last syntax block when returning to Syntax section
+      if (targetId === "syntax" && lastActiveSyntax) {
+        syntaxBlocks.forEach(block =>
+          block.classList.toggle(
+            "active",
+            block.dataset.syntax === lastActiveSyntax
+          )
+        );
+      }
+    });
   });
 });
