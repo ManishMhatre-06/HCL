@@ -12,24 +12,7 @@
 </head>
 
 <body>
-
-  <!-- NAVBAR -->
-  <!-- <header class="navbar">
-    <div class="nav-left">
-      <div class="logo">HCL</div>
-      <span class="brand">Human Centric Language</span>
-    </div>
-
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="guide.html" class="active">Guide</a>
-    </nav>
-
-    <button class="btn-primary">Download</button>
-  </header> -->
-  
   <div id="header"></div>
-
   <!-- DOCS -->
   <main class="docs docs-page">
     <aside class="sidebar">
@@ -57,11 +40,12 @@
             <li data-syntax="dict">Dict Methods</li>
             <li data-syntax="conditionals">Conditionals statements</li>
             <li data-syntax="loops">Loops</li>
+            <li data-syntax="functions">Functions</li>
+            <li data-syntax="oop">OOP</li>
             <li data-syntax="code_execution">Code Execution</li>
           </ul>
         </li>
         <li data-target="examples">Examples</li>
-        <li data-target="conversion">Code Conversion</li>
         <li data-target="faq">FAQ</li>
         <li data-target="release">Release Notes</li>
       </ul>
@@ -1647,128 +1631,201 @@
         </pre>
       </div>
 
-      <!-- <div class="syntax-block" data-syntax="random_number">
-        <h3>Random Number</h3>
-        <pre class="code-block">
-    generate a random number between 1 and 10
-        </pre>
-      </div> -->
-
       <div class="syntax-block" data-syntax="conditionals">
         <h3>Conditionals</h3>
         <pre class="code-block">
-      # Basic if-else
-      assign 10 to x
-      if x > 10 then print "big" else print "small"
-        
-        
+
+      # if statement
+      assign 33 to x
+      assign 66 to y
+      if y > x then print "y is greater than x" end if
+
+      # elif statement
+      assign 33 to x
+      assign 33 to y
+      if y > x then print "y is greater than x" elif y == x then print "x and y are equal" end if
+
+      assign 75 to score
+      if score >= 90 then print "A GRADE" elif score >= 80 then print "B GRADE" elif score >= 70 then print "C GRADE" elif score >= 60 then print "D GRADE" end if
+
+      # else statement
+      assign 400 to x
+      assign 99 to y
+      if y > x then print "y is greater than x" elif y == x then print "x and y are equal" else then print "x is greater than y" end if
+
+      assign 120 to n
+      if n % 2 == 0 then print "n is even number" else print "n is odd number" end if
+
       # Nested if inside if
       assign 11 to x
       assign 4 to y
-      if x > 10 then if y > 5 then print "x big and y big" else print "x big but y small"
-        
-        
-      # Else-if chain
-      assign 11 to x
-      assign 4 to y
-      if x > 10 then print "x big" else if y &lt; 3 then print "x small and y tiny" else print "x small but y not tiny"
-        
-        
+      if x > 10 then if y > 5 then print "x big and y big" else print "x big but y small" end if end if
+
       # Conditional with loop
       assign 11 to x
-      if x == 11 then for i in range(0,5) then print i end for
-        
-        
+      if x == 11 then for i in range(0,5) then print i end for end if
+
       # Conditional with nested while
-      assign 4 to y
-      if y &lt; 5 then nested while y &lt; 5 then print y y += 1 end while
-        
-        
+      assign 0 to y
+      if y &lt; 5 then while y &lt; 5 do print y; y += 1 end while end if
+
       # Conditional with function definition
-      assign 4 to y 
-      if y == 5 then define function show with msg then print msg end function
-        
-        
-      # Conditional with class definition
+      assign 5 to y 
+      assign "Hello World!" to msg
+      if y == 5 then define function show with msg then print msg end function end if
+
+      <!-- # Conditional with class definition ❌
       assign True to enabled 
-      if enabled == True then define class Logger then define method log with msg then print msg end method end class
+      if enabled == True then class Logger then define function log with msg then print msg end function end class end if -->
         </pre>
       </div>
-
 
       <div class="syntax-block" data-syntax="loops">
         <h3>Loops</h3>
         <pre class="code-block">
+
       # Basic for loop 
       for i in range(0,10) then print i end for
-        
-        
+
+      # Break Statement
+      assign ["apple", "banana", "cherry", "graphs", "mango"] to fruits
+      for i in fruits then if i == "cherry" then break end if print i end for
+
+      # Continue Statement
+      assign ["apple", "banana", "cherry", "graphs", "mango"] to fruits
+      for i in fruits then if i == "cherry" then continue end if print i end for
+
       # Nested for loop
-      for i in range(0,3) then for j in range(0,2) then print i print j end for end for
-        
-        
+      for i in range(0,3) then for j in range(0,2) then print i; print j end for end for
+
       # Nested for with mixed execution
       for i in range(0,3) then for j in range(0,2) then print j end for print i end for
-        
-        
+
       # For loop with conditional
-      for i in range(0,5) then if i % 2 == 0 then print "even" else print "odd" end for
-        
-        
+      for i in range(0,5) then if i % 2 == 0 then print "even" else print "odd" end if end for
+
       # For loop with nested while
-      for i in range(0,3) then nested while i &lt; 3 then print i break end while print "awesome" end for
-        
-        
+      for i in range(0,3) then while i &lt; 3 then print i; break end while print "i is incremented by for loop" end for
+
       # For loop defining function
       for i in range(0,3) then define function show with msg then print msg end function end for
-        
-        
-      # For loop defining class
-      for i in [1,2,3,4,5] then define class Item then define method show with value then print value end method end class end for
-        
-        
-      # For loop with class and function call
-      for i in [1,2,3,4,5] then define class Item then define function show with value then print value end function call show with 2 end class end for
-        
-        
+
+      <!-- # For loop defining class ❌
+      for i in [1,2,3,4,5] then define class Item then define method show with value then print value end method end class end for        
+
+      # For loop with class and function call ❌
+      for i in [1,2,3,4,5] then define class Item then define function show with value then print value end function call show with 2 end class end for -->
+
       # Basic while loop
       assign 1 to x
-      while x &lt; 5 then print x x += 1 end while
-        
-        
+      while x &lt; 5 do print x; x += 1 end while
+
       # Nested while loop
       assign 1 to x
       assign 1 to y
-      while x &lt; 3 then while y &lt; 10 then print y y += 1 end while x += 1 end while
-        
-        
+      while x &lt; 5 do assign 1 to y; while y &lt; 5 do print y; y += 1 end while x += 1 end while
+
       # While loop with conditional and break
-      assign 3 to x
-      while x &lt; 5 then if x == 3 then print "three" break else print "not three" x += 1 end while
-        
-        
+      assign 0 to x
+      while x &lt; 5 do if x == 3 then print "three"; break else print "not three" end if x += 1 end while
+
       # While loop with for loop inside
       assign True to flag
-      while flag == True then for i in range(0,3) then print i end for break end while
-        
-        
+      while flag == True do for i in range(0,3) then print i end for break end while
+
       # While loop defining function
       assign True to flag
-      while flag == True then define function tick with none then print "tick" end function call tick with None break end while
-        
-        
-      # While loop defining class
+      while flag == True do define function toggle then print flag end function break end while
+
+      <!-- # While loop defining class ❌
       assign True to flag
-      while flag == True then define class Person then define function speak with msg then print msg end function end class break end while
-        
-        
-      # While loop with object creation and method call
+      while flag == True do define class Person then define function speak with msg then print msg end function end class break end while
+
+      # While loop with object creation and method call ❌
       assign True to flag
-      while flag == True then define class Person then define function speak with self, msg then print msg end function end class create object p1 from class Person call speak on p1 with parameters "Hello" break end while
+      while flag == True do define class Person then define function speak with self, msg then print msg end function end class create object p1 from class Person call speak on p1 with parameters "Hello" break end while -->
         </pre>
       </div>
 
+      <div class="syntax-block" data-syntax="functions">
+        <h3>Functions</h3>
+        <pre class="code-block">
 
+      # Create a Function
+      define function HCL then print "Hello this is HCL function" end function
+
+      # Call a Function
+      call HCL
+
+      # Function with parameters
+      define function Greet with msg then print msg end function
+      call Greet with "Hello World!"
+
+      define function fullName with fname, lname then print fname+lname end function
+      call fullName with "Peter", "Parker"
+      call fullName with "Flash", "Thomson"
+
+      <!-- # Function with return ❌
+      define function add with num1, num2 then return num1+num2 end function
+      assign 25 to a
+      assign 30 to b
+      call add with a, b -->
+
+      # Function with statements
+      define function whether with temp then if temp >= 30 then print "Sunny" else print "Not Sunny" end if end function
+      assign 40 to temperature
+      call whether with temperature
+
+      <!-- # Function with nested statements ❌
+      define function maxscore with scoreA, scoreB, scoreC then if scoreA > scoreB then if scoreA > scoreC then print "A score is greatest" else print "C score is greatest" end if elif scoreB > scoreC then print "B score is greatest" else print "C score is greatest" end if end function
+      assign 25 to a
+      assign 30 to b
+      assign 40 to c
+      call maxscore with a, b, c
+
+      Working Example logic below:
+      if a > b then if a > c then print "A score is greatest" else print "C score is greatest" end if elif b > c then print "B score is greatest" else print "C score is greatest" end if -->
+
+      # Function with loops
+      define function car with model then for carname in model then print carname end for end function
+      assign ["Lambo", "BMW", "Bugatti", "Mercedes"] to Mymodel
+      call car with Mymodel
+
+      <!-- # Function with different Data Types ❌
+      define function identity with person then assign "Name: {} and Age: {}" to id; format id using person["name"], person["age"] end function
+      assign {"name": "Emil", "age": 25} to detail
+      call identity with detail -->
+
+        </pre>
+      </div>
+
+      <div class="syntax-block" data-syntax="oop">
+        <h3>OOP - (Object Oriented Programming)</h3>
+        <pre class="code-block">
+      
+      # Create Class
+      class greetings then print "Hello this is class created in HCL." end class
+
+      # Access Class via Object
+      class ageinfo then assign 22 to Manish; assign 20 to Swagat; assign 21 to Rohan end class
+      create object age from class ageinfo
+      print age.Manish
+      print age.Swagat
+      print age.Rohan
+
+      # Delete Object
+      class myclass then assign "Data" to x end class
+      create object myobj from class myclass
+      remove object myobj
+
+      <!-- # Class parameter ❌
+      class Person then make constructor for class Person with self, name, age then assign name to self.name; assign age to self.age end constructor end class
+      create object p1 from class Person with parameters "Emily", "36"
+      print p1.name
+      print p1.age -->
+      
+        </pre>
+      </div>
       <div class="syntax-block" data-syntax="code_execution">
         <h3>Code Execution</h3>
         <p>

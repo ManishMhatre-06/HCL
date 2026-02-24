@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download HCL Language</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <main class="docs docs-page no-sidebar">
+
+    <!-- <section class="docs-content centered-docs">
+
+      <h2>Download HCL Language</h2>
+      <p>
+        The Human Centric Language (HCL) runtime enables execution of
+        human-readable programs compiled into target languages.
+      </p>
+
+      <h2>Current Version</h2>
+      <ul>
+        <li><strong>Version:</strong> v1.0.0</li>
+        <li><strong>Release Date:</strong> January 2026</li>
+        <li><strong>Platforms:</strong> Windows, macOS, Linux</li>
+        <li><strong>License:</strong> MIT License</li>
+      </ul>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Natural-language-based syntax</li>
+        <li>Cross-language compilation</li>
+        <li>Deterministic rule-based execution</li>
+        <li>Beginner-friendly design</li>
+      </ul>
+
+      <h2>System Requirements</h2>
+      <ul>
+        <li>2GB RAM minimum</li>
+        <li>500MB free disk space</li>
+        <li>Python 3.8+ (for runtime execution)</li>
+      </ul>
+
+      <div style="margin-top: 32px;">
+        <a href="./executables/hcl-language-setup.exe" download class="btn-link">
+          <button class="btn-primary large btn-icon">
+            <img src="./assets/icons/download.svg" class="btn-icon-img" />
+            Download for Windows (.exe)
+          </button>
+        </a>
+      </div>
+
+    </section> -->
+
+    <section class="docs-content centered-docs">
+      <h2>Download HCL Language</h2>
+
+      <div class="download-cta">
+        <a href="https://github.com/ManishMhatre-06/HCL/releases/download/v0.0.1_hcl/human_centric_programming_language_version_V.0.0.1.exe" download class="btn-link">
+          <button class="btn-primary large btn-icon">
+            <img src="./assets/icons/download.svg" class="btn-icon-img" />
+            Download HCL Language v1.0.0
+          </button>
+        </a>
+      </div>
+
+      <div class="download-section">
+        <h2>Current Release</h2>
+        <ul>
+          <li><strong>Version:</strong> v1.0.0</li>
+          <li><strong>Release Date:</strong> January 2026</li>
+          <li><strong>Platforms:</strong> Windows, macOS, Linux</li>
+          <!-- <li><strong>License:</strong> MIT License</li> -->
+        </ul>
+      </div>
+
+      <div class="download-section">
+        <h2>What’s Included</h2>
+        <ul>
+          <li>HCL runtime environment</li>
+          <li>Core execution engine</li>
+          <li>Standard library support</li>
+          <!-- <li>CLI tools</li> -->
+        </ul>
+      </div>
+
+      <div class="download-section">
+        <h2>System Requirements</h2>
+        <ul>
+          <li>2GB RAM minimum</li>
+          <li>500MB disk space</li>
+          <li>Python 3.8+ required</li>
+        </ul>
+      </div>
+
+      <!-- ================= FUTURE EXPANSION ================= -->
+
+      <!--
+      <div class="download-section">
+        <h2>Older Versions</h2>
+        <ul>
+          <li>v0.9.0 – Legacy stable</li>
+        </ul>
+      </div>
+      -->
+
+      <!--
+      <div class="download-section">
+        <h2>Nightly Builds</h2>
+        <p>Experimental development builds.</p>
+      </div>
+      -->
+
+      <!-- =================================================== -->
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("./partials/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+
+    fetch("./partials/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+
+  <script src="./script.js"></script>
+</body>
+</html>
