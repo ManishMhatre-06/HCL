@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HCL AI Prototype</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <main class="docs docs-page no-sidebar">
+    <section class="docs-content centered-docs">
+
+      <h2>HCL AI Chatbot Prototype</h2>
+
+      <div class="download-cta">
+        <a href="./executables/hcl-ai-prototype.exe" download class="btn-link">
+          <button class="btn-primary large btn-icon">
+            <img src="./assets/icons/download.svg" class="btn-icon-img" />
+            Download HCL AI Prototype v0.1
+          </button>
+        </a>
+      </div>
+
+      <div class="download-section">
+        <h2>Overview</h2>
+        <p>
+          The HCL AI Prototype is a specialized chatbot fine-tuned specifically
+          for the Human Centric Language (HCL). Unlike general-purpose AI models,
+          this system is trained on structured HCL datasets, compiler grammar,
+          semantic rules, and execution patterns.
+        </p>
+        <p>
+          It acts as an intelligent guide for beginners and developers by
+          explaining language concepts, generating valid HCL prompts, and ensuring
+          seamless compatibility with the HCL compiler.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Core Objective</h2>
+        <p>
+          The prototype is designed to bridge the gap between human intent and
+          executable logic. While HCL already removes strict syntax barriers,
+          this AI layer enhances the experience by interpreting user intent
+          conversationally and transforming it into valid HCL instructions.
+        </p>
+        <p>
+          The long-term goal is to move from rule-based natural language parsing
+          toward intent-centric programming powered by machine learning.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>How It Works</h2>
+        <ul>
+          <li>Fine-tuned on HCL grammar and compiler structure</li>
+          <li>Understands semantic patterns of HCL instructions</li>
+          <li>Generates prompts compatible with AST-based compilation</li>
+          <li>Optimized for deterministic execution outputs</li>
+        </ul>
+        <p>
+          The model does not merely generate code — it generates HCL instructions
+          that are guaranteed to compile seamlessly within the HCL ecosystem.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Key Capabilities</h2>
+        <ul>
+          <li>Explains HCL syntax and features clearly</li>
+          <li>Provides beginner-friendly step-by-step guidance</li>
+          <li>Generates valid HCL prompts for execution</li>
+          <li>Infers missing logic intelligently</li>
+          <li>Adapts to user phrasing and style</li>
+          <li>Assists in writing loops, conditionals, functions, classes</li>
+          <li>Suggests improvements and optimizations</li>
+        </ul>
+      </div>
+
+      <div class="download-section">
+        <h2>Educational Assistant Mode</h2>
+        <p>
+          For beginners, the chatbot acts as an interactive tutor. It explains
+          what the system understood, clarifies ambiguity, and teaches
+          programming concepts progressively without overwhelming the user.
+        </p>
+        <p>
+          Instead of cryptic compiler errors, users receive human-readable
+          explanations and suggested corrections.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Seamless Compiler Integration</h2>
+        <p>
+          Because the model is trained using HCL’s structured dataset and rule
+          definitions, its outputs are optimized for:
+        </p>
+        <ul>
+          <li>Accurate AST generation</li>
+          <li>Minimal semantic mismatch</li>
+          <li>Reduced compilation errors</li>
+          <li>Stable multi-language output</li>
+        </ul>
+        <p>
+          This ensures that user prompts flow directly into the HCL compiler
+          without requiring manual correction.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Advanced Error Handling</h2>
+        <p>
+          The AI assistant detects logical and semantic inconsistencies before
+          execution. It communicates issues conversationally and may propose
+          automatic corrections when appropriate.
+        </p>
+        <p>
+          Instead of rigid error codes, users interact with a contextual system
+          that explains problems in plain language.
+        </p>
+      </div>
+
+      <div class="download-section">
+        <h2>Project Vision Alignment</h2>
+        <p>
+          The chatbot represents the first step toward a broader transformation:
+          eliminating strict syntax barriers and enabling rule-free coding.
+        </p>
+        <p>
+          Our future vision includes:
+        </p>
+        <ul>
+          <li>Intent-centric programming</li>
+          <li>Adaptive understanding of user context</li>
+          <li>AI-driven semantic execution models</li>
+          <li>Conversational programming workflows</li>
+        </ul>
+      </div>
+
+      <div class="download-section">
+        <h2>Prototype Status</h2>
+        <ul>
+          <li>Version: v0.1 (Research Prototype)</li>
+          <li>Platform: Windows (Initial Release)</li>
+          <li>Model Type: Fine-tuned ML model</li>
+          <li>Integration: HCL Compiler Compatible</li>
+        </ul>
+      </div>
+
+      <!-- ================= FUTURE EXPANSION ================= -->
+
+      <!--
+      <div class="download-section">
+        <h2>Planned Improvements</h2>
+        <ul>
+          <li>Real-time contextual memory</li>
+          <li>Multi-turn logic tracking</li>
+          <li>Adaptive optimization engine</li>
+          <li>Cloud-based AI inference</li>
+        </ul>
+      </div>
+      -->
+
+      <!--
+      <div class="download-section">
+        <h2>Model Architecture Details</h2>
+        <p>Technical deep dive into training dataset, architecture, and evaluation metrics.</p>
+      </div>
+      -->
+
+      <!-- =================================================== -->
+
+    </section>
+  </main>
+
+  <div id="footer"></div>
+
+  <script>
+    fetch("./partials/header.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("header").innerHTML = data);
+
+    fetch("./partials/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+
+  <script src="./script.js"></script>
+</body>
+</html>
