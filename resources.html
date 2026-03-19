@@ -70,42 +70,36 @@
       <h2>Windows</h2>
       <h3>Phase 1: Downloading and Initializing Setup</h3>
       <ul class="step-list">
-          <li class="step-item"><span class="highlight">Download the Installer:</span> Visit the official download page and click the <strong>Download HCL Language v1.0.0</strong> button. Once the download is complete, you will see <code>mysetup.exe</code> in your browser's download history.</li>
-          <img src="./assets/installation/s1.png" alt="Download Page" class="screenshot">
-          <img src="./assets/installation/s2.png" alt="Download History" class="screenshot">
-                 
-          <li class="step-item"><span class="highlight">Locate the File:</span> Open your file explorer and navigate to the folder where the file was saved (e.g., <code>HCL_installation_folder</code>).</li>
-          <img src="./assets/installation/s3.png" alt="File Explorer" class="screenshot">
-
-          <li class="step-item"><span class="highlight">Bypass Windows Security:</span> If a "Windows protected your PC" warning appears, click on <strong>More info</strong> (if visible) and then select <strong>Run anyway</strong> to start the installation.</li>
-          <img src="./assets/installation/s4.png" alt="Security Warning" class="screenshot">
+        <li class="step-item"><span class="highlight">Download the Installer:</span> Visit the official download page <a href="https://hcl-111.pages.dev/download-language">hcl-111.pages.dev/download-language</a> and click the <strong>Download HCL Language v1.0.0</strong> button. Once the download is complete, you will see <code>mysetup.exe</code> in your browser's download history.</li>
+        <img src="./assets/installation/s1.png" alt="Download Page" class="screenshot">
+        <img src="./assets/installation/s2.png" alt="Download History" class="screenshot">
+        <li class="step-item"><span class="highlight">Locate the File:</span> Open your file explorer and navigate to the folder where the file was saved.</li>
+        <img src="./assets/installation/s3.png" alt="File Explorer" class="screenshot">
+        <li class="step-item"><span class="highlight">Bypass Windows Security:</span> If a "Windows protected your PC" warning appears, click on <strong>More info</strong> (if visible) and then select <strong>Run anyway</strong> to start the installation.</li>
+        <img src="./assets/installation/s4.png" alt="Security Warning" class="screenshot">
       </ul>
 
-        <h3>Phase 2: Installation Process</h3>
-        <ul class="step-list">
-            <li class="step-item"><span class="highlight">Select Destination:</span> Choose the folder where you want HCL to be installed. The default path is <code>D:\Human-Centric Language (HCL)</code>. Click <strong>Next</strong>.</li>
-            <img src="./assets/installation/s5.png" alt="Destination Selection" class="screenshot">
+      <h3>Phase 2: Installation Process</h3>
+      <ul class="step-list">
+        <li class="step-item"><span class="highlight">Select Destination:</span> Choose the folder where you want HCL to be installed. The default path is <code>D:\Human-Centric Language (HCL)</code>. Click <strong>Next</strong>.</li>
+        <img src="./assets/installation/s5.png" alt="Destination Selection" class="screenshot">
+        <li class="step-item"><span class="highlight">Additional Tasks:</span> Check the box for <strong>Create a desktop shortcut</strong> if you want quick access from your home screen. Click <strong>Next</strong>.</li>
+        <img src="./assets/installation/s6.png" alt="Additional Tasks" class="screenshot">
+        <li class="step-item"><span class="highlight">Review and Install:</span> Review your chosen settings. If everything looks correct, click <strong>Install</strong>.</li>
+        <img src="./assets/installation/s7.png" alt="Ready to Install" class="screenshot">
+        <li class="step-item"><span class="highlight">Finish Setup:</span> Once the installation bar completes, ensure the <strong>Launch Human-Centric Language (HCL)</strong> box is checked and click <strong>Finish</strong>.</li>
+        <img src="./assets/installation/s8.png" alt="Installation Complete" class="screenshot">
+      </ul>
 
-            <li class="step-item"><span class="highlight">Additional Tasks:</span> Check the box for <strong>Create a desktop shortcut</strong> if you want quick access from your home screen. Click <strong>Next</strong>.</li>
-            <img src="./assets/installation/s6.png" alt="Additional Tasks" class="screenshot">
-
-            <li class="step-item"><span class="highlight">Review and Install:</span> Review your chosen settings. If everything looks correct, click <strong>Install</strong>.</li>
-            <img src="./assets/installation/s7.png" alt="Ready to Install" class="screenshot">
-
-            <li class="step-item"><span class="highlight">Finish Setup:</span> Once the installation bar completes, ensure the <strong>Launch Human-Centric Language (HCL)</strong> box is checked and click <strong>Finish</strong>.</li>
-            <img src="./assets/installation/s8.png" alt="Installation Complete" class="screenshot">
-        </ul>
-
-        <h3>Phase 3: Launching the Terminal</h3>
-        <ul class="step-list">
-            <li class="step-item"><span class="highlight">Verify Installed Files:</span> Navigate to your installation directory. You should see <code>hcl.exe</code>, <code>terminal.exe</code>, and other system files like <code>actions.jsonl</code> in the folder.</li>
-            <img src="./assets/installation/s9.png" alt="Installed Files" class="screenshot">
-
-            <li class="step-item"><span class="highlight">Run the REPL:</span> Open <code>terminal.exe</code>. A command-line interface will appear showing the diagnostic logs. Once the <strong>Advacode REPL (AST-only mode)</strong> initializes and you see the <code>>>></code> prompt, the environment is ready for use.</li>
-            <img src="./assets/installation/s10.png" alt="HCL Terminal" class="screenshot">
-        </ul>
+      <h3>Phase 3: Launching the Terminal</h3>
+      <ul class="step-list">
+        <li class="step-item"><span class="highlight">Verify Installed Files:</span> Navigate to your installation directory. You should see <code>hcl.exe</code>, <code>terminal.exe</code>, and other system files like <code>actions.jsonl</code> in the folder.</li>
+        <img src="./assets/installation/s9.png" alt="Installed Files" class="screenshot">
+        <li class="step-item"><span class="highlight">Run the REPL:</span> Open <code>terminal.exe</code>. A command-line interface will appear showing the diagnostic logs. Once the <strong>Advacode REPL (AST-only mode)</strong> initializes and you see the <code>>>></code> prompt, the environment is ready for use.</li>
+        <img src="./assets/installation/s10.png" alt="HCL Terminal" class="screenshot">
+      </ul>
     
-      <h2>Testing Installation</h2>
+      <!-- <h2>Testing Installation</h2>
       <p>Verify HCL is installed correctly:</p>
       <pre class="code-block">
     hcl --version
@@ -125,7 +119,8 @@
       $env:Path + ";C:\Program Files\HCL\bin",
       "Machine"
     )
-      </pre>
+      </pre> -->
+    
     </section>
 
     <section class="docs-content hidden" id="syntax">
