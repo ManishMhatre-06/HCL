@@ -44,7 +44,6 @@
             <li data-syntax="functions">Functions</li>
             <li data-syntax="oop">OOP</li>
             <li data-syntax="dsa">DSA</li>
-            <li data-syntax="code_execution">Code Execution</li>
           </ul>
         </li>
         <li data-target="examples">Examples</li>
@@ -1897,28 +1896,40 @@ descending merge sort sortArr
         </pre>
       </div>
 
-      <div class="syntax-block" data-syntax="code_execution">
-        <h3>Code Execution</h3>
-        <p>
-          HCL code is compiled and executed through the HCL compiler:
-        </p>
-    
-        <pre class="code-block">
-    # Save your code in a .hcl file
-    # example.hcl
-      
-    assign 10 to x
-    if x > 5 then print "Large"
-      
-    # Run it
-    hcl run example.hcl
-        </pre>
-      </div>
-      
     </section>
 
     <section class="docs-content hidden" id="examples">
       <h2>Examples</h2>
+
+      <h3>Prime Number Checking</h3>
+      <pre class="code-block">
+get user input and store n
+
+assign 1 to is_prime
+
+if n &lt;= 1 then print "Not a prime number" else assign 2 to i; while i &lt; n then if n % i == 0 then assign 0 to is_prime; break end if; add 1 to i end loop; if is_prime == 1 then print "Prime number" else print "Not a prime number" end if end if
+      </pre>
+
+      <h3>Factorial Calculator</h3>
+      <pre class="code-block">
+get user input and store n
+
+assign 1 to fact
+assign 1 to i
+
+while i &lt;= n then multiplication with assign fact by i; add 1 to i end loop; print fact
+      </pre>
+
+      <h3>Fibonacci Sequence</h3>
+      <pre class="code-block">
+get user input and store n
+
+assign 0 to a
+assign 1 to b
+assign 1 to i
+
+while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; add 1 to i end loop
+      </pre>
 
       <h3>Arithmetic Operations</h3>
       <pre class="code-block">
@@ -1996,93 +2007,17 @@ descending merge sort sortArr
       </pre>
     </section>
 
-    <section class="docs-content hidden" id="prototype">
-      <h2>HCL AI Prototype</h2>
-      
-      <div class="download-cta">
-        <a href="./prototype.html" class="btn-link">
-          <button class="btn-primary large btn-icon">
-            <img src="./assets/icons/download.svg" class="btn-icon-img" />
-            Explore HCL AI Prototype
-          </button>
-        </a>
-      </div>
-
-      <p>
-        The HCL AI Prototype is a specialized chatbot fine-tuned specifically
-        for the Human Centric Language (HCL). Unlike general-purpose AI systems,
-        this model is trained on structured HCL grammar, semantic rules,
-        compiler behavior, and execution patterns.
-      </p>
-    
-      <p>
-        It acts as an intelligent programming assistant that understands
-        user intent and generates valid HCL instructions that compile
-        seamlessly within the HCL ecosystem.
-      </p>
-    
-      <h3>Why This Prototype Matters</h3>
-      <p>
-        HCL already removes strict syntax barriers through natural-language
-        instructions. The AI prototype takes this further by introducing
-        intent-centric programming — where users describe what they want,
-        and the system interprets and structures it correctly.
-      </p>
-    
-      <ul>
-        <li>Understands HCL semantic structure</li>
-        <li>Generates compiler-compatible prompts</li>
-        <li>Explains logic step-by-step for beginners</li>
-        <li>Reduces syntax and semantic errors</li>
-        <li>Bridges human thought and execution logic</li>
-      </ul>
-    
-      <h3>Educational Assistant Mode</h3>
-      <p>
-        For beginners, the chatbot functions as an interactive tutor. It
-        explains what it understood from the user's input, suggests
-        improvements, and progressively teaches programming concepts
-        without overwhelming the learner.
-      </p>
-    
-      <h3>Seamless Compiler Integration</h3>
-      <p>
-        Because the model is trained using HCL's structured dataset and
-        rule definitions, its outputs are optimized for:
-      </p>
-    
-      <ul>
-        <li>Accurate AST generation</li>
-        <li>Minimal semantic mismatch</li>
-        <li>Reduced compilation errors</li>
-        <li>Stable multi-language output</li>
-      </ul>
-    
-      <h3>Vision Alignment</h3>
-      <p>
-        This prototype represents the first step toward our larger goal:
-        eliminating strict syntax rules and enabling rule-free coding.
-        In the future, AI will not just assist — it will act as a
-        core execution partner in the programming workflow.
-      </p>
-    
-    </section>
-
     <section class="docs-content hidden" id="faq">
       <h2>Frequently Asked Questions</h2>
 
       <h3>What is HCL?</h3>
       <p>
-        Human Centric Language (HCL) is a high-level instruction language that bridges
-        the gap between human natural language and programming languages. It allows
-        developers to write code using intuitive, human-readable syntax that compiles
-        to various target languages including Python, C, C++, and JavaScript.
+        Human Centric Language (HCL) is a high-level instruction language that bridges the gap between human natural language and programming languages. It allows developers to write code using intuitive, human-readable syntax
       </p>
 
       <h3>How is NLP used in HCL?</h3>
       <p>
-        HCL uses Natural Language Processing (NLP) techniques to parse and understand
-        human-like instructions. The compiler employs:
+        HCL uses Natural Language Processing (NLP) techniques to parse and understand human-like instructions. The compiler employs:
       </p>
       <ul>
         <li><strong>Tokenization:</strong> Breaking down instructions into meaningful tokens</li>
@@ -2090,21 +2025,9 @@ descending merge sort sortArr
         <li><strong>Semantic Analysis:</strong> Understanding the intent behind instructions</li>
         <li><strong>Context-Aware Parsing:</strong> Maintaining state and context across statements</li>
       </ul>
-      <p>
-        However, HCL maintains deterministic behavior — the same instruction always
-        produces the same code, unlike AI-based code generators.
-      </p>
 
-      <h3>Is HCL faster or slower than Python?</h3>
-      <p>It depends on the target compilation:</p>
-      <ul>
-        <li><strong>HCL → Python:</strong> Similar speed to native Python (adds minimal compilation overhead)</li>
-        <li><strong>HCL → C/C++:</strong> Significantly faster than Python (10–100× depending on workload)</li>
-        <li><strong>HCL → JavaScript:</strong> Similar to hand-written JavaScript</li>
-      </ul>
       <p>
-        The key advantage is flexibility — write once in HCL, compile to the best
-        language for your use case.
+        However, HCL maintains deterministic behavior — the same instruction always produces the same code, unlike AI-based code generators.
       </p>
 
       <h3>Is HCL open-source?</h3>
@@ -2112,14 +2035,13 @@ descending merge sort sortArr
       <ul>
         <li>View the source code on GitHub</li>
         <li>Contribute to the project</li>
-        <li>Fork and modify for your needs</li>
         <li>Use it in commercial projects</li>
         <li>Submit issues and feature requests</li>
       </ul>
       <p>
         Repository:
-        <a href="https://github.com/hcl-lang/hcl" target="_blank" rel="noopener">
-          github.com/hcl-lang/hcl
+        <a href="https://github.com/ManishMhatre-06/HCL" target="_blank" rel="noopener">
+          github.com/ManishMhatre-06/HCL
         </a>
       </p>
     
@@ -2129,7 +2051,6 @@ descending merge sort sortArr
         <li>Rapid prototyping</li>
         <li>Teaching programming concepts</li>
         <li>Internal tooling</li>
-        <li>Cross-platform applications (compile once, deploy to multiple languages)</li>
         <li>Domain-specific languages (DSLs)</li>
       </ul>
 
@@ -2176,7 +2097,6 @@ descending merge sort sortArr
       <ul>
         <li>Not suitable for extremely low-level system programming</li>
         <li>Limited third-party library support (depends on target language)</li>
-        <li>Compilation adds an extra step to the development process</li>
         <li>Some advanced features may not translate perfectly across all target languages</li>
       </ul>
     
@@ -2191,12 +2111,12 @@ descending merge sort sortArr
         <li>Open a Pull Request</li>
       </ol>
     
-      <pre class="code-block">
+      <!-- <pre class="code-block">
     # Compiles to Express.js, Flask, or similar
     create web server on port 3000
     handle GET requests to "/api/users"
     return user list as JSON
-      </pre>
+      </pre> -->
     
       <h3>Where can I get help?</h3>
       <ul>
@@ -2219,18 +2139,14 @@ descending merge sort sortArr
         <h5>New Features</h5>
         <ul>
           <li>🎉 Official 1.0 release – production ready!</li>
-          <li>✨ Complete Python, C, and C++ code generation</li>
-          <li>🚀 Performance improvements (30% faster compilation)</li>
-          <li>📦 Package manager integration (npm, pip, cargo)</li>
+          <li>📦 OOP and DSA integration</li>
           <li>🧠 Advanced AST transformations</li>
-          <li>🎨 Syntax highlighting for VS Code, Vim, and Sublime</li>
         </ul>
       
         <h5>Improvements</h5>
         <ul>
-          <li>Better error messages with suggestions</li>
+          <li>Better error messages</li>
           <li>Improved type inference system</li>
-          <li>Enhanced IDE support and autocomplete</li>
           <li>Optimized memory usage</li>
         </ul>
       
@@ -2238,7 +2154,7 @@ descending merge sort sortArr
         <ul>
           <li>Fixed loop variable scoping issues</li>
           <li>Resolved Windows path handling bugs</li>
-          <li>Corrected C++ template generation edge cases</li>
+          <li>Addressed edge cases in pattern matching</li>
         </ul>
       </div>
     
@@ -2248,16 +2164,13 @@ descending merge sort sortArr
       
         <h5>New Features</h5>
         <ul>
-          <li>JavaScript/TypeScript compilation target</li>
           <li>Interactive REPL mode</li>
-          <li>Watch mode for auto-recompilation</li>
-          <li>Custom grammar extensions API</li>
+          <li>Debug mode for auto-recompilation</li>
         </ul>
       
         <h5>Breaking Changes</h5>
         <ul>
           <li>Changed <code>store</code> keyword to <code>assign</code> for consistency</li>
-          <li>Updated CLI flags (see migration guide)</li>
         </ul>
       </div>
     
@@ -2267,7 +2180,6 @@ descending merge sort sortArr
       
         <h5>New Features</h5>
         <ul>
-          <li>C++ modern features (C++17/20 support)</li>
           <li>Async/await syntax</li>
           <li>Built-in testing framework</li>
           <li>Documentation generator</li>
@@ -2281,7 +2193,7 @@ descending merge sort sortArr
         <h5>New Features</h5>
         <ul>
           <li>Module system and imports</li>
-          <li>Standard library (file I/O, networking, etc.)</li>
+          <li>Standard library (file I/O, GUI, etc.)</li>
           <li>Debug mode and profiling tools</li>
         </ul>
       </div>
@@ -2292,7 +2204,6 @@ descending merge sort sortArr
       
         <h5>New Features</h5>
         <ul>
-          <li>Initial C language support</li>
           <li>Function definitions and calls</li>
           <li>Basic type system</li>
         </ul>
@@ -2304,9 +2215,7 @@ descending merge sort sortArr
       
         <h5>New Features</h5>
         <ul>
-          <li>Beta release</li>
           <li>Python code generation (stable)</li>
-          <li>CLI tooling</li>
           <li>Basic syntax and grammar</li>
         </ul>
       </div>
@@ -2316,7 +2225,6 @@ descending merge sort sortArr
       <div class="roadmap-card">
         <h4>Version 1.1.0 <span>(Q2 2026)</span></h4>
         <ul>
-          <li>Rust compilation target</li>
           <li>AI-assisted code suggestions</li>
           <li>Web-based playground</li>
           <li>Mobile app support (React Native / Flutter output)</li>
