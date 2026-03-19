@@ -1,8 +1,46 @@
-## About the project:
+# HCL - Human Centric Programming Language
 
-This website is a prototype build and will be fully launched for the main project of HCL that focuses on providing a simple programming language that is more understandable for beginner and on run time .py and .cpp file were created to allow to run same code on different languages for more efficiency and performace boosting of the algorithm build by any coder.
+**HCL** is an NLP-based programming language designed to bridge the gap between natural human intent and machine execution. It allows developers to write logic using natural language syntax (e.g., `Add 5 to x`).
 
-Swagatkingstar has become a collaborator 
-The Swagatkingstar has done some changes to git.
+---
 
-## More detail of project will be added soon
+## 🎓 Academic Context
+This project is being developed as a **Final Year Degree Project** at:
+**New Horizons Institute of Technology and Management (NHITM)**
+*Affiliated with Mumbai University*
+
+### 👥 Development Team
+* **Manish Sanjeev Mhatre**
+* **Swagat Rajage**
+* **Tanishka Suryarao**
+* **Kratika Vyas**
+
+---
+
+## 🚀 How it Works
+HCL utilizes a sophisticated multi-stage compilation process to turn human-readable instructions into executable software:
+
+1. **Natural Language Input:** Users write commands in a descriptive, "human-centric" format.
+2. **Lexical Analysis & Parsing:** A front-end parser built with prompt matcher file **actions.jsonl**.
+3. **AST Generation:** The parser generates an **Abstract Syntax Tree (AST)** representing the logic.
+
+### Key Features
+* **Intuitive Syntax:** Write logic like "Add 10 to score" or "If age is greater than 18 then..."
+* **Control Structures:** Full support for operators, loops, and conditional logic.
+* **Advanced Integration:** Built-in capabilities for File Handling and OS-level functions.
+* **AI/ML Assisted:** Integrated support for code suggestions and intelligent debugging.
+
+---
+
+## 🛠️ Tech Stack
+* **Front-end/Back-end:** Python
+* **Version Control:** Git & GitHub
+
+---
+
+## 📥 Installation & Usage
+
+**Clone the Repository:**
+   ```bash
+   git clone [https://github.com/ManishMhatre-06/HCL.git](https://github.com/ManishMhatre-06/HCL.git)
+   cd HCL

@@ -48,7 +48,7 @@
           </ul>
         </li>
         <li data-target="examples">Examples</li>
-        <li data-target="prototype">Prototype</li>
+        <!-- <li data-target="prototype">Prototype</li> -->
         <li data-target="faq">FAQ</li>
         <li data-target="release">Release Notes</li>
       </ul>
@@ -897,48 +897,41 @@ make a copy of dict i4 to j4
         <h3>Conditionals</h3>
         <pre class="code-block">
 
-      # if statement
-      assign 33 to x
-      assign 66 to y
-      if y > x then print "y is greater than x" end if
+# Conditional statements
 
-      # elif statement
-      assign 33 to x
-      assign 33 to y
-      if y > x then print "y is greater than x" elif y == x then print "x and y are equal" end if
+assign 10 to x
 
-      assign 75 to score
-      if score >= 90 then print "A GRADE" elif score >= 80 then print "B GRADE" elif score >= 70 then print "C GRADE" elif score >= 60 then print "D GRADE" end if
+if x > 10 then print "Greater than 10" endprint elif x == 10 then print "Equal to 10" endprint else print "Less than 10" endprint end-if
 
-      # else statement
-      assign 400 to x
-      assign 99 to y
-      if y > x then print "y is greater than x" elif y == x then print "x and y are equal" else then print "x is greater than y" end if
 
-      assign 120 to n
-      if n % 2 == 0 then print "n is even number" else print "n is odd number" end if
+# Nested conditional statements
 
-      # Nested if inside if
-      assign 11 to x
-      assign 4 to y
-      if x > 10 then if y > 5 then print "x big and y big" else print "x big but y small" end if end if
+if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y else print "none" endprint end-if else print "none" endprint end-if else print "none" endprint end-if
 
-      # Conditional with loop
-      assign 11 to x
-      if x == 11 then for i in range(0,5) then print i end for end if
+# For loop inside conditional statement
 
-      # Conditional with nested while
-      assign 0 to y
-      if y &lt; 5 then while y &lt; 5 do print y; y += 1 end while end if
+assign 5 to x
 
-      # Conditional with function definition
-      assign 5 to y 
-      assign "Hello World!" to msg
-      if y == 5 then define function show with msg then print msg end function end if
+if x > 3 then for i in range(3) then print "Looping running:", i endprint end for else print "Conditional false" endprint end-if 
 
-      <!-- # Conditional with class definition ❌
-      assign True to enabled 
-      if enabled == True then class Logger then define function log with msg then print msg end function end class end if -->
+# While loop inside conditional statement
+
+assign 2 to x
+
+if x < 5 then assign 0 to i; while i < 3 then print "While loop:", i endprint; increase i by 1 end loop else print "Conditional false" endprint end-if
+
+# Function inside conditional statements
+
+assign 10 to x
+
+if x > 5 then define function greet then print "Hello from function" endprint end function call greet else print "No Function Call" endprint end-if
+
+# Class inside conditional statements
+
+assign 1 to x
+
+if x > 5 then class Person then make constructor for class Person with self, name then assign name to self.name end constructor; define function show with self then print "Name:", self.name endprint end function end class; create object p from class Person with parameters "Manish"; call method show on object p else print "No Function Call" endprint end-if
+
         </pre>
       </div>
 
@@ -946,66 +939,81 @@ make a copy of dict i4 to j4
         <h3>Loops</h3>
         <pre class="code-block">
 
-      # Basic for loop 
-      for i in range(0,10) then print i end for
+# For Loop 
 
-      # Break Statement
-      assign ["apple", "banana", "cherry", "graphs", "mango"] to fruits
-      for i in fruits then if i == "cherry" then break end if print i end for
+for i in [1,2,3] then print i endprint end for
 
-      # Continue Statement
-      assign ["apple", "banana", "cherry", "graphs", "mango"] to fruits
-      for i in fruits then if i == "cherry" then continue end if print i end for
+assign [1,2,3] to x
+for i in x then print i endprint end for
 
-      # Nested for loop
-      for i in range(0,3) then for j in range(0,2) then print i; print j end for end for
+for i in "HELLO WORLD" then print i endprint end for
 
-      # Nested for with mixed execution
-      for i in range(0,3) then for j in range(0,2) then print j end for print i end for
 
-      # For loop with conditional
-      for i in range(0,5) then if i % 2 == 0 then print "even" else print "odd" end if end for
+# Nested For Loop
 
-      # For loop with nested while
-      for i in range(0,3) then while i &lt; 3 then print i; break end while print "i is incremented by for loop" end for
+for i in [1,2,3] then print i endprint; for i in "HELLO WORLD " then print i endprint end for end for
 
-      # For loop defining function
-      for i in range(0,3) then define function show with msg then print msg end function end for
+# Conditional statement inside for loop
 
-      <!-- # For loop defining class ❌
-      for i in [1,2,3,4,5] then define class Item then define method show with value then print value end method end class end for        
+for i in range(5) then if i % 2 == 0 then print i, "Even number" endprint else print i, "Odd number" endprint end-if end for
 
-      # For loop with class and function call ❌
-      for i in [1,2,3,4,5] then define class Item then define function show with value then print value end function call show with 2 end class end for -->
+# For loop using break
 
-      # Basic while loop
-      assign 1 to x
-      while x &lt; 5 do print x; x += 1 end while
+for i in fruits then print i endprint; if i == "banana" then break end-if end for
 
-      # Nested while loop
-      assign 1 to x
-      assign 1 to y
-      while x &lt; 5 do assign 1 to y; while y &lt; 5 do print y; y += 1 end while x += 1 end while
+# For loop using continue
 
-      # While loop with conditional and break
-      assign 0 to x
-      while x &lt; 5 do if x == 3 then print "three"; break else print "not three" end if x += 1 end while
+for i in fruits then if i == "banana" then continue end-if print i end for
 
-      # While loop with for loop inside
-      assign True to flag
-      while flag == True do for i in range(0,3) then print i end for break end while
+# While loop inside for loop
 
-      # While loop defining function
-      assign True to flag
-      while flag == True do define function toggle then print flag end function break end while
+for i in range(3) then print "Outer loop:", i endprint; assign 0 to j; while j &lt; 2 then print "  Inner while:", j endprint; increase j by 1 end loop end for
 
-      <!-- # While loop defining class ❌
-      assign True to flag
-      while flag == True do define class Person then define function speak with msg then print msg end function end class break end while
+# Function inside for loop
 
-      # While loop with object creation and method call ❌
-      assign True to flag
-      while flag == True do define class Person then define function speak with self, msg then print msg end function end class create object p1 from class Person call speak on p1 with parameters "Hello" break end while -->
+for i in [1,2,3] then print i endprint; define function student then assign 2 to x; assign 3 to y; assign add x and y to z; for i in [1,2,3] then print i endprint end for end function end for
+
+# Class inside for loop
+
+for i in "HELLO WORLD" then print i endprint; class swag then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class water then for i in [1,2,3] then print i end for end class end class end for
+
+
+# While loop
+
+assign 0 to i
+
+while i &lt; 5 then if i % 2 == 0 then print i, "Even number" endprint else print i, "Odd number" endprint end-if increase i by 1 end loop
+
+# Nested while loop
+
+assign 0 to i
+
+while i &lt; 3 then print "Outer loop:", i endprint; assign 0 to j; while j &lt; 2 then print "    Inner while:", j endprint; increase j by 1 end loop increase i by 1 end loop
+
+# Class inside while loop
+
+assign 0 to i
+
+while i &lt; 2 then class car then make constructor for class car with self, num then assign num to self.num end constructor; define function show with self then print "Car number:", self.num endprint end function end class; create object c1 from class car with parameters i; call method show on object c1; increase i by 1 end loop
+
+
+# function inside while loop
+
+assign 0 to i
+
+while i &lt; 3 then define function square with num then return num*num end function print square(i) endprint; increase i by 1 end loop
+
+# Conditional statement inside while loop
+
+assign 0 to i
+
+while i &lt; 5 then if i % 2 == 0 then print i, "Even number" endprint else print i, "Odd number" endprint end-if increase i by 1 end loop
+
+# For loop inside while loop
+
+assign 0 to i
+
+while i &lt; 3 then print "While loop:", i endprint; for j in range(2) then print "   For loop:", j endprint end for increase i by 1 end loop
         </pre>
       </div>
 
@@ -1013,50 +1021,35 @@ make a copy of dict i4 to j4
         <h3>Functions</h3>
         <pre class="code-block">
 
-      # Create a Function
-      define function HCL then print "Hello this is HCL function" end function
+# Define Function
 
-      # Call a Function
-      call HCL
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z end function
 
-      # Function with parameters
-      define function Greet with msg then print msg end function
-      call Greet with "Hello World!"
+# Function with Parameters
 
-      define function fullName with fname, lname then print fname+lname end function
-      call fullName with "Peter", "Parker"
-      call fullName with "Flash", "Thomson"
+define function student with name, age, self then assign name to self.name; assign age to self.age; print name, age endprint end function
 
-      <!-- # Function with return ❌
-      define function add with num1, num2 then return num1+num2 end function
-      assign 25 to a
-      assign 30 to b
-      call add with a, b -->
+# Nested Function
 
-      # Function with statements
-      define function whether with temp then if temp >= 30 then print "Sunny" else print "Not Sunny" end if end function
-      assign 40 to temperature
-      call whether with temperature
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z; define function student then assign 2 to x; assign 3 to y; assign add x and y to z end function end function
 
-      <!-- # Function with nested statements ❌
-      define function maxscore with scoreA, scoreB, scoreC then if scoreA > scoreB then if scoreA > scoreC then print "A score is greatest" else print "C score is greatest" end if elif scoreB > scoreC then print "B score is greatest" else print "C score is greatest" end if end function
-      assign 25 to a
-      assign 30 to b
-      assign 40 to c
-      call maxscore with a, b, c
+# Conditional statements inside Function
 
-      Working Example logic below:
-      if a > b then if a > c then print "A score is greatest" else print "C score is greatest" end if elif b > c then print "B score is greatest" else print "C score is greatest" end if -->
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y else print "none" endprint end-if else print "none" endprint end-if else print "none" endprint end-if end function
 
-      # Function with loops
-      define function car with model then for carname in model then print carname end for end function
-      assign ["Lambo", "BMW", "Bugatti", "Mercedes"] to Mymodel
-      call car with Mymodel
+# For loop inside Function
 
-      <!-- # Function with different Data Types ❌
-      define function identity with person then assign "Name: {} and Age: {}" to id; format id using person["name"], person["age"] end function
-      assign {"name": "Emil", "age": 25} to detail
-      call identity with detail -->
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z; for i in [1,2,3] then print i endprint end for end function
+
+call student
+
+# While loop inside Function
+
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z; while x < 10 then print x endprint; add 1 to x end loop end function
+
+# Class inside Function
+
+define function student then assign 2 to x; assign 3 to y; assign add x and y to z; class Person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class end function
 
         </pre>
       </div>
@@ -1065,33 +1058,851 @@ make a copy of dict i4 to j4
         <h3>OOP - (Object Oriented Programming)</h3>
         <pre class="code-block">
       
-      # Create Class
-      class greetings then print "Hello this is class created in HCL." end class
+# create class and its object
 
-      # Access Class via Object
-      class ageinfo then assign 22 to Manish; assign 20 to Swagat; assign 21 to Rohan end class
-      create object age from class ageinfo
-      print age.Manish
-      print age.Swagat
-      print age.Rohan
+class Person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class
 
-      # Delete Object
-      class myclass then assign "Data" to x end class
-      create object myobj from class myclass
-      remove object myobj
 
-      <!-- # Class parameter ❌
-      class Person then make constructor for class Person with self, name, age then assign name to self.name; assign age to self.age end constructor end class
-      create object p1 from class Person with parameters "Emily", "36"
-      print p1.name
-      print p1.age -->
+create object s1 from class swagat
+
+# delete object
+
+remove object s1
+
+# Nested class
+
+class person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class water then assign ("a","b") to y; assign ("c","d") to z; assign join tuple y with z to x; print x end class end class
+
+
+# Nested class with neseted if else
+
+class person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class water then class ssw then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y else print "none" endprint end-if else print "none" endprint end-if else print "none" endprint end-if end class end class end class
+
+# Nested class with nested for loop
+
+class swag then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class water then for i in [1,2,3] then print i end for end class end class
+
+
+# inheritance
+
+class swag then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class
+
+define class gaot extends swag then print 2 endprint; class swami then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class end class
+
+define class rock extends gaot then print "3rd class extends" endprint end class
+
+
+
+# nested class
+
+
+class person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class person then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class swag then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class end class end class
+
+
+class swagat then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class swagat then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; class swagat then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1 end class if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y else print "none" endprint end-if else print "none" endprint end-if else print "none" endprint end-if end class end class
+
+
+# Constructor
+
+class swagat then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; make constructor for class swagat with self then print 2 endprint end constructor end class
+
+
+# __str__ method
+
+class swag then  make constructor for class swagat with self then print 2 endprint end constructor define str function with self then print 3 end str end class
+
+
+# abstraction (private/protected property)
+
+class swag then  make constructor for class swagat with self then print 2 endprint end constructor define str function with self then print 3 end str define function crt with self then set private property x to 3; protected property y to 2 end function end class
+
+# abstraction (private/protected function)
+
+class swag then  make constructor for class swagat with self then print 2 endprint end constructor define str function with self then print 3 end str define function __cart with self then set private property x to 3; protected property y to 2 end function; define function _cold with self then set private property x to 3; protected property y to 2 end function end class
+
+
+# Method call
+
+class swag then  make constructor for class swagat with self then print 2 endprint end constructor define str function with self then print 3 end str define function __cart with self then set private property x to 3; protected property y to 2 end function define function _cold with self then set private property x to 3; protected property y to 2 end function define function friple then if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y; if 2 < 11 then assign {1,2,3} to c1; assign {3,4,5} to d1; symmetric difference of c1 and d1; assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y elif 2 > 11 then assign {1,2,3} to w; assign {2,3,4} to x; assign common items in w and x to y else print "none" endprint end-if else print "none" endprint end-if else print "none" endprint end-if end function end class
+
+
+create object w1 from class swag
+
+call method friple on object w1
       
         </pre>
       </div>
 
       <div class="syntax-block" data-syntax="dsa">
         <h3>DSA - (Data Structures and Algorithms)</h3>
-        <pre class="code-block">      
+        <pre class="code-block">
+
+# Create Stack
+create stack sk
+
+# Push Element onto Stack
+push 10 to stack sk
+
+# Pop Element (Remove Top)
+pop from stack sk
+
+# Peek (View Top Element Without Removing)
+peek stack sk
+
+# Check if Stack is Empty (Boolean Result)
+is stack sk empty
+
+# Get Size of Stack
+size of stack sk
+
+# Assign Pop Result to Variable
+assign pop from stack sk to x
+
+# Assign Peek (Top Element) to Variable
+assign peek stack sk to topVal
+
+# Assign “Is Empty” Result to Variable
+assign is stack sk empty to isEmpty
+
+# Assign Stack Size to Variable
+assign size of sk to man
+
+# Create Queue
+create queue q
+
+# Enqueue Element (Add to Rear)
+enqueue 10 to queue q
+
+# Dequeue Element (Remove from Front)
+dequeue from queue q
+
+# Peek (View Front Element Without Removing)
+peek queue q
+
+# Check if Queue is Empty (Boolean Result)
+is queue q empty
+
+# Get Size of Queue
+size of queue q
+
+# Assign Dequeue Result to Variable
+assign dequeue from queue q to x
+
+# Assign Peek Element to Variable
+assign peek queue q to frontVal
+
+# Assign “Is Empty” Result to Variable
+assign is queue q empty to isEmpty
+
+# Assign Queue Size to Variable
+assign size of q to sz
+
+# Create Linked List
+create linked list lnklist
+
+# Insert at Beginning (Prepend)
+insert 10 at beginning of linked list lnklist
+
+# Insert at End (Append)
+insert 20 at end of linked list lnklist
+
+# Insert at Specific Index
+insert 15 at index 1 in linked list lnklist
+
+# Insert After a Given Node/Value
+insert 25 after node 15 in linked list lnklist
+
+# Insert Before a Given Node/Value
+insert 12 before node 15 in linked list lnklist
+
+# Delete from Beginning (Remove Head)
+delete from beginning of linked list lnklist
+
+# Delete from End (Remove Tail)
+delete from end of linked list lnklist
+
+# Delete Node by Value
+remove 20 from linked list lnklist
+
+# Delete Node at Specific Index
+delete from index 1 in linked list lnklist
+
+# Delete Node After a Given Node/Value
+delete node after 12 in linked list lnklist
+
+# Clear Entire Linked List
+delete entire linked list lnklist
+
+# Traverse / Display Linked List (Forward)
+traverse linked list lnklist
+
+# Traverse Backward (Reverse Display)
+traverse backward linked list lnklist
+
+# Update Value at Specific Index
+update value at index 0 to 99 in linked list lnklist
+
+# Update Node by Value
+update node 20 to 200 in linked list lnklist
+
+# Search Value and Store Position
+search 200 in linked list lnklist and store in pos
+
+# Get Node at Index and Store It
+assign node at index 0 in linked list lnklist to nodeVal
+
+# Assign Size / Length of Linked List
+assign size of linked list lnklist to sz
+assign length of linked list lnklist to sz
+
+# Assign “Is Empty” Result to Variable
+assign check linked list lnklist empty to isEmpty
+
+# Reverse Linked List (Iterative)
+reverse linked list lnklist
+
+# Find Middle Element and Store It
+assign middle element of linked list lnklist to midVal
+
+# Find N-th Node from End and Store It
+assign 3 th node from end of linked list lnklist to nthVal
+
+# Merge Another Sorted Linked List
+create linked list lnklist2
+insert 20 at end of linked list lnklist2
+merge lnklist2 into linked list lnklist
+
+# Remove Duplicates from Linked List
+remove duplicates from linked list lnklist
+
+# Check if Linked List is Palindrome and Store Result
+check if linked list lnklist is palindrome and store in isPal
+
+# Create Hash Table
+create hash table ht
+
+# Put / Insert Key–Value Pair
+put 100 into hash table ht at key 1
+
+# Insert Only If Key Is Absent
+insert 200 into hash table ht if key 2 is absent
+
+# Assign Value of Key to Variable
+assign value of key 1 in hash table ht to val1
+
+# Safe Get with Default Value
+assign safe get of key 5 from hash table ht with default 0 to val5
+
+# Delete Key from Hash Table
+delete key 1 from hash table ht
+
+# Delete Key and Store Removed Value
+delete key 2 from hash table ht and store in removedVal
+
+# Clear Entire Hash Table
+clear entire hash table ht
+
+# Check if Key Exists and Store Result
+assign does hash table ht contain key 1 to hasKey
+
+# Check if Value Exists and Store Result
+assign does hash table ht contain value 200 to hasVal
+
+# Assign Size of Hash Table
+assign size of hash table ht to sz
+
+# Assign “Is Empty” Result to Variable
+assign is hash table ht empty to isEmpty
+
+# Assign Keys to Variable
+assign keys of hash table ht to keysList
+
+# Assign Values to Variable
+assign values of hash table ht to valuesList
+
+# Assign Key–Value Pairs to Variable
+assign key-value pairs of hash table ht to pairsList
+
+# Update Hash Table from Another Hash Table
+create hash table ht2
+put 400 into hash table ht2 at key 4
+put 500 into hash table ht2 at key 5
+update hash table ht from ht2
+
+# Merge Two Hash Tables into a New One
+merge hash table ht and ht2 into mergedHT
+
+# Assign Shallow Copy of Hash Table
+assign shallow copy of hash table ht to htCopy
+
+# Assign Deep Copy of Hash Table
+assign deep copy of hash table ht to htDeepCopy
+
+# Assign Hash of a Value
+assign hash of 100 to hashVal
+
+# Assign Memory Size of Hash Table
+assign memory size of hash table ht to memBytes
+
+# Create Chained Hash Table with Capacity
+create chained hash table ht with capacity 10
+
+# Calculate Hash Index for Key with Capacity
+calculate hash index for 25 with capacity 10 and store in idx
+
+# Insert into Chained Hash Table
+insert 300 at key 3 into chained hash table ht with capacity 10
+
+# Get Value from Chained Hash Table and Store It
+get value of key 3 from chained hash table ht with capacity 10 into val3
+
+# Create Binary Tree with Root
+create binary tree bt with root 50
+
+# Create Empty Binary Tree
+create empty binary tree bt
+
+# Create Binary Tree from Array (Level-Order)
+assign [1,2,4,5,3,7,6,8,9] to arr
+create binary tree bt from array arr level-order
+create binary tree btSub from array subarr level-order
+
+# Clone Binary Tree
+clone binary tree bt to btCopy
+
+# Delete Leaf Node
+delete leaf node 9 from binary tree bt
+
+For your reference I have assign [1,2,4,5,3,7,6,8,9] to arr and to create binary tree bt and this is how it looks:
+            1
+         /     \
+        2       4
+       / \     / \
+      5   3   7   6
+     / \
+    8   9
+
+So, please generate delete leaf node user input again.
+
+# Delete Node with One Child
+delete node 5 with one child from binary tree bt
+
+# Delete Node with Two Children
+delete node 2 with two children from binary tree bt
+
+# Delete Subtree at a Given Node
+delete subtree at node 4 from binary tree bt
+
+# Clear Entire Binary Tree
+clear entire binary tree bt
+
+# Insert Left Child
+insert 10 as left child of 3 in binary tree bt
+
+# Insert Right Child
+insert 11 as right child of 3 in binary tree bt
+
+# Insert at First Available Position (Level-Order Insert)
+insert 12 at first available position in binary tree bt
+
+# Delete Node from Generic Binary Tree
+delete node 7 from generic binary tree bt
+
+# Assign Inorder Traversal
+assign inorder traversal of bt to inorderList
+
+# Assign Preorder Traversal
+assign preorder traversal of bt to preorderList
+
+# Assign Postorder Traversal
+assign postorder traversal of bt to postorderList
+
+# Assign Level-Order Traversal
+assign level order traversal of bt to levelOrderList
+
+# Assign Reverse Level-Order Traversal
+assign reverse level order traversal of binary tree bt to revLevelList
+
+# Assign Zig-Zag (Spiral) Traversal
+assign zig-zag traversal of binary tree bt to zigzagList
+
+# Assign Root of Binary Tree
+assign root of binary tree bt to rootVal
+
+# Assign Parent of a Node
+assign [1,2,4,5,3,7,6,8,9] to arr
+create binary tree bt from array arr level-order
+assign parent of node 3 in binary tree bt to parentVal
+
+# Assign Left Child of a Node
+assign [1,2,4,5,3,7,6,8,9] to arr
+create binary tree bt from array arr level-order
+insert 10 as left child of 3 in binary tree bt
+assign left child of node 3 in binary tree bt to leftChildVal
+
+# Assign Right Child of a Node
+assign [1,2,4,5,3,7,6,8,9] to arr
+create binary tree bt from array arr level-order
+insert 11 as right child of 3 in binary tree bt
+assign right child of node 3 in binary tree bt to rightChildVal
+
+# Assign Sibling of a Node
+assign sibling of node 3 in binary tree bt to siblingVal
+
+# Assign Children of a Node
+assign children of node 3 in binary tree bt to childrenList
+
+# Assign Height of Binary Tree
+assign height of binary tree bt to heightVal
+
+# Assign Depth of a Node
+assign depth of node 3 in binary tree bt to depthVal
+
+# Assign Level of a Node
+assign level of node 3 in binary tree bt to levelVal
+
+# Assign Total Number of Nodes
+assign total nodes of binary tree bt to totalNodes
+
+# Assign Number of Leaf Nodes
+assign leaf nodes of binary tree bt to leafCount
+
+# Assign Number of Internal Nodes
+assign internal nodes of binary tree bt to internalCount
+
+# Assign Number of Full Nodes
+assign full nodes of binary tree bt to fullCount
+
+# Assign Width of Binary Tree
+assign width of binary tree bt to widthVal
+
+# Assign “Is Empty” Result
+assign is binary tree bt empty to isEmpty
+
+# Assign “Is Full” Binary Tree Result
+assign is binary tree bt full to isFull
+
+# Assign “Is Complete” Binary Tree Result
+assign is binary tree bt complete to isComplete
+
+# Assign “Is Perfect” Binary Tree Result
+assign is binary tree bt perfect to isPerfect
+
+# Assign “Is Balanced” Binary Tree Result
+assign is binary tree bt balanced to isBalanced
+
+# Assign “Is Symmetric” Binary Tree Result
+assign is binary tree bt symmetric to isSymmetric
+
+# Are Two Binary Trees Identical
+assign are binary trees bt and bt2 identical to areIdentical
+
+# Check if Value Is Present in Binary Tree
+assign is value 7 present in binary tree bt to isPresent
+
+# Assign Node with Given Value
+assign node with value 7 in binary tree bt to node7
+
+# Search Path to a Value
+search for 7 in binary tree bt and assign path to path7
+
+# Mirror Binary Tree
+mirror binary tree bt
+
+# Invert Binary Tree
+invert binary tree bt
+
+# Flatten Binary Tree to Linked List
+flatten binary tree bt to linked list
+
+# Convert Binary Tree to Doubly Linked List
+convert binary tree bt to doubly linked list in dll
+
+# Convert Binary Tree to Array (Level-Order)
+convert binary tree bt to array level-order in arrBT
+
+# Build Binary Tree from Preorder and Inorder Arrays
+build binary tree btFromPreIn from preorder preorderList and inorder inorderList
+
+# Build Binary Tree from Inorder and Postorder Arrays
+build binary tree btFromInPost from inorder inorderList and postorder postorderList
+
+# Lowest Common Ancestor (LCA)
+assign lowest common ancestor of 8 and 9 in binary tree bt to lcaVal
+
+# Diameter of Binary Tree
+assign diameter of binary tree bt to diameterVal
+
+# Maximum Path Sum
+assign maximum path sum of binary tree bt to maxPathSum
+
+# Check if One Tree Is a Subtree of Another
+assign [5,8,9] to subarr
+assign is binary tree btSub a subtree of bt to isSubtree
+
+# Boundary Traversal of Binary Tree
+assign boundary traversal of binary tree bt to boundaryList
+
+# Vertical Order Traversal
+assign vertical order traversal of binary tree bt to verticalList
+
+# Top View of Binary Tree
+assign top view of binary tree bt to topViewList
+
+# Bottom View of Binary Tree
+assign bottom view of binary tree bt to bottomViewList
+
+# Left View of Binary Tree
+assign left view of binary tree bt to leftViewList
+
+# Right View of Binary Tree
+assign right view of binary tree bt to rightViewList
+
+# Distance Between Two Nodes
+assign distance between 8 and 6 in binary tree bt to distVal
+
+# Serialize Binary Tree to String
+assign serialized string of binary tree bt to treeStr
+
+# Deserialize Binary Tree from String
+assign binary tree from string treeStr to btFromStr
+
+# Serialize Binary Tree to Array
+assign serialized array of binary tree bt to arrSerialized
+
+# Persist Binary Tree to File
+persist binary tree bt to file "tree_data.txt"
+
+# Create Empty Binary Search Tree
+create empty bst binSrhTree
+
+# Create BST with Root Value
+create bst binSrhTree with root 50
+
+# Build BST from Array
+assign [50, 30, 70, 20, 40, 60, 80] to bstArr
+build bst binSrhTree from array bstArr
+
+        50
+      /    \
+    30      70
+   /  \    /  \
+ 20   40  60   80
+
+# Clone Binary Search Tree
+clone bst binSrhTree to binSrhTreeCopy
+
+# Insert Value into BST
+insert 65 into bst binSrhTree
+
+# Insert Multiple Values into BST
+insert values [10, 35, 75] into bst binSrhTree
+
+# Delete Value from BST
+delete 30 from bst binSrhTree
+
+# Search Node in BST
+assign node 65 in bst binSrhTree to node65
+
+# Assign Parent of a Value in BST
+assign parent of 65 in bst binSrhTree to parent65
+
+# Assign Path to a Value in BST
+assign path to 65 in bst binSrhTree to path65
+
+# Find Minimum Value in BST
+assign min of bst binSrhTree to minVal
+
+# Find Maximum Value in BST
+assign max of bst binSrhTree to maxVal
+
+# Delete Minimum Value from BST
+delete min from bst binSrhTree
+
+# Delete Maximum Value from BST
+delete max from bst binSrhTree
+
+# Find Inorder Successor
+assign inorder successor of 65 in bst binSrhTree to successor65
+
+# Find Inorder Predecessor
+assign inorder predecessor of 65 in bst binSrhTree to predecessor65
+
+# Check if Tree Is a Valid BST
+check if binSrhTree is valid bst and assign to isValidBST
+
+# Check if Tree Is Balanced
+check if binSrhTree is balanced and assign to isBalancedBST
+
+# Assign Height of Tree
+assign height of binSrhTree to heightBST
+
+# Assign Node Count of Tree
+assign node count of binSrhTree to nodeCountBST
+
+# Assign Leaf Count of Tree
+assign leaf count of binSrhTree to leafCountBST
+
+# Assign Internal Node Count of Tree
+assign internal node count of binSrhTree to internalCountBST
+
+# Lowest Common Ancestor (LCA) in BST
+assign lca of 20 and 40 in bst binSrhTree to lcaBST
+
+# K-th Smallest Element in BST
+assign 3th smallest in bst binSrhTree to kthSmallestVal
+
+# K-th Largest Element in BST
+assign 2th largest in bst binSrhTree to kthLargestVal
+
+# Range Search in BST
+assign elements between 25 and 70 in bst binSrhTree to rangeVals
+
+# Convert BST to Sorted Array
+convert bst binSrhTree to sorted array sortedArr
+
+# Build Balanced BST from Sorted Array
+build balanced bst balancedBST from sorted array sortedArr
+
+# Linear Search in First Occurrence
+assign [12, 7, 25, 3, 18, 42, 9, 18, 30] to searchArr
+find first occurrence of 18 in searchArr and store in idxFirst
+
+# Linear Search in Last Occurrence
+find last occurrence of 18 in searchArr and store in idxLast
+
+# All Indices of a Value
+find all indices of 18 in searchArr and store in idxAll
+
+# Count Occurrences
+find total count of 18 in searchArr and store in count18
+
+# Contains (Existence Check)
+check if searchArr contains 18 and store in has18
+
+# First Condition
+find first x in searchArr where x > 20 and store in firstGt20
+
+# All Elements Matching Condition
+find all x in searchArr where x > 20 and store in allGt20
+
+# Count Matching Condition
+find total x in searchArr satisfying x > 20 and assign to countGt20
+
+# Case-Insensitive Search
+search searchArr ignoring case for 18 and put index in ciIdx
+
+# Range-Bounded Search
+search 18 in searchArr from index 2 to 7 and store in rangeIdx
+
+# Circular Search
+circular search 18 in searchArr starting at 6 and store in circIdx
+
+# Find Minimum
+find minimum value in searchArr and store in minVal
+
+# Find Maximum
+find maximum value in searchArr and store in maxVal
+
+# First Element Greater Than Value
+find first element greater than 18 in searchArr and store in firstGt18
+
+# First Element Less Than Value
+find first element less than 18 in searchArr and store in firstLt18
+
+# Nearest Match to Index
+find occurrence of 18 in searchArr nearest to index 4 and store in nearIdx
+
+# Exact Match in Binary Search
+assign [3, 7, 9, 12, 18, 18, 25, 30, 42] to sortedArr
+binary search 18 in sortedArr and store in bsIdx
+
+# Recursive Binary Search
+recursive binary search 18 in sortedArr and store in bsRecIdx
+
+# Iterative
+iterative binary search 18 in sortedArr and store in bsIterIdx
+
+# Lower Bound
+find lower bound of 18 in sortedArr and store in lbIdx
+
+# Upper Bound
+find upper bound of 18 in sortedArr and store in ubIdx
+
+# First Occurrence
+binary search first occurrence of 18 in sortedArr and store in firstBsIdx
+
+# Last Occurrence
+binary search last occurrence of 18 in sortedArr and store in lastBsIdx
+
+# Count Occurrences
+binary search count of 18 in sortedArr and store in bsCount18
+
+# Search Insert Position
+find search insert position of 20 in sortedArr and store in insPos20
+
+# First Element Satisfying Condition
+binary search first where x >= 18 in sortedArr and store in firstCondIdx
+
+# Last Element Satisfying Condition
+binary search last where x <= 18 in sortedArr and store in lastCondIdx
+
+# Rotated Array Search
+assign [18, 25, 30, 42, 3, 7, 9, 12, 18] to rotatedArr
+search 18 in rotated array rotatedArr and store in rotIdx
+
+# Find Pivot Index (Rotated Array)
+binary search pivot of rotatedArr and assign to pivotIdx
+
+# Minimum in Rotated Array
+find minimum in rotated array rotatedArr and store in rotMinVal
+
+# Exponential Search — Exact Match
+exponential search 30 in sortedArr and store in expIdx
+
+# Minimum Feasible Value
+binary search min answer where x * x >= 200 between 0 and 50 and store in minAns
+
+# Maximum Feasible Value
+binary search max answer where x * x <= 200 between 0 and 50 and store in maxAns
+
+# Strictly Sorted Matrix
+assign [[3, 7, 9], [12, 18, 25], [30, 42, 55]] to strictMat
+binary search 25 in strictly sorted matrix strictMat and store in matIdx
+
+# Row-Wise Sorted Matrix
+assign [[3, 7, 9], [12, 18, 25], [30, 42, 55]] to rowMat
+search 18 in row-wise sorted matrix rowMat and store in matPos
+
+# Bubble Sort
+assign [29, 10, 14, 37, 13, 14, 5, 42, 8] to sortArr
+standard bubble sort sortArr
+
+# Optimized Bubble Sort
+optimized bubble sort sortArr
+
+# Recursive
+recursive bubble sort sortArr
+
+# Ascending Order
+ascending bubble sort sortArr
+
+# Descending Order
+descending bubble sort sortArr
+
+# Ascending Order in Selection Sort
+assign [29, 10, 14, 37, 13, 14, 5, 42, 8] to sortArr
+selection sort sortArr
+
+# Descending Order
+descending selection sort sortArr
+
+# Stable Variant
+stable selection sort sortArr
+
+# Recursive
+recursive selection sort sortArr
+
+# Double (Bidirectional)
+double selection sort sortArr
+
+# Partial Range
+selection sort sortArr from 2 to 6
+
+# Ascending Order in Insertion Sort
+assign [29, 10, 14, 37, 13, 14, 5, 42, 8] to sortArr
+insertion sort sortArr
+
+# Descending Order
+descending insertion sort sortArr
+
+# Binary Insertion Variant
+binary insertion sort sortArr
+
+# Recursive
+recursive insertion sort sortArr
+
+# Partial Range
+insertion sort sortArr from 1 to 7
+
+# Recursive (Standard) in Quick Sort
+assign [29, 10, 14, 37, 13, 14, 5, 42, 8] to sortArr
+quick sort sortArr
+
+# First Element as Pivot
+quick sort sortArr using first pivot
+
+# Random Pivot
+randomized quick sort sortArr
+
+# Median-of-Three Pivot
+quick sort sortArr using median of three
+
+# Descending Order
+descending quick sort sortArr
+
+# Stable Variant
+stable quick sort sortArr
+
+# Stable Counting Sort
+assign [4, 2, 7, 3, 2, 9, 1, 5, 3] to countArr
+stable counting sort countArr
+
+# General Counting Sort
+sort countArr using counting sort
+
+# With Explicit Range
+counting sort countArr with range 1 to 9
+
+# Descending Order
+counting sort countArr descending
+
+# Subarray Range
+counting sort countArr from index 2 to 7
+
+# Base-10 (Standard) Radix Sort
+assign [4, 2, 7, 3, 2, 9, 1, 5, 3] to countArr
+radix sort countArr
+
+# LSD Radix Sort
+lsd radix sort countArr
+
+# MSD Radix Sort
+msd radix sort countArr
+
+# Signed Integers (With Negatives)
+assign [4, -2, 7, -3, 0, 5, -1, 9] to signedArr
+signed radix sort signedArr
+
+# Strings (Lexicographical)
+assign ["cat", "apple", "bat", "dog", "ant"] to strArr
+string radix sort strArr
+
+# Custom Base
+radix sort countArr base 2
+
+# Binary / Bitwise
+binary radix sort countArr
+
+# Bucket Variant
+bucket radix sort countArr
+
+# In-Place / Binary Exchange
+inplace radix sort countArr
+
+# Bottom-Up (Iterative) Merge Sort
+assign [29, 10, 14, 37, 13, 14, 5, 42, 8] to sortArr
+bottom up merge sort sortArr
+
+# In-Place
+inplace merge sort sortArr
+
+# Stable
+stable merge sort sortArr
+
+# Descending Order
+descending merge sort sortArr
+
         </pre>
       </div>
 
@@ -1388,12 +2199,6 @@ make a copy of dict i4 to j4
         <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
         <li>Open a Pull Request</li>
       </ol>
-    
-      <h3>Does HCL support web development?</h3>
-      <p class="faq-code-block-para">
-        Yes! You can compile HCL to JavaScript for frontend development or to Python
-        for backend frameworks like Flask or Django. Example:
-      </p>
     
       <pre class="code-block">
     # Compiles to Express.js, Flask, or similar
