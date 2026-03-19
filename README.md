@@ -10,7 +10,7 @@ This project is being developed as a **Final Year Degree Project** at:
 *Affiliated with Mumbai University*
 
 ### 👥 Development Team
-* **Manish Sanjeev Mhatre**
+* **Manish Mhatre**
 * **Swagat Rajage**
 * **Tanishka Suryarao**
 * **Kratika Vyas**
