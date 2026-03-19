@@ -156,7 +156,7 @@ button:hover .btn-icon-img {
   backdrop-filter: blur(2px);
   border-radius: 24px;
 
-  /* NEW: constrain width like guide page */
+  /* NEW: constrain width like resources page */
   max-width: 1200px;
   margin: 120px auto 0;
 }
@@ -225,7 +225,7 @@ button:hover .btn-icon-img {
   margin-top: 0;
 }
 
-/* GUIDE PAGE */
+/* RESOURCES PAGE */
 
 /* CODE BLOCK */
 .code-block {
@@ -354,7 +354,7 @@ button:hover .btn-icon-img {
   display: none;
 }
 
-/* Installation Guide h2 spacing */
+/* Installation resources h2 spacing */
 #install h2 {
   margin-top: 56px;
   /* margin-bottom: 32px; */
