@@ -364,8 +364,40 @@ button:hover .btn-icon-img {
   margin-top: 0;
 }
 
+#install h3 {
+  margin-top: 56px;
+  /* margin-bottom: 32px; */
+}
+
+#install h3:first-of-type {
+  margin-top: 0;
+}
+
 #install p {
   margin-bottom: 24px;
+}
+
+/* Installation screenshots — responsive */
+.screenshot {
+  display: block;
+  width: 70%;
+  max-width: 70%;
+  height: auto;
+
+  margin: 16px 0 28px;
+
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  /* subtle glass feel matching UI */
+  background: rgba(2, 6, 23, 0.6);
+}
+
+/* Optional: slightly smaller images on very large screens */
+@media (min-width: 1200px) {
+  .screenshot {
+    max-width: 900px;
+  }
 }
 
 /* Syntax & Code spacing normalization */
