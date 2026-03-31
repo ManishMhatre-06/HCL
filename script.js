@@ -119,9 +119,11 @@ async function fetchFeedbackData() {
         const data = await response.json();
         
         if (data.values) {
-            renderFeedbackCards(data.values);
+            // 1. Reverse the rows so the newest (bottom of sheet) come first
+            const latestFirst = data.values.reverse();
+            renderFeedbackCards(latestFirst);
         } else {
-            console.warn("No feedback data found.");
+            document.getElementById('feedback-container').innerHTML = '<p style="color: var(--muted); text-align: center;">No feedback available yet.</p>';
         }
     } catch (error) {
         console.error("Error connecting to Google Sheets:", error);
@@ -132,18 +134,26 @@ function renderFeedbackCards(rows) {
     const container = document.getElementById('feedback-container');
     container.innerHTML = ''; 
 
-    rows.forEach(row => {
-        // Mapping columns from your specific sheet
+    let displayedCount = 0; // Counter to track how many cards we've shown
+
+    for (const row of rows) {
+        // Stop once we have reached 6 cards
+        if (displayedCount >= 6) break;
+
+        const rating = parseInt(row[15]) || 0;
+
+        // Filter: Only 3 stars or higher
+        if (rating < 3) continue;
+
+        // Data Extraction
         const timestamp = row[0] || "";
         const role = row[1] || "User";
-        const name = row[2] || row[7] || row[13] || "Contributor"; // Checks all role name columns
-        const rating = parseInt(row[15]) || 0;
+        const name = row[2] || row[7] || row[13] || "Contributor";
         const comment = row[25] || "No additional comments provided.";
 
-        // Creating the Card Element
+        // Build the Card
         const card = document.createElement('div');
         card.className = 'hcl-card';
-
         card.innerHTML = `
             <div class="hcl-card-header">
                 <div>
@@ -154,7 +164,7 @@ function renderFeedbackCards(rows) {
             </div>
 
             <div class="hcl-stars">
-                ${'★'.repeat(Math.max(0, Math.min(5, rating)))}${'☆'.repeat(Math.max(0, 5 - rating))}
+                ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
             </div>
 
             <p class="hcl-comment">"${comment}"</p>
@@ -162,12 +172,16 @@ function renderFeedbackCards(rows) {
             <ul class="hcl-metadata">
                 ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
                 ${row[18] ? `<li><strong>Compiler Acc:</strong> ${row[18]}/5</li>` : ''}
-                ${row[22] ? `<li><strong>Key Strength:</strong> ${row[22]}</li>` : ''}
             </ul>
         `;
+        
         container.appendChild(card);
-    });
+        displayedCount++; // Increment the counter
+    }
+
+    if (container.innerHTML === '') {
+        container.innerHTML = '<p style="color: var(--muted); text-align: center;">Latest reviews are being moderated.</p>';
+    }
 }
 
-// Start the fetch process
 document.addEventListener('DOMContentLoaded', fetchFeedbackData);
