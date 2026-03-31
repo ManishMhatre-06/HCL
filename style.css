@@ -202,6 +202,89 @@ button:hover .btn-icon-img {
   text-align: left;
 }
 
+/* FEEDBACK SECTION STYLING */
+.feedback-section {
+    padding: 80px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.hcl-card {
+    background: var(--card); /* Inherits from your style.css */
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s ease;
+}
+
+.hcl-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.hcl-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.hcl-user-name {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.hcl-user-role {
+    font-size: 0.75rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.hcl-timestamp {
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+.hcl-stars {
+    color: #fbbf24; /* Gold color for stars */
+    font-size: 1rem;
+}
+
+.hcl-comment {
+    font-style: italic;
+    color: #e5e7eb;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.hcl-metadata {
+    list-style: none;
+    padding: 12px 0 0 0;
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+}
+
+.hcl-metadata li {
+    margin-bottom: 4px;
+}
+
+.hcl-metadata strong {
+    color: #94a3b8;
+}
+
 /* DOWNLOAD PAGES */
 
 .download-cta {
