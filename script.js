@@ -107,9 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+/* ---------- Feedback Cards from Google Sheets ---------- */
 const API_KEY = 'AIzaSyAGTkFxuoKAWUJPOSy-RFLNdOqs_QJRavo'; 
-const SHEET_ID = '1ObZaSCYjn0sooa8s4zzzDSxWFOMte4tQDYDapN2yiuY';
-const RANGE = 'Form Responses 1!A2:Z100'; 
+const SHEET_ID = '188-NcqN4pOCVA9jO6DivizquXt-5FW66sldx9cBEsJw';
+const RANGE = 'Form Responses 1!A2:AG100'; 
 
 async function fetchFeedbackData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
@@ -138,9 +140,9 @@ function renderFeedbackCards(rows) {
 
     for (const row of rows) {
         // Stop once we have reached 6 cards
-        if (displayedCount >= 6) break;
+        if (displayedCount >= 8) break;
 
-        const rating = parseInt(row[15]) || 0;
+        const rating = parseInt(row[21]) || 0;
 
         // Filter: Only 3 stars or higher
         if (rating < 3) continue;
@@ -148,8 +150,8 @@ function renderFeedbackCards(rows) {
         // Data Extraction
         const timestamp = row[0] || "";
         const role = row[1] || "User";
-        const name = row[2] || row[7] || row[13] || "Contributor";
-        const comment = row[25] || "No additional comments provided.";
+        const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
+        const comment = row[31] || "No additional comments provided.";
 
         // Build the Card
         const card = document.createElement('div');
@@ -171,7 +173,7 @@ function renderFeedbackCards(rows) {
 
             <ul class="hcl-metadata">
                 ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
-                ${row[18] ? `<li><strong>Compiler Acc:</strong> ${row[18]}/5</li>` : ''}
+                ${row[18] ? `<li><strong>Compiler Acc:</strong> ${row[24]}/5</li>` : ''}
             </ul>
         `;
         
