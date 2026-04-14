@@ -209,13 +209,13 @@ function renderFeedbackCards(rows) {
 document.addEventListener('DOMContentLoaded', fetchFeedbackData);
 
 /* ===== MOBILE NAV TOGGLE ===== */
-document.addEventListener("DOMContentLoaded", () => {
+function initMobileMenu() {
   const menuBtn = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
   const closeBtn = document.querySelector(".close-menu");
   const overlay = document.querySelector(".mobile-overlay");
 
-  if (!menuBtn) return;
+  if (!menuBtn || !mobileMenu || !closeBtn || !overlay) return;
 
   menuBtn.addEventListener("click", () => {
     mobileMenu.classList.add("active");
@@ -231,4 +231,4 @@ document.addEventListener("DOMContentLoaded", () => {
     mobileMenu.classList.remove("active");
     overlay.classList.remove("active");
   });
-});
+}

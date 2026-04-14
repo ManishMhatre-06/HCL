@@ -57,7 +57,7 @@
       <ul>
         <li><strong>HCL Language:</strong> Runtime environment for executing natural language programs</li>
         <li><strong>HCL Compiler:</strong> Converts HCL instructions into executable Python code</li>
-        <li><strong>Documentation:</strong> Complete guide covering installation, syntax, and usage</li>
+        <li><strong>Research Paper:</strong> Download the Research Paper of HCL</li>
       </ul>
 
       <h2>Getting Started</h2>
@@ -77,6 +77,8 @@
       .then(res => res.text())
       .then(data => {
         document.getElementById("header").innerHTML = data;
+      
+        initMobileMenu();
       });
 
     fetch("./partials/footer.html")
