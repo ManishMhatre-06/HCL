@@ -107,6 +107,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+/* ---------- Installation Guide toggle ---------- */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash;
+
+  if (hash) {
+    // Hide all sections
+    document.querySelectorAll(".docs-content").forEach(sec => {
+      sec.classList.add("hidden");
+      sec.classList.remove("active");
+    });
+
+    // Show target section
+    const target = document.querySelector(hash);
+    if (target) {
+      target.classList.remove("hidden");
+      target.classList.add("active");
+    }
+  }
+});
 
 /* ---------- Feedback Cards from Google Sheets ---------- */
 const API_KEY = 'AIzaSyAGTkFxuoKAWUJPOSy-RFLNdOqs_QJRavo'; 
@@ -124,8 +144,6 @@ async function fetchFeedbackData() {
             // 1. Reverse the rows so the newest (bottom of sheet) come first
             const latestFirst = data.values.reverse();
             renderFeedbackCards(latestFirst);
-        } else {
-            document.getElementById('feedback-container').innerHTML = '<p style="color: var(--muted); text-align: center;">No feedback available yet.</p>';
         }
     } catch (error) {
         console.error("Error connecting to Google Sheets:", error);
@@ -145,13 +163,14 @@ function renderFeedbackCards(rows) {
         const rating = parseInt(row[21]) || 0;
 
         // Filter: Only 3 stars or higher
-        if (rating < 3) continue;
+        if (rating < 2) continue;
 
         // Data Extraction
         const timestamp = row[0] || "";
         const role = row[1] || "User";
         const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
-        const comment = row[31] || "No additional comments provided.";
+        const feedback1 = row[28] || "N.A.";
+        const feedback2 = row[29] || "N.A.";
 
         // Build the Card
         const card = document.createElement('div');
@@ -169,10 +188,12 @@ function renderFeedbackCards(rows) {
                 ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
             </div>
 
-            <p class="hcl-comment">"${comment}"</p>
+            <p class="hcl-feedback">"${feedback1}"</p>
+            <p class="hcl-feedback">"${feedback2}"</p>
 
             <ul class="hcl-metadata">
                 ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
+                ${row[9] ? `<li><strong>College:</strong> ${row[9]}</li>` : ''}
                 ${row[18] ? `<li><strong>Compiler Acc:</strong> ${row[24]}/5</li>` : ''}
             </ul>
         `;
@@ -181,9 +202,33 @@ function renderFeedbackCards(rows) {
         displayedCount++; // Increment the counter
     }
 
-    if (container.innerHTML === '') {
-        container.innerHTML = '<p style="color: var(--muted); text-align: center;">Latest reviews are being moderated.</p>';
-    }
+    // Do nothing if no valid feedback
+    if (container.innerHTML === '') return;
 }
 
 document.addEventListener('DOMContentLoaded', fetchFeedbackData);
+
+/* ===== MOBILE NAV TOGGLE ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const menuBtn = document.querySelector(".menu-toggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const closeBtn = document.querySelector(".close-menu");
+  const overlay = document.querySelector(".mobile-overlay");
+
+  if (!menuBtn) return;
+
+  menuBtn.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+    overlay.classList.add("active");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+
+  overlay.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+    overlay.classList.remove("active");
+  });
+});

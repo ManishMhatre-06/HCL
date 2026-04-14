@@ -55,10 +55,36 @@
     </aside>
 
     <section class="docs-content" id="overview">
-      <h2>Documentation Overview</h2>
-      <p>
-        Welcome to the official documentation for Human Centric Language (HCL). This guide provides comprehensive information on how to install, use, and master HCL, a high-level instruction language designed to bridge human prompts and real programming languages. Whether you're a beginner looking to learn programming fundamentals or an experienced developer seeking a more intuitive way to code, this documentation has you covered.
-      </p>
+      <h2>Introduction:</h2>
+      <p>The Human-Centric Programming Language (HCL) bridges this gap by prioritizing intuitive, readable instructions over verbose boilerplate code. As an early prototype, HCL enables users to express ideas in everyday English sentences while generating reliable Python code behind the scenes.</p>
+      
+      <h3>Problem Statement:</h3>
+      <p>The lack of a programming language that allows users to write code using simple, natural English sentences while maintaining reliability, advanced data structures, and seamless execution creates a steep learning barrier for beginners and non-programmers. Traditional languages force users to focus on rigid syntax, brackets, indentation, and boilerplate code instead of solving actual problems.</p>
+
+      <h3>Objective:</h3>
+      <p>The main objective of this project is to develop a Human-Centric Programming Language (HCL) that enables users to write programs using everyday English sentences (e.g., “set age to 42” or “create empty avl tree scores”) instead of complex syntax rules. The system uses a robust rule-based pattern-matching engine powered by actions.jsonl combined with a custom AST generator to convert these natural language instructions into correct, executable Python code. The standalone compiler (Compiler.exe) provides a modern notebook-style interface and automatically downloads a fine-tuned hybrid AI model from Hugging Face on first run, ensuring a lightweight yet powerful development experience.</p>
+
+      <h3>Key Features:</h3>
+      <ol>
+        <li><strong>Modern Notebook Interface:</strong> A clean, tabbed notebook-style IDE with block-based editing, real-time output, and interactive terminal support.</li>
+        <li><strong>Multi-Language Execution Engine:</strong> Supports execution of Python, C, C++, and the custom HCL language within the same environment.</li>
+        <li><strong>AI Integration:</strong>Integrated with a locally hoste d Large Language Model using llama.cpp for future intelligent assistance.</li>
+        </li><strong>Dynamic Model Downloader:</strong>Automatically downloads the required AI model (~4 GB) from Hugging Face on first launch with progress tracking.</li>
+        <li><strong>Actions System & Parser:</strong>A robust actions.jsonl-based pattern matching system with a custom parser that converts natural language commands into Python Abstract Syntax Tree (AST) for execution.</li>
+        <li><strong>Professional Build & Distribution:</strong>Compiled as a standalone executable using Nuitka and packaged with a professional installer created using Inno Setup.</li>
+        <li><strong>User Experience:</strong>Features include dark/light theme support, folder tree navigation, auto-resizing blocks, save/load functionality, and an intuitive REPL mode.</li>
+      </ol>
+      <p></p>
+      
+      <h3>Technical Architecture:</h3>
+      <ol>
+        <li>Frontend: Custom Tkinter-based GUI with modern styling</li>
+        <li>Backend: Custom AST Generator and execution engine (parser.py + run.py)</li>
+        <li>AI Engine: llama.cpp with GGUF quantized model</li>
+        <li>Build System: Nuitka (for standalone .exe)</li>
+        <li>Installer: Inno Setup</li>
+      </ol>
+
 
     </section>
     <section class="docs-content hidden" id="language-install">
@@ -73,46 +99,199 @@
       </ul>
     
       <h4>Download and Installation Steps</h4>
-    
+
       <h2>Windows</h2>
+
       <h3>Phase 1: Downloading and Initializing Setup</h3>
       <ul class="step-list">
-        <li class="step-item"><span class="highlight">Download the Installer:</span> Visit the official download page <a href="https://hcl-111.pages.dev/download-language">hcl-111.pages.dev/download-language</a> and click the <strong>Download HCL Language v1.0.0</strong> button. Once the download is complete, you will see <code>mysetup.exe</code> in your browser's download history.</li>
-        <img src="./assets/installation/s1.png" alt="Download Page" class="screenshot">
-        <img src="./assets/installation/s2.png" alt="Download History" class="screenshot">
-        <li class="step-item"><span class="highlight">Locate the File:</span> Open your file explorer and navigate to the folder where the file was saved.</li>
-        <img src="./assets/installation/s3.png" alt="File Explorer" class="screenshot">
-        <!-- <li class="step-item"><span class="highlight">Bypass Windows Security:</span> If a "Windows protected your PC" warning appears, click on <strong>More info</strong> (if visible) and then select <strong>Run anyway</strong> to start the installation.</li>
-        <img src="./assets/installation/s4.png" alt="Security Warning" class="screenshot"> -->
+      
+        <li class="step-item">
+          <span class="highlight">Download the Installer:</span> 
+          Visit the official download page 
+          <a href="https://hcl-111.pages.dev/download-language">hcl-111.pages.dev/download-language</a> 
+          and click <strong>Download HCL Language v1.0.0</strong>. 
+        </li>
+        <img src="./assets/language_installation/l1.png" alt="Download Page" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Verify Download:</span> 
+          Once completed, the file <code>HCL_Installer_v1.0.0.exe</code> will appear in your browser’s download history.
+        </li>
+        <img src="./assets/language_installation/l2.png" alt="Download History" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Locate the Installer:</span> 
+          Open File Explorer and navigate to your Downloads folder.
+        </li>
+        <img src="./assets/language_installation/l3.png" alt="File Explorer" class="screenshot">
+      
       </ul>
+
 
       <h3>Phase 2: Installation Process</h3>
       <ul class="step-list">
-        <li class="step-item"><span class="highlight">Select Destination:</span> Choose the folder where you want HCL to be installed. The default path is <code>D:\Human-Centric Language (HCL)</code>. Click <strong>Next</strong>.</li>
-        <img src="./assets/installation/s5.png" alt="Destination Selection" class="screenshot">
-        <li class="step-item"><span class="highlight">Additional Tasks:</span> Check the box for <strong>Create a desktop shortcut</strong> if you want quick access from your home screen. Click <strong>Next</strong>.</li>
-        <img src="./assets/installation/s6.png" alt="Additional Tasks" class="screenshot">
-        <li class="step-item"><span class="highlight">Review and Install:</span> Review your chosen settings. If everything looks correct, click <strong>Install</strong>.</li>
-        <img src="./assets/installation/s7.png" alt="Ready to Install" class="screenshot">
-        <li class="step-item"><span class="highlight">Finish Setup:</span> Once the installation bar completes, ensure the <strong>Launch Human-Centric Language (HCL)</strong> box is checked and click <strong>Finish</strong>.</li>
-        <img src="./assets/installation/s8.png" alt="Installation Complete" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Select Destination Location:</span> 
+          Choose the installation directory. The default path is 
+          <code>C:\Program Files (x86)\HCL</code>. Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/language_installation/l4.png" alt="Destination Selection" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Start Menu Folder:</span> 
+          Select the folder name for program shortcuts (default: <code>HCL</code>). Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/language_installation/l5.png" alt="Start Menu Folder" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Additional Tasks:</span> 
+          Optionally enable <strong>Create Desktop Shortcut</strong> for quick access. Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/language_installation/l6.png" alt="Additional Tasks" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Review and Install:</span> 
+          Confirm your settings and click <strong>Install</strong> to begin installation.
+        </li>
+        <img src="./assets/language_installation/l7.png" alt="Ready to Install" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Installation Progress:</span> 
+          The installer will extract files and configure the environment automatically.
+        </li>
+        <img src="./assets/language_installation/l8.png" alt="Installing" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Complete Setup:</span> 
+          Once installation finishes, click <strong>Finish</strong> to exit the setup wizard.
+        </li>
+        <img src="./assets/language_installation/l9.png" alt="Installation Complete" class="screenshot">
+      
       </ul>
 
-      <h3>Phase 3: Launching the Terminal</h3>
+
+      <h3>Phase 3: Verifying Installation & Running HCL</h3>
       <ul class="step-list">
-        <li class="step-item"><span class="highlight">Verify Installed Files:</span> Navigate to your installation directory. You should see <code>hcl.exe</code>, <code>terminal.exe</code>, and other system files like <code>actions.jsonl</code> in the folder.</li>
-        <img src="./assets/installation/s9.png" alt="Installed Files" class="screenshot">
-        <li class="step-item"><span class="highlight">Run the REPL:</span> Open <code>terminal.exe</code>. A command-line interface will appear showing the diagnostic logs. Once the <strong>Advacode REPL (AST-only mode)</strong> initializes and you see the <code>>>></code> prompt, the environment is ready for use.</li>
-        <img src="./assets/installation/s10.png" alt="HCL Terminal" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Verify Installed Files:</span> 
+          Navigate to <code>C:\Program Files (x86)\HCL</code>. You should see files like 
+          <code>hcl.exe</code>, <code>compiler.exe</code>, and <code>terminal.exe</code>.
+        </li>
+        <img src="./assets/language_installation/l10.png" alt="Installed Files" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Run HCL Terminal:</span> 
+          Open <code>terminal.exe</code> to launch the HCL REPL environment. 
+          Once you see the system status logs and prompt, HCL is ready to use.
+        </li>
+      
       </ul>
     
     </section>
 
     <section class="docs-content hidden" id="compiler-install">
       <h2>Installation Guide for Compiler</h2>
-      <p>
-        The HCL Compiler is a powerful tool that converts Human Centric Language instructions into executable code in Python, C, C++, or JavaScript. This guide will walk you through the installation process for the HCL Compiler, ensuring you have everything set up to start compiling your HCL code efficiently.
-      </p>
+      
+      <h4>System Requirements</h4>
+      <ul>
+        <li><strong>Operating System:</strong> Windows 10+</li>
+        <li><strong>Memory:</strong> 4GB RAM minimum (8GB recommended)</li>
+        <li><strong>Disk Space:</strong> 6GB free space</li>
+        <li><strong>Dependencies:</strong> Python 3.10+ (for runtime execution)</li>
+      </ul>
+
+      <h4>Download and Installation Steps</h4>
+
+      <h2>Windows</h2>
+
+      <h3>Phase 1: Downloading and Initializing Setup</h3>
+      <ul class="step-list">
+      
+        <li class="step-item">
+          <span class="highlight">Download the Compiler Installer:</span> 
+          Visit the official download page 
+          <a href="https://hcl-111.pages.dev/download-compiler">hcl-111.pages.dev/download-compiler</a> 
+          and click <strong>Download HCL Compiler v1.0.0</strong>.
+        </li>
+        <img src="./assets/compiler_installation/c1.png" alt="Compiler Download Page" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Verify Download:</span> 
+          After completion, the file <code>HCL_SetupCompiler.exe</code> will appear in your browser’s download history.
+        </li>
+        <img src="./assets/compiler_installation/c2.png" alt="Download History" class="screenshot">
+      
+      </ul>
+
+
+      <h3>Phase 2: Installation Process</h3>
+      <ul class="step-list">
+      
+        <li class="step-item">
+          <span class="highlight">Select Destination Location:</span> 
+          Choose the installation directory. The default path is 
+          <code>C:\Program Files (x86)\HCL</code>. Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/compiler_installation/c3.png" alt="Destination Selection" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Start Menu Folder:</span> 
+          Select the folder for program shortcuts (default: <code>HCL</code>). Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/compiler_installation/c4.png" alt="Start Menu Folder" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Additional Tasks:</span> 
+          Optionally enable <strong>Create Desktop Shortcut</strong> for quick access. Click <strong>Next</strong>.
+        </li>
+        <img src="./assets/compiler_installation/c5.png" alt="Additional Tasks" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Review and Install:</span> 
+          Confirm your settings and click <strong>Install</strong> to begin installation.
+        </li>
+        <img src="./assets/compiler_installation/c6.png" alt="Ready to Install" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Installation Progress:</span> 
+          The installer will extract files and configure the compiler environment.
+        </li>
+        <img src="./assets/compiler_installation/c7.png" alt="Installing" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Installation Confirmation:</span> 
+          A confirmation dialog will indicate that the compiler was installed successfully. Click <strong>OK</strong>.
+        </li>
+        <img src="./assets/compiler_installation/c8.png" alt="Install Success Dialog" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Complete Setup:</span> 
+          Click <strong>Finish</strong> to exit the setup wizard.
+        </li>
+        <img src="./assets/compiler_installation/c9.png" alt="Setup Complete" class="screenshot">
+      
+      </ul>
+
+
+      <h3>Phase 3: Verifying Installation & Running Compiler</h3>
+      <ul class="step-list">
+      
+        <li class="step-item">
+          <span class="highlight">Verify AI Model Initialization:</span> 
+          Launch <code>compiler.exe</code>. The system will check and load the AI model automatically. 
+          Ensure you see <strong>"HCL AI Model Loaded Successfully"</strong> in the console.
+        </li>
+        <img src="./assets/compiler_installation/c10.png" alt="Compiler Terminal Output" class="screenshot">
+      
+        <li class="step-item">
+          <span class="highlight">Open Notebook Compiler Interface:</span> 
+          Launch the HCL Notebook Compiler UI to start writing and executing code blocks interactively.
+        </li>
+        <img src="./assets/compiler_installation/c11.png" alt="Notebook Compiler UI" class="screenshot">
+      
+      </ul>
     </section>
 
     <section class="docs-content hidden" id="syntax">
@@ -2008,44 +2187,25 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
         Human Centric Language (HCL) is a high-level instruction language that bridges the gap between human natural language and programming languages. It allows developers to write code using intuitive, human-readable syntax
       </p>
 
-      <h3>How is NLP used in HCL?</h3>
+      <h3>How does HCL work?</h3>
       <p>
-        HCL uses Natural Language Processing (NLP) techniques to parse and understand human-like instructions. The compiler employs:
-      </p>
-      <ul>
-        <li><strong>Tokenization:</strong> Breaking down instructions into meaningful tokens</li>
-        <li><strong>Pattern Matching:</strong> Identifying common programming patterns from natural language</li>
-        <li><strong>Semantic Analysis:</strong> Understanding the intent behind instructions</li>
-        <li><strong>Context-Aware Parsing:</strong> Maintaining state and context across statements</li>
-      </ul>
-
-      <p>
-        However, HCL maintains deterministic behavior — the same instruction always produces the same code, unlike AI-based code generators.
+        HCL uses a *rule-based pattern matching engine* (actions.jsonl) to understand English sentences. These patterns are matched and converted into Python code through a custom parser and Abstract Syntax Tree (AST). The compiler also supports an optional AI model (llama.cpp) that is automatically downloaded from Hugging Face on first run for future intelligent assistance.
       </p>
 
       <h3>Is HCL open-source?</h3>
-      <p>Yes! HCL is fully open-source under the MIT License. You can:</p>
-      <ul>
-        <li>View the source code on GitHub</li>
-        <li>Contribute to the project</li>
-        <li>Use it in commercial projects</li>
-        <li>Submit issues and feature requests</li>
-      </ul>
       <p>
-        Repository:
-        <a href="https://github.com/ManishMhatre-06/HCL" target="_blank" rel="noopener">
-          github.com/ManishMhatre-06/HCL
-        </a>
+        Currently HCL is under active development and not yet open-source. The source code is private. We plan to make it open-source in future releases.
       </p>
     
       <h3>Can I use HCL in production?</h3>
-      <p>Yes! HCL is production-ready. Many companies use it for:</p>
+      <p>HCL is currently suitable for:</p>
       <ul>
+        <li>Learning and teaching programming</li>
         <li>Rapid prototyping</li>
-        <li>Teaching programming concepts</li>
-        <li>Internal tooling</li>
-        <li>Domain-specific languages (DSLs)</li>
+        <li>Building internal tools and scripts</li>
+        <li>Educational projects</li>
       </ul>
+      <p>It is not yet recommended for large-scale production environments.</p>
 
       <h3>How does HCL compare to other languages?</h3>
     
@@ -2088,41 +2248,25 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
     
       <h3>What are the limitations of HCL?</h3>
       <ul>
-        <li>Not suitable for extremely low-level system programming</li>
-        <li>Limited third-party library support (depends on target language)</li>
-        <li>Some advanced features may not translate perfectly across all target languages</li>
+        <li>Currently generates only Python code (C/C++ execution support is available in compiler but not direct generation)</li>
+        <li>Advanced or very complex logic may need manual refinement</li>
+        <li>Limited third-party library support (depends on generated Python code)</li>
+        <li>Still in active development – some features are evolving</li>
       </ul>
     
       <h3>How do I contribute to HCL?</h3>
-      <p>We welcome contributions! Here’s how to get started:</p>
-      <ol>
-        <li>Fork the repository on GitHub</li>
-        <li>Create a feature branch (<code>git checkout -b feature/amazing-feature</code>)</li>
-        <li>Make your changes and write tests</li>
-        <li>Commit your changes (<code>git commit -m "Add amazing feature"</code>)</li>
-        <li>Push to the branch (<code>git push origin feature/amazing-feature</code>)</li>
-        <li>Open a Pull Request</li>
-      </ol>
-    
-      <!-- <pre class="code-block">
-    # Compiles to Express.js, Flask, or similar
-    create web server on port 3000
-    handle GET requests to "/api/users"
-    return user list as JSON
-      </pre> -->
+      <p>
+        We are not accepting public contributions right now as the project is in private development phase. Once it becomes open-source, we will welcome contributions through GitHub.
+      </p>
     
       <h3>Where can I get help?</h3>
       <ul>
-        <li><strong>Documentation:</strong> This guide covers most use cases</li>
-        <li><strong>GitHub Issues:</strong> Report bugs or request features</li>
-        <li><strong>Community Forum:</strong> Ask questions and share projects</li>
-        <li><strong>Discord Server:</strong> Real-time chat with other developers</li>
-        <li><strong>Stack Overflow:</strong> Tag your questions with <code>[hcl-lang]</code></li>
+        <li>Check the documentation and help section</li>
       </ul>
     </section>
     
     <section class="docs-content hidden" id="release">
-      <h2>Release Notes</h2>
+      <h2>Release Notes for Language</h2>
 
       <!-- Version 1.0.0 -->
       <div class="release-block highlight">
@@ -2135,20 +2279,6 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
           <li>📦 OOP and DSA integration</li>
           <li>🧠 Advanced AST transformations</li>
         </ul>
-      
-        <h5>Improvements</h5>
-        <ul>
-          <li>Better error messages</li>
-          <li>Improved type inference system</li>
-          <li>Optimized memory usage</li>
-        </ul>
-      
-        <h5>Bug Fixes</h5>
-        <ul>
-          <li>Fixed loop variable scoping issues</li>
-          <li>Resolved Windows path handling bugs</li>
-          <li>Addressed edge cases in pattern matching</li>
-        </ul>
       </div>
     
       <!-- Version 0.9.0 -->
@@ -2159,11 +2289,6 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
         <ul>
           <li>Interactive REPL mode</li>
           <li>Debug mode for auto-recompilation</li>
-        </ul>
-      
-        <h5>Breaking Changes</h5>
-        <ul>
-          <li>Changed <code>store</code> keyword to <code>assign</code> for consistency</li>
         </ul>
       </div>
     
@@ -2212,7 +2337,23 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
           <li>Basic syntax and grammar</li>
         </ul>
       </div>
-    
+
+      <h2>Release Notes for Compiler</h2>
+
+      <!-- Version 1.0.0 -->
+      <div class="release-block highlight">
+        <h4>Version 1.0.0 <span class="release-date">– January 15, 2026</span></h4>
+        <span class="badge">Latest Stable Release</span>
+      
+        <h5>New Features</h5>
+        <ul>
+          <li>Modern Notebook-style Compiler</li>
+          <li>Block based system</li>
+          <li>AI Model Integration</li>
+          <li>Dark/Light Theme Support</li>
+        </ul>
+      </div>
+      
       <h3>Upcoming Features (Roadmap)</h3>
     
       <div class="roadmap-card">
