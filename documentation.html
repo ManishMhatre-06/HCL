@@ -2383,6 +2383,8 @@ while i &lt;= n then print a; assign a + b to c; assign b to a; assign c to b; a
       .then(res => res.text())
       .then(data => {
         document.getElementById("header").innerHTML = data;
+      
+        initMobileMenu();
       });
 
     fetch("./partials/footer.html")
