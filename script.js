@@ -232,3 +232,36 @@ function initMobileMenu() {
     overlay.classList.remove("active");
   });
 }
+
+/* ===== MOBILE DOC DROPDOWN ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdown = document.querySelector(".mobile-docs-dropdown");
+  const selected = document.querySelector(".dropdown-selected");
+  const options = document.querySelectorAll(".dropdown-options li");
+  const sections = document.querySelectorAll(".docs-content");
+
+  if (!dropdown) return;
+
+  // Toggle dropdown
+  selected.addEventListener("click", () => {
+    dropdown.classList.toggle("open");
+  });
+
+  // Option click
+  options.forEach(option => {
+    option.addEventListener("click", () => {
+      const target = option.dataset.target;
+
+      // Update label
+      selected.textContent = option.textContent;
+
+      // Show selected section
+      sections.forEach(section => {
+        section.classList.toggle("hidden", section.id !== target);
+      });
+
+      // Close dropdown
+      dropdown.classList.remove("open");
+    });
+  });
+});

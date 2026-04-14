@@ -9,6 +9,8 @@ This project is being developed as a **Final Year Degree Project** at:
 **New Horizons Institute of Technology and Management (NHITM)**
 *Affiliated with Mumbai University*
 
+### Project Guide
+* **Dr. Dibyalekha Nayak**
 ### 👥 Development Team
 * **Manish Mhatre**
 * **Swagat Rajage**
