@@ -129,9 +129,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ---------- Feedback Cards from Google Sheets ---------- */
-const API_KEY = 'AIzaSyAGTkFxuoKAWUJPOSy-RFLNdOqs_QJRavo'; 
+const API_KEY = 'AIzaSyBtJVHnrrWWYzGZICqlEMWtakEqBe_uteA'; 
 const SHEET_ID = '188-NcqN4pOCVA9jO6DivizquXt-5FW66sldx9cBEsJw';
 const RANGE = 'Form Responses 1!A2:AG100'; 
+
+// 1. Move BLOCKED_NAMES to the top (Global Scope)
+const BLOCKED_NAMES = [
+    "Bloom Graphics Solution",
+    "Arun N Gawande",
+    "Ms. Pallavi Patil",
+    "Preeti Samdani"
+];
 
 async function fetchFeedbackData() {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
@@ -141,7 +149,7 @@ async function fetchFeedbackData() {
         const data = await response.json();
         
         if (data.values) {
-            // 1. Reverse the rows so the newest (bottom of sheet) come first
+            // Reverse so newest entries (bottom of sheet) appear first
             const latestFirst = data.values.reverse();
             renderFeedbackCards(latestFirst);
         }
@@ -152,58 +160,57 @@ async function fetchFeedbackData() {
 
 function renderFeedbackCards(rows) {
     const container = document.getElementById('feedback-container');
-    container.innerHTML = ''; 
+    if (!container) return; // Safety check
 
-    let displayedCount = 0; // Counter to track how many cards we've shown
+    let displayedCount = 0;
 
     for (const row of rows) {
-        // Stop once we have reached 6 cards
-        if (displayedCount >= 8) break;
+        if (displayedCount >= 12) break;
 
+        // 2. DEFINE THE VARIABLES FIRST
+        const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
         const rating = parseInt(row[21]) || 0;
-
-        // Filter: Only 3 stars or higher
-        if (rating < 2) continue;
-
-        // Data Extraction
         const timestamp = row[0] || "";
         const role = row[1] || "User";
-        const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
         const feedback1 = row[28] || "N.A.";
         const feedback2 = row[29] || "N.A.";
 
-        // Build the Card
-        const card = document.createElement('div');
-        card.className = 'hcl-card';
-        card.innerHTML = `
-            <div class="hcl-card-header">
-                <div>
-                    <h4 class="hcl-user-name">${name}</h4>
-                    <span class="hcl-user-role">${role}</span>
+        // 3. NOW PERFORM FILTERS (using the defined variables)
+        if (BLOCKED_NAMES.includes(name.trim())) {
+            continue; 
+        }
+
+        if (rating < 2) continue;
+
+        // 4. GENERATE HTML
+        const cardHTML = `
+            <div class="hcl-card">
+                <div class="hcl-card-header">
+                    <div>
+                        <h4 class="hcl-user-name">${name}</h4>
+                        <span class="hcl-user-role">${role}</span>
+                    </div>
+                    <span class="hcl-timestamp">${timestamp.split(' ')[0]}</span>
                 </div>
-                <span class="hcl-timestamp">${timestamp.split(' ')[0]}</span>
+
+                <div class="hcl-stars">
+                    ${'★'.repeat(Math.min(5, rating))}${'☆'.repeat(Math.max(0, 5 - rating))}
+                </div>
+
+                <p class="hcl-feedback">"${feedback1}"</p>
+                <p class="hcl-feedback">"${feedback2}"</p>
+
+                <ul class="hcl-metadata">
+                    ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
+                    ${row[9] ? `<li><strong>College:</strong> ${row[9]}</li>` : ''}
+                    ${row[24] ? `<li><strong>Compiler Acc:</strong> ${row[24]}/5</li>` : ''}
+                </ul>
             </div>
-
-            <div class="hcl-stars">
-                ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
-            </div>
-
-            <p class="hcl-feedback">"${feedback1}"</p>
-            <p class="hcl-feedback">"${feedback2}"</p>
-
-            <ul class="hcl-metadata">
-                ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
-                ${row[9] ? `<li><strong>College:</strong> ${row[9]}</li>` : ''}
-                ${row[18] ? `<li><strong>Compiler Acc:</strong> ${row[24]}/5</li>` : ''}
-            </ul>
         `;
         
-        container.appendChild(card);
-        displayedCount++; // Increment the counter
+        container.insertAdjacentHTML('beforeend', cardHTML);
+        displayedCount++;
     }
-
-    // Do nothing if no valid feedback
-    if (container.innerHTML === '') return;
 }
 
 document.addEventListener('DOMContentLoaded', fetchFeedbackData);
