@@ -943,7 +943,7 @@ button:hover .btn-icon-img {
 
 .dropdown-options {
   list-style: none;
-  position: absolute;
+  position: relative;
   width: 100%;
   background: rgba(2, 6, 23, 0.95);
   border: 1px solid var(--border);
@@ -982,4 +982,64 @@ button:hover .btn-icon-img {
   .mobile-docs-dropdown {
     display: block;
   }
+}
+
+/* MOBILE SUB-LIST */
+.mobile-sub-list {
+  display: none;
+  margin-top: 6px;
+  padding-left: 10px;
+}
+
+.mobile-docs-dropdown li.open > .mobile-sub-list {
+  display: block;
+}
+
+.mobile-parent {
+  display: block;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+/* Tap feedback (HAPTIC-LIKE) */
+.dropdown-options li:active,
+.mobile-parent:active {
+  transform: scale(0.97);
+  background: #020617;
+}
+
+/* Smooth feel */
+.dropdown-options li,
+.mobile-parent {
+  transition: all 0.15s ease;
+}
+
+/* MOBILE DROPDOWN FIX */
+.mobile-docs-dropdown {
+  position: relative;
+  z-index: 50;
+}
+
+/* Dropdown options now PUSH content instead of overlay */
+.dropdown-options {
+  display: none;
+  margin-top: 10px;
+}
+
+.mobile-docs-dropdown.open .dropdown-options {
+  display: block;
+}
+
+/* Smooth push effect */
+.dropdown-options {
+  transition: all 0.25s ease;
+}
+
+/* Add spacing when open */
+.mobile-docs-dropdown.open {
+  margin-bottom: 16px;
+}
+
+.docs-content {
+  transition: transform 0.25s ease, opacity 0.2s ease;
 }
