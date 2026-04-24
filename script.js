@@ -1,4 +1,4 @@
-// It loads the side bar contents and toggles the content sections based on user interaction.
+/* ---------- SIDEBAR NAVIGATION ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const sidebarItems = document.querySelectorAll(".sidebar li[data-target]");
   const sections = document.querySelectorAll(".docs-content");
@@ -7,71 +7,66 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener("click", () => {
       const targetId = item.dataset.target;
 
-      // Update sidebar active state
+      // Active state
       sidebarItems.forEach(i => i.classList.remove("active"));
       item.classList.add("active");
 
-      // Toggle sections
+      // Show section
       sections.forEach(section => {
-        section.classList.toggle(
-          "hidden",
-          section.id !== targetId
-        );
+        section.classList.toggle("hidden", section.id !== targetId);
       });
     });
   });
 });
 
 
+/* ---------- SYNTAX & CODE LOGIC ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  const syntaxParent = document.querySelector(
-    '.sidebar li[data-target="syntax"]'
-  );
-  const syntaxSubList = syntaxParent?.querySelector(".sub-list");
-  const syntaxItems = document.querySelectorAll(
-    ".sidebar .sub-list li[data-syntax]"
-  );
+
+  const sidebarItems = document.querySelectorAll(".sidebar li[data-target]");
+  const sections = document.querySelectorAll(".docs-content");
+
+  const syntaxParent = document.querySelector('.sidebar li[data-target="syntax"]');
+  const syntaxItems = document.querySelectorAll(".sidebar .sub-list li[data-syntax]");
   const syntaxBlocks = document.querySelectorAll(".syntax-block");
 
   let lastActiveSyntax = null;
 
-  /* ---------- Syntax & Code parent toggle ---------- */
-  if (syntaxParent) {
-    syntaxParent.addEventListener("click", () => {
-      syntaxParent.classList.toggle("open");
+  if (!syntaxParent) return;
 
-      // If collapsing, keep last visited syntax block visible
-      if (!syntaxParent.classList.contains("open") && lastActiveSyntax) {
-        syntaxBlocks.forEach(block =>
-          block.classList.toggle(
-            "active",
-            block.dataset.syntax === lastActiveSyntax
-          )
-        );
-      }
-    });
-  }
+  /* Toggle Syntax dropdown */
+  syntaxParent.addEventListener("click", () => {
+    syntaxParent.classList.toggle("open");
 
-  /* ---------- Syntax sub-item clicks ---------- */
+    if (!syntaxParent.classList.contains("open") && lastActiveSyntax) {
+      syntaxBlocks.forEach(block =>
+        block.classList.toggle(
+          "active",
+          block.dataset.syntax === lastActiveSyntax
+        )
+      );
+    }
+  });
+
+  /* Sub-item click */
   syntaxItems.forEach(item => {
     item.addEventListener("click", e => {
       e.stopPropagation();
-    
+
       const target = item.dataset.syntax;
       lastActiveSyntax = target;
-    
-      /* ---- FORCE SWITCH TO SYNTAX SECTION ---- */
+
+      // Switch to syntax section
       sections.forEach(section =>
         section.classList.toggle("hidden", section.id !== "syntax")
       );
-    
+
       sidebarItems.forEach(i => i.classList.remove("active"));
       syntaxParent.classList.add("active");
-    
-      /* ---- KEEP SUB-LIST OPEN ---- */
+
       syntaxParent.classList.add("open");
-    
-      /* ---- ACTIVATE SELECTED SYNTAX BLOCK ---- */
+
+      // Activate correct block
       syntaxBlocks.forEach(block =>
         block.classList.toggle(
           "active",
@@ -80,46 +75,19 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
   });
-
-
-  /* ---------- When navigating BACK to Syntax section ---------- */
-  const sidebarItems = document.querySelectorAll(".sidebar li[data-target]");
-  const sections = document.querySelectorAll(".docs-content");
-
-  sidebarItems.forEach(item => {
-    item.addEventListener("click", () => {
-      const targetId = item.dataset.target;
-
-      sections.forEach(section =>
-        section.classList.toggle("hidden", section.id !== targetId)
-      );
-
-      // Restore last syntax block when returning to Syntax section
-      if (targetId === "syntax" && lastActiveSyntax) {
-        syntaxBlocks.forEach(block =>
-          block.classList.toggle(
-            "active",
-            block.dataset.syntax === lastActiveSyntax
-          )
-        );
-      }
-    });
-  });
 });
 
-/* ---------- Installation Guide toggle ---------- */
 
+/* ---------- HASH BASED NAVIGATION ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash;
 
   if (hash) {
-    // Hide all sections
     document.querySelectorAll(".docs-content").forEach(sec => {
       sec.classList.add("hidden");
       sec.classList.remove("active");
     });
 
-    // Show target section
     const target = document.querySelector(hash);
     if (target) {
       target.classList.remove("hidden");
@@ -128,94 +96,84 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-/* ---------- Feedback Cards from Google Sheets ---------- */
+
+/* ---------- FEEDBACK (GOOGLE SHEETS) ---------- */
 const API_KEY = 'AIzaSyBtJVHnrrWWYzGZICqlEMWtakEqBe_uteA'; 
 const SHEET_ID = '188-NcqN4pOCVA9jO6DivizquXt-5FW66sldx9cBEsJw';
 const RANGE = 'Form Responses 1!A2:AG100'; 
 
-// 1. Move BLOCKED_NAMES to the top (Global Scope)
 const BLOCKED_NAMES = [
-    "Bloom Graphics Solution",
-    "Arun N Gawande",
-    "Ms. Pallavi Patil",
-    "Preeti Samdani"
+  "Bloom Graphics Solution",
+  "Arun N Gawande",
+  "Ms. Pallavi Patil",
+  "Preeti Samdani"
 ];
 
 async function fetchFeedbackData() {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
-    
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        if (data.values) {
-            // Reverse so newest entries (bottom of sheet) appear first
-            const latestFirst = data.values.reverse();
-            renderFeedbackCards(latestFirst);
-        }
-    } catch (error) {
-        console.error("Error connecting to Google Sheets:", error);
+  try {
+    const response = await fetch(
+      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`
+    );
+    const data = await response.json();
+
+    if (data.values) {
+      renderFeedbackCards(data.values.reverse());
     }
+  } catch (error) {
+    console.error("Error connecting to Google Sheets:", error);
+  }
 }
 
 function renderFeedbackCards(rows) {
-    const container = document.getElementById('feedback-container');
-    if (!container) return; // Safety check
+  const container = document.getElementById('feedback-container');
+  if (!container) return;
 
-    let displayedCount = 0;
+  let count = 0;
 
-    for (const row of rows) {
-        if (displayedCount >= 12) break;
+  for (const row of rows) {
+    if (count >= 12) break;
 
-        // 2. DEFINE THE VARIABLES FIRST
-        const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
-        const rating = parseInt(row[21]) || 0;
-        const timestamp = row[0] || "";
-        const role = row[1] || "User";
-        const feedback1 = row[28] || "N.A.";
-        const feedback2 = row[29] || "N.A.";
+    const name = row[2] || row[7] || row[13] || row[18] || "Contributor";
+    const rating = parseInt(row[21]) || 0;
+    const timestamp = row[0] || "";
+    const role = row[1] || "User";
+    const feedback1 = row[28] || "";
+    const feedback2 = row[29] || "";
 
-        // 3. NOW PERFORM FILTERS (using the defined variables)
-        if (BLOCKED_NAMES.includes(name.trim())) {
-            continue; 
-        }
+    if (BLOCKED_NAMES.includes(name.trim())) continue;
+    if (rating < 2) continue;
 
-        if (rating < 2) continue;
+    // ❗ skip empty feedback
+    if (!feedback1.trim() && !feedback2.trim()) continue;
 
-        // 4. GENERATE HTML
-        const cardHTML = `
-            <div class="hcl-card">
-                <div class="hcl-card-header">
-                    <div>
-                        <h4 class="hcl-user-name">${name}</h4>
-                        <span class="hcl-user-role">${role}</span>
-                    </div>
-                    <span class="hcl-timestamp">${timestamp.split(' ')[0]}</span>
-                </div>
+    const card = `
+      <div class="hcl-card">
+        <div class="hcl-card-header">
+          <div>
+            <h4>${name}</h4>
+            <span>${role}</span>
+          </div>
+          <span>${timestamp.split(' ')[0]}</span>
+        </div>
 
-                <div class="hcl-stars">
-                    ${'★'.repeat(Math.min(5, rating))}${'☆'.repeat(Math.max(0, 5 - rating))}
-                </div>
+        <div class="hcl-stars">
+          ${'★'.repeat(Math.min(5, rating))}${'☆'.repeat(Math.max(0, 5 - rating))}
+        </div>
 
-                <p class="hcl-feedback">"${feedback1}"</p>
-                <p class="hcl-feedback">"${feedback2}"</p>
+        ${feedback1 ? `<p>"${feedback1}"</p>` : ''}
+        ${feedback2 ? `<p>"${feedback2}"</p>` : ''}
+      </div>
+    `;
 
-                <ul class="hcl-metadata">
-                    ${row[3] ? `<li><strong>College:</strong> ${row[3]}</li>` : ''}
-                    ${row[9] ? `<li><strong>College:</strong> ${row[9]}</li>` : ''}
-                    ${row[24] ? `<li><strong>Compiler Acc:</strong> ${row[24]}/5</li>` : ''}
-                </ul>
-            </div>
-        `;
-        
-        container.insertAdjacentHTML('beforeend', cardHTML);
-        displayedCount++;
-    }
+    container.insertAdjacentHTML("beforeend", card);
+    count++;
+  }
 }
 
-document.addEventListener('DOMContentLoaded', fetchFeedbackData);
+document.addEventListener("DOMContentLoaded", fetchFeedbackData);
 
-/* ===== MOBILE NAV TOGGLE ===== */
+
+/* ---------- MOBILE NAV MENU ---------- */
 function initMobileMenu() {
   const menuBtn = document.querySelector(".menu-toggle");
   const mobileMenu = document.querySelector(".mobile-menu");
@@ -240,35 +198,97 @@ function initMobileMenu() {
   });
 }
 
-/* ===== MOBILE DOC DROPDOWN ===== */
+document.addEventListener("DOMContentLoaded", initMobileMenu);
+
+
+/* ---------- MOBILE DOC DROPDOWN ---------- */
 document.addEventListener("DOMContentLoaded", () => {
+
   const dropdown = document.querySelector(".mobile-docs-dropdown");
   const selected = document.querySelector(".dropdown-selected");
-  const options = document.querySelectorAll(".dropdown-options li");
+  const options = document.querySelectorAll(".dropdown-options > li");
   const sections = document.querySelectorAll(".docs-content");
+  const syntaxBlocks = document.querySelectorAll(".syntax-block");
+
+  let lastSyntax = "print";
 
   if (!dropdown) return;
 
-  // Toggle dropdown
-  selected.addEventListener("click", () => {
-    dropdown.classList.toggle("open");
+  /* Toggle dropdown */
+  selected.addEventListener("click", (e) => {
+    e.stopPropagation();
+
+    const isOpen = dropdown.classList.toggle("open");
+
+    if (isOpen) {
+      document.querySelectorAll(".mobile-docs-dropdown li").forEach(li => {
+        li.classList.remove("open");
+      });
+    }
   });
 
-  // Option click
-  options.forEach(option => {
-    option.addEventListener("click", () => {
-      const target = option.dataset.target;
-
-      // Update label
-      selected.textContent = option.textContent;
-
-      // Show selected section
-      sections.forEach(section => {
-        section.classList.toggle("hidden", section.id !== target);
-      });
-
-      // Close dropdown
+  /* Close when clicking outside */
+  window.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
       dropdown.classList.remove("open");
+
+      document.querySelectorAll(".mobile-docs-dropdown li").forEach(li => {
+        li.classList.remove("open");
+      });
+    }
+  });
+
+  /* Main options */
+  options.forEach(option => {
+    const parent = option.querySelector(".mobile-parent");
+
+    if (parent) {
+      parent.addEventListener("click", e => {
+        e.stopPropagation();
+        option.classList.toggle("open");
+      });
+    } else {
+      option.addEventListener("click", () => {
+        const target = option.dataset.target;
+
+        selected.textContent = option.textContent;
+
+        sections.forEach(section =>
+          section.classList.toggle("hidden", section.id !== target)
+        );
+
+        dropdown.classList.remove("open");
+      });
+    }
+  });
+
+  /* Sub-list clicks */
+  document.querySelectorAll(".mobile-sub-list li").forEach(item => {
+    item.addEventListener("click", e => {
+      e.stopPropagation();
+
+      const syntax = item.dataset.syntax;
+      lastSyntax = syntax;
+
+      sections.forEach(section =>
+        section.classList.toggle("hidden", section.id !== "syntax")
+      );
+
+      syntaxBlocks.forEach(block =>
+        block.classList.toggle(
+          "active",
+          block.dataset.syntax === syntax
+        )
+      );
+
+      selected.textContent = `Syntax → ${item.textContent}`;
+
+      dropdown.classList.remove("open");
+
+      document.querySelectorAll(".mobile-docs-dropdown li").forEach(li => {
+        li.classList.remove("open");
+      });
     });
   });
+
 });
